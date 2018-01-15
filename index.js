@@ -2,9 +2,9 @@ import Vue from "vue";
 // 路由
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
-// 状态管理
+/*// 状态管理
 import Vuex from 'vuex'
-Vue.use(Vuex)
+Vue.use(Vuex)*/
 
 import "weui";
 // 全局样式
@@ -14,9 +14,9 @@ import "./template/base.css";
 
 // 选项卡组件
 import wechat from "./components/tabs/wechat.vue";
-import discovery from "./components/tabs/discovery.vue";
-import contact from "./components/tabs/contact.vue";
-import mine from "./components/tabs/mine.vue";
+//import discovery from "./components/tabs/discovery.vue";
+//import contact from "./components/tabs/contact.vue";
+//import mine from "./components/tabs/mine.vue";
 
 // 容器组件
 import tab from "./components/contain/tab.vue";
@@ -30,8 +30,8 @@ var router = new VueRouter({
             children: [{
                     path: 'wechat',
                     component: wechat
-                },
-                {
+                }
+               /* {
                     path: 'discovery',
                     component: discovery
                 },
@@ -42,7 +42,7 @@ var router = new VueRouter({
                 {
                     path: 'mine',
                     component: mine
-                }
+                }*/
             ]
         }, {
             path: "/chat",
@@ -55,18 +55,17 @@ var router = new VueRouter({
     ]
 })
 
-// 配置store
+/*// 配置store
 var store = new Vuex.Store({
     state:{
         count:0,
         bool:true 
     }
-})
+})*/
 
 new Vue({
     el: "#app",
     router,
-    store,
     template: `
         <div>
             <router-view></router-view> 

@@ -19,15 +19,7 @@
 
 <style>
 	html{font-size: 62.5%;}/*1rem=10px*/
-body{
-  line-height:1.6;
-  font-family:-apple-system-font, "Helvetica Neue", sans-serif;
-  background-color: #f0eff5;
-}
-*{
-  margin:0;
-  padding:0;
-}
+
 a img{
   border:0;
 }

@@ -13,44 +13,25 @@ import "./template/base.css";
 
 
 // 选项卡组件
-import wechat from "./components/tabs/wechat.vue";
-import discovery from "./components/tabs/discovery.vue";
-import contact from "./components/tabs/contact.vue";
 import mine from "./components/tabs/mine.vue";
 
 // 容器组件
-import tab from "./components/contain/tab.vue";
-import chat from "./components/contain/chat.vue";
-
+import own from "./components/contain/own.vue"
 // 配置路由
 var router = new VueRouter({
-    routes: [{
-            path: "/tab",
-            component: tab,
-            children: [{
-                    path: 'wechat',
-                    component: wechat
-                },
-                {
-                    path: 'discovery',
-                    component: discovery
-                },
-                {
-                    path: 'contact',
-                    component: contact
-                },
-                {
-                    path: 'mine',
-                    component: mine
-                }
-            ]
-        }, {
-            path: "/chat",
-            component: chat
-        }, // 默认进入页面的时候跳转到
+    routes: [
+    // 默认进入页面的时候跳转到
         {
             path: '/',
-            redirect: '/tab/wechat'
+            redirect: '/mine'
+        },
+        {
+        	path:"/mine",
+        	component:mine
+        },
+        {
+        	path:"/own",
+        	component:own
         }
     ]
 })

@@ -1,5 +1,5 @@
 <template>
-	<div class="weui-search-bar" :class="bool?'weui-search-bar_focusing':''" id="searchBar">
+	<div class="weui-search-bar" id="searchBar">
             <form class="weui-search-bar__form">
                 <div class="weui-search-bar__box">
                     <i class="weui-icon-search"></i>
@@ -11,23 +11,15 @@
                     <span>搜索</span>
                 </label>
             </form>
-            <a @click="back" href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
         </div>
 </template>
 
 <script>
 	export default {
-		data(){
-			return {
-				bool:false
-			}
-		},
 		methods:{
 			isShow(){
-				this.bool = true;
-			},
-			back(){
-				this.bool = false;
+//				this.bool = true;
+				location.href='#/searchContent'
 			}
 		}
 	}

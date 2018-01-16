@@ -1,23 +1,13 @@
 <template>
-	<div class="chatBox" @click="getChatList">
-		<a href="#/chatdetail" class="weui-cell">
+	<div class="chatBox">
+		<a href="#/chatdetail" class="weui-cell" v-for="a in chatArr">
 	        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
 	            <img :src="img" style="width: 50px;display: block">
-	            <span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</span>
+	            <!--<span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</span>-->
 	        </div>
 	        <div class="weui-cell__bd">
-	            <p style="font-size: 16px;">你咬我啊i</p>
-	            <p style="font-size: 13px;color: #888888;">你在干嘛</p>
-	        </div>
-	    </a>
-	    <a href="#/chatdetail" class="weui-cell">
-	        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-	            <img :src="img" style="width: 50px;display: block">
-	            
-	        </div>
-	        <div class="weui-cell__bd">
-	            <p style="font-size: 16px;">你咬我啊b</p>
-	            <p style="font-size: 13px;color: #888888;">你在干嘛</p>
+	            <p style="font-size: 16px;" v-text="a.chatname"></p>
+	            <p style="font-size: 13px;color: #888888;" v-text="a.content"></p>
 	        </div>
 	    </a>
 	</div>
@@ -29,22 +19,25 @@
 	export default {
 		data(){
 			return {
-				img:require('../../img/2-small.jpg')
+				img:require('../../img/2-small.jpg'),
+				chatArr:[]
 			}
 		},
-		methods:{
-			getChatList(){
-				$.ajax({
-					type:"post",
-					url:"http://localhost:3000/getChatList",
-					success(data){
-						console.log(data);
-					},
-					error(){
-						console.log('error');
+		mounted:function(){
+			var _this = this;
+			$.ajax({
+				type:"post",
+				url:"http://localhost:3000/getChatList",
+				success(data){
+					var obj = JSON.parse(data)
+					for(var i in obj){
+						_this.chatArr.push({'chatname':obj[i].chatname,'content':obj[i].mycont});
 					}
-				});
-			}
+				},
+				error(){
+					console.log('error');
+				}
+			});
 		}
 	}
 </script>

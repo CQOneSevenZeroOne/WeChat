@@ -39,6 +39,7 @@ import add_friend from "./components/contain/add_friend.vue";
 import saoyisao from "./components/contain/sao-yi-sao.vue";
 import yaoyiyao from "./components/contain/yao-yi-yao.vue";
 import piaoliuping from "./components/contain/piao-liu-ping.vue";
+import searchContent from "./components/contain/searchContent.vue";
 // 配置路由
 var router = new VueRouter({
 	routes: [
@@ -155,6 +156,10 @@ var router = new VueRouter({
 		{
 			path: "/login",
             component: login
+        },
+		{
+			path:"/searchContent",
+			component:searchContent
 		}
     ]
 });

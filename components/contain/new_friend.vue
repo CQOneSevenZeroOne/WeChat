@@ -6,7 +6,7 @@
         </div>
         <div class="top-other" >
             <div slot="right" class="_align-right"  style="float:right;">
-                <span ><img src="../../img/jia.png" alt=""></span>
+                <span ><a href="#/con/add_friend"><img src="../../img/jia.png" alt=""></a></span>
             </div>
         </div>
         <div class="top-title _effect" >

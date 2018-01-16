@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="header">
 			<a href=""></a>
-			微信(12)
+			微信
 			<i @click="changeShow"><img src="../img/jia.png"/></i>
 		</div>
 		

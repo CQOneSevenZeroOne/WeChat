@@ -10,64 +10,71 @@ import "weui";
 // 全局样式
 import "./template/base.css";
 
-
-
 // 选项卡组件
-<<<<<<< HEAD
 import mine from "./components/tabs/mine.vue";
-=======
 import wechat from "./components/tabs/wechat.vue";
-//import discovery from "./components/tabs/discovery.vue";
-//import contact from "./components/tabs/contact.vue";
-//import mine from "./components/tabs/mine.vue";
->>>>>>> ae447c274aacba8e962ed7befc24eda134be61ac
-
+import own from "./components/tabs/own.vue";
 // 容器组件
-import own from "./components/contain/own.vue"
+import name from "./components/contain/changeName.vue";
+import tab from "./components/contain/tab.vue";
+import cont from "./components/contain/mess-cont.vue";
+import coll from "./components/contain/collection.vue";
+import sets from "./components/contain/setting.vue";
+import expr from "./components/contain/expression.vue";
+import card from "./components/contain/card.vue";
 // 配置路由
 var router = new VueRouter({
-<<<<<<< HEAD
-    routes: [
-    // 默认进入页面的时候跳转到
-=======
-    routes: [{
-            path: "/tab",
-            component: tab,
-            children: [{
-                    path: 'wechat',
-                    component: wechat
-                }
-               /* {
-                    path: 'discovery',
-                    component: discovery
-                },
-                {
-                    path: 'contact',
-                    component: contact
-                },
-                {
-                    path: 'mine',
-                    component: mine
-                }*/
-            ]
-        }, {
-            path: "/chat",
-            component: chat
-        }, // 默认进入页面的时候跳转到
->>>>>>> ae447c274aacba8e962ed7befc24eda134be61ac
-        {
-            path: '/',
-            redirect: '/mine'
-        },
-        {
-        	path:"/mine",
-        	component:mine
-        },
-        {
-        	path:"/own",
-        	component:own
-        }
-    ]
+	routes: [
+	{
+			path: "/tab",
+			component: tab,
+			children: [{
+					path: "wechat",
+					component: wechat
+				},
+				{
+					path: "mine",
+					component: mine
+				}
+			]
+		}, // 默认进入页面的时候跳转到
+		{
+			path: '/',
+			redirect: '/tab/wechat'
+		},
+		{
+			path: "/own",
+			component: own,
+			children:[
+				{
+					path: "name",
+					component: name,
+				},
+				{
+					path: "cont",
+					component: cont,
+				},
+				{
+					path: "coll",
+					component: coll,
+				},
+				{
+					path: "sets",
+					component: sets,
+				},
+				{
+					path: "expr",
+					component: expr,
+				},
+				{
+					path:"card",
+					component:card
+				}
+			],
+			redirect: '/own/cont'
+			
+		}
+	]
 })
 
 /*// 配置store
@@ -79,9 +86,9 @@ var store = new Vuex.Store({
 })*/
 
 new Vue({
-    el: "#app",
-    router,
-    template: `
+	el: "#app",
+	router,
+	template: `
         <div>
             <router-view></router-view> 
         </div>

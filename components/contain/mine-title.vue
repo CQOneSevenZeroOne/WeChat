@@ -1,6 +1,6 @@
 <template>
 	<div class="weui-mine-title">
-		<a href="#/mine/own">
+		<a href="#/own">
 			<div class="mine-img">
 				<img src="../../img/1.jpg">
 			</div>
@@ -53,10 +53,13 @@
 	justify-content: space-between;
 }
 .mine-cont h4{
-	height: 1.4rem;
+	height: 1.8rem;
+	font-size: 1.5rem;
+	font-weight: 600;
 }
 .mine-cont p{
 	height: 1.6rem;
+	font-size: 1rem;
 }
 .mine-cont span{
 	width: 4.5rem;height: 2rem;

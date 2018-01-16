@@ -43,7 +43,7 @@
 	ul{
 		position: absolute;
 	    z-index: 4;
-	    width: 103px;
+	    width: 120px;
 	    font-size: 16px;
 	    right: 5px;
 	    top: 54px;
@@ -71,6 +71,10 @@
     	height: 40px;
     	line-height: 40px;
     	font-size: 14px;
+    	display: flex;
+	}
+	li div{
+		margin-left: 10px;
 	}
 	.header {
 		display: flex;

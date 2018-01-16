@@ -22,7 +22,6 @@
 
 <style>
 html{font-size: 62.5%;}/*1rem=10px*/
-
 a img{
   border:0;
 }

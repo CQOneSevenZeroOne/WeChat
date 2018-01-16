@@ -11,14 +11,15 @@ import "./template/base.css";
 import "./template/weui.min.css";
 import "./template/wechat.css";
 // 选项卡组件
+import mine from "./components/tabs/mine.vue";
 import discovery from "./components/tabs/discovery.vue";
 import contact from "./components/tabs/contact.vue";
 import wechat from "./components/tabs/wechat.vue";
 import own from "./components/tabs/own.vue";
-import mine from "./components/tabs/mine.vue";
-
-// 容器组件
+import con from "./components/tabs/cons.vue";
 import tab from "./components/contain/tab.vue";
+// 容器组件
+
 import chatdetail from "./components/contain/chatdetail.vue";
 import chatInfo from "./components/contain/chatInfo.vue";
 import name from "./components/contain/changeName.vue";
@@ -33,6 +34,7 @@ import group_chat from "./components/contain/group_chat.vue";
 import person_info from "./components/contain/person_info.vue";
 import friendcircle from "./components/contain/friend-circle.vue";
 import person_info_set from "./components/contain/person_info_set.vue";
+import add_friend from "./components/contain/add_friend.vue";
 import saoyisao from "./components/contain/sao-yi-sao.vue";
 import yaoyiyao from "./components/contain/yao-yi-yao.vue";
 import piaoliuping from "./components/contain/piao-liu-ping.vue";
@@ -56,8 +58,10 @@ var router = new VueRouter({
                 },{
                     path:"contact",
                     component:contact
+
                 }]
-		}, // 默认进入页面的时候跳转到
+        },
+		 // 默认进入页面的时候跳转到
 		{
 			path: '/',
 			redirect: '/tab/wechat'
@@ -99,12 +103,12 @@ var router = new VueRouter({
 			redirect: '/own/cont'
 			
 		},
-         {
-        	path:"/chatdetail",
+        {
+        	path:"chatdetail",
         	component:chatdetail
         },
          {
-        	path:"/chatInfo",
+        	path:"chatInfo",
         	component:chatInfo
         },
         {
@@ -112,30 +116,42 @@ var router = new VueRouter({
         	component:friendcircle
         },
         {
-            path: "/new_friend",
-            component: new_friend
-		}, 
+            path: "/con",
+            component: con,
+            children:[
+                {
+                    path: "new_friend",
+                    component: new_friend
+                },{
+                    path: "group_chat",
+                    component: group_chat
+                },{
+                    path: "person_info",
+                    component: person_info
+                },{
+                    path: "person_info_set",
+                    component: person_info_set
+                },{
+                    path: "add_friend",
+                    component: add_friend
+                }
+                
+            ]
+        },
         {
-            path: "/sao-yi-sao",
+            path: "sao-yi-sao",
             component: saoyisao
 		},
 		{
-            path: "/yao-yi-yao",
+            path: "yao-yi-yao",
             component: yaoyiyao
 		}, 
 		{
             path: "/piao-liu-ping",
             component: piaoliuping
-		},
-        {
-            path: "/person_info",
-            component: person_info
-        },{
-            path:"/friend-circle",
-            component:friendcircle
-        }
+		}
     ]
-})
+});
 
 // 配置store
 var store = new Vuex.Store({

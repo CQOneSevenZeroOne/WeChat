@@ -51,7 +51,7 @@
             <div class="" >
                 <input class="weui_switch" type="checkbox" > </div>
         </div>
-        <div class="weui_cell" ">
+        <div class="weui_cell">
             <div class="weui_cell_hd weui_cell_primary">投诉</div>
             <div class="weui_cell_ft" > </div>
         </div>

@@ -1,93 +1,168 @@
 <template>
-	<div>
-		<div class="_cover-top" _v-f50d4fca="" _v-365808fa="">
-			<div class="top-back" _v-f50d4fca="">
-				<div class="_ellipsis iconfont icon-return-arrow v-link-active" _v-f50d4fca="">返回</div>
-			</div>
-			<div class="top-other" _v-f50d4fca="">
-				<div class="_align-right" _v-f50d4fca=""> <span class="iconfont" _v-f50d4fca=""></span> </div>
-			</div>
-			<div class="top-title _effect" _v-f50d4fca="">
-				<p _v-f50d4fca=""> <span _v-f50d4fca="">朋友圈</span> </p>
-			</div>
-		</div>
-		<div class="drag-wrap" id="drag-wrap" _v-365808fa="">
-			<div class="drag-inner" id="drag-inner" _v-365808fa="" style="transform: translate3d(0px, 0px, 0px);">
-				<header class="home-pic" _v-365808fa="">
-					<div class="home-pic-base" _v-365808fa="">
-						<div class="top-pic" _v-365808fa="">
-							<div class="top-pic-inner" _v-365808fa=""> </div>
-						</div>
-						<div class="top-name _ellipsis" _v-365808fa="">Mrs liu</div>
+	<div class="_full_router component-albums-friends cover-transition">
+		<div class="_full_inner">
+			<div class="_cover-top">
+				<a href="#/tab/discovery">
+					<div class="top-back">
+						<div class="_ellipsis iconfont icon-return-arrow v-link-active">返回</div>
 					</div>
-				</header>
-				<section class="home-content" _v-365808fa=""> </section>
+				</a>
+				<div class="top-other">
+					<div class="_align-right"> <span class="iconfont"></span> </div>
+				</div>
+				<div class="top-title _effect">
+					<p> <span>朋友圈</span> </p>
+				</div>
+			</div>
+			<div class="_cover-content _effect">
+				<div class="drag-reflash" style="top: -40px; transform: rotate(0deg);"></div>
+				<div class="drag-wrap" id="drag-wrap">
+					<div class="drag-inner" id="drag-inner" style="transform: translate3d(0px, 0px, 0px);">
+						<header class="home-pic">
+							<div class="home-pic-base">
+								<div class="top-pic">
+									<div class="top-pic-inner"> </div>
+								</div>
+								<div class="top-name _ellipsis">Mrs liu</div>
+							</div>
+						</header>
+						<section class="home-content">
+							<div class="weui-panel__bd">
+								<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+									<div class="weui-media-box__hd">
+										<img class="weui-media-box__thumb" src="../../img/touxiang.jpg">
+									</div>
+									<div class="weui-media-box__bd">
+										<h4 class="weui-media-box__title">是我呀</h4>
+										<p class="weui-media-box__desc">我饿了，要吃饭呀</p>
+									</div>
+								</a>
+							</div>
+							<div class="weui-panel__ft">
+								<a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+									<div class="weui-cell__bd">查看更多</div>
+									<span class="weui-cell__ft"></span>
+								</a>
+							</div>
+						</section>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+	export default {
+		data() {
+			return {
+				touxiang:"../../img/touxiang.jpg",
+				nicheng:"是我呀",
+				content:"我饿了，要吃饭呀"
+			};
+		},
+		methods:{
+			showMore(){
+				
+			}
+		}
+	};
 </script>
 
-<style>
-	._cover-top {
+<style scoped>
+	._cover-content {
+		width: 100%;
+		padding-top: 0;
+		overflow: hidden;
+	}
+	
+	.drag-wrap {
+		width: 100%;
+		height: 100%;
 		position: relative;
-		z-index: 2;
-		overflow: hidden;
-		height: 45px;
-		padding: 0 15px 0 10px;
-		line-height: 45px;
-		background: linear-gradient(180deg, #303036, #3c3b40);
-		opacity: 1;
-		color: #fff;
-		user-select: none;
-		-webkit-user-select: none;
-		transition: all .22s ease;
+		overflow: auto;
+		background-color: #2e3132;
 	}
 	
-	._cover-top .top-back {
-		max-width: 85px;
-		float: left;
-	}
-	._cover-top .top-back .icon-return-arrow {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+	.drag-inner {
+		width: 100%;
+		box-shadow: 0px 4px 16px rgba(0, 0, 0, .15);
+		background-color: #ffffff;
 	}
 	
-	._cover-top .top-back .iconfont:before {
+	.home-pic {
+		width: 100%;
+		margin-top: -90px;
+		position: relative;
+		height: 370px;
+		background: url(../../img/find-bg.png) no-repeat center center;
+		background-size: cover;
+	}
+	
+	.home-pic-base {
+		position: absolute;
+		left: 0;
+		bottom: -22px;
+		width: 100%;
+		height: 70px;
+		padding: 0 15px;
+	}
+	
+	.home-pic-base .top-pic {
+		width: 140px;
+		height: 140px;
+		padding: 3px;
+		transform: scale(.5);
+		transform-origin: 100% 0%;
+		background-color: #ffffff;
+		border: 1px solid #cccccc;
+		float: right;
+	}
+	
+	.home-pic-base .top-name {
+		position: absolute;
+		left: 20px;
+		right: 105px;
+		top: 10px;
 		font-size: 20px;
-		vertical-align: middle;
-	}
-	
-	.icon-return-arrow:before {
-		content: "\E60A";
-	}
-	
-	:after,
-	 :before {
-		box-sizing: inherit;
-	}
-	
-	.iconfont {
-		font-family: iconfont!important;
-		font-size: 16px;
-		font-style: normal;
-		-webkit-font-smoothing: antialiased;
-		-webkit-text-stroke-width: .2px;
-		-moz-osx-font-smoothing: grayscale;
-	}
-	
-	._cover-top .top-title {
-		padding: 0 8px;
+		text-align: right;
+		color: #ffffff;
 		overflow: hidden;
-		font-size: 18px;
-		justify-content: center;
-		text-align: center;
 	}
 	
-	._cover-top .top-title {
-		transition: all .2s ease;
+	.top-pic-inner {
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-image: url(../../img/touxiang.jpg);
+	}
+	
+	.home-content {
+		padding-top: 45px;
+		min-height: 500px;
+	}
+	
+	._cover-top>a {
+		color: #fff;
+	}
+	
+	.weui-media-box_appmsg .weui-media-box__hd {
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		margin-right: 0rem;
+	}
+	
+	.weui-media-box__title {
+		color: cornflowerblue;
+		font-size: 12px;
+		font-weight: bold;
+	}
+	
+	.weui-media-box__desc {
+		color: #000;
+		font-size: 12px;
 	}
 </style>

@@ -2,7 +2,7 @@
 <div>
     <div class="_cover-top"  >
         <div class="top-back" >
-            <a href="#/tab/contact" style="color:white;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" ><img src="../../img/left.png"/>通讯录</div></a>
+            <a href="#/tab/contact" style="color:white;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" >通讯录</div></a>
         </div>
         <div class="top-other" >
             <div slot="right" class="_align-right"  style="float:right;">

@@ -74,6 +74,7 @@
 		flex-direction: row;
 		justify-content: space-between;
 		padding: 0 10px;
+		font-size: 16px;
 	}
 	
 	.chatTitle p img {
@@ -141,13 +142,14 @@
 	
 	.set p {
 		/*width: 100%;*/
-		height: 20px;
+		height: 40px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		background: #fff;
 		border-bottom: 1px solid #DDDDDD;
 		padding: 10px;
+		font-size: 14px;
 	}
 	
 	.set p a {

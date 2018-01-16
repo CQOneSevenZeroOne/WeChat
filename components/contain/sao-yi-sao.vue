@@ -1,7 +1,7 @@
 <template>
 	<div class="_full_router component-sao-yi-sao cover-transition"  >
 		<div class="_full_inner" >
-			<div class="_cover-top" >
+			<div class="_cover-top">
 				<a href="#/tab/discovery">
 					<div class="top-back" >
 						<div class="_ellipsis iconfont icon-return-arrow v-link-active" >返回</div>
@@ -11,7 +11,7 @@
 					<div class="_align-right" > <span class="iconfont" ></span> </div>
 				</div>
 				<div class="top-title _effect" >
-					<p > <span >二维码/条码</span> </p>
+					<p v-for="arr in name"> <span v-text="arr.title" v-show="arr.id==id"></span> </p>
 				</div>
 			</div>
 			<div class="_cover-content _effect" >
@@ -24,21 +24,11 @@
 					</div>
 				</div>
 				<ul class="sao-yi-sao-footer" >
-					<li  class="scan-qr-code current" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-						<div ></div>
-						<p >扫码</p>
-					</li>
-					<li  class="scan-book" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-						<div ></div>
-						<p >封面</p>
-					</li>
-					<li  class="scan-street" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-						<div ></div>
-						<p >街景</p>
-					</li>
-					<li  class="scan-word" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-						<div ></div>
-						<p >翻译</p>
+					<li  class="scan-qr-code current" :style='{"-webkit-tap-highlight-color":aa.id==id?"rgba(0, 0, 0, 0)":""}' @click="show(aa.id)" v-for="aa in name">
+						<div >
+							<img :src="aa.id==id?aa.afImg:aa.beImg" />
+						</div>
+						<p v-text="aa.footer" :style="{'color':aa.id==id?'#09bb07':''}">扫码</p>
 					</li>
 				</ul>
 			</div>
@@ -47,6 +37,50 @@
 </template>
 
 <script>
+	export default{
+		data(){
+			return{
+				name:[
+					{
+						id:1,
+						title:"二维码/条码",
+						footer:"扫码",
+						beImg:require("../../img/sao-yi-sao/scan-qr-code.png"),
+						afImg:require("../../img/sao-yi-sao/scan-qr-code_hl.png")
+					},
+					{
+						id:2,
+						title:"封面/电影海报",
+						footer:"封面",
+						beImg:require("../../img/sao-yi-sao/scan-book.png"),
+						afImg:require("../../img/sao-yi-sao/scan-book_hl.png")
+					},
+					{
+						id:3,
+						title:"街景",
+						footer:"街景",
+						beImg:require("../../img/sao-yi-sao/scan-street.png"),
+						afImg:require("../../img/sao-yi-sao/scan-street_hl.png")
+					},
+					{
+						id:4,
+						title:"翻译",
+						footer:"翻译",
+						beImg:require("../../img/sao-yi-sao/scan-word.png"),
+						afImg:require("../../img/sao-yi-sao/scan-word_hl.png")
+					}
+				],
+				id:1
+			}
+		},
+		methods:{
+				show(id){
+				
+					this.id=id;
+					console.log(this.id)
+				}
+			}
+	}
 </script>
 
 <style scoped>
@@ -267,13 +301,14 @@
 }
 
 .sao-yi-sao-footer li.current p {
-    color: #09bb07;
+    color: #ccc;
 }
 
-.sao-yi-sao-footer li.scan-qr-code div {
-    background-image: url(../../img/sao-yi-sao/scan-qr-code.png);
+.sao-yi-sao-footer li.scan-qr-code div img{
+    width: 40px;
+    height: 40px;
 }
-
+/*
 .sao-yi-sao-footer li.scan-qr-code.current div {
     background-image: url(../../img/sao-yi-sao/scan-qr-code_hl.png);
 }
@@ -300,7 +335,7 @@
 
 .sao-yi-sao-footer li.scan-word.current div {
     background-image: url(../../img/sao-yi-sao/scan-word_hl.png);
-}
+}*/
 
 .sao-yi-sao-footer li.scan-word .frame .green-line{
     display: none;

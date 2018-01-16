@@ -135,15 +135,15 @@ var router = new VueRouter({
                     path: "add_friend",
                     component: add_friend
                 }
-                
+                 
             ]
         },
         {
-            path: "sao-yi-sao",
+            path: "/sao-yi-sao",
             component: saoyisao
 		},
 		{
-            path: "yao-yi-yao",
+            path: "/yao-yi-yao",
             component: yaoyiyao
 		}, 
 		{

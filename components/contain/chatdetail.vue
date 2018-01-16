@@ -14,15 +14,15 @@
 			<img src="../../img/iconxiao.png" />
 			<img src="../../img/iconjia.png" />
 		</div>
-		<div class="recording" style="display: none; ">
-			<div class="recording-voice" style="display: none; ">
+		<div class="recording" v-show="isMouseDown">
+			<div class="recording-voice" >
 				<div class="voice-inner">
 					<div class="voice-icon"></div>
 					<div class="voice-volume"> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> </div>
 				</div>
 				<p>手指上划,取消发送</p>
 			</div>
-			<div class="recording-cancel" style="/* display: none; */">
+			<div class="recording-cancel" v-show="isMouseUp">
 				<div class="cancel-inner"></div>
 				<p>松开手指,取消发送</p>
 			</div>

@@ -18,6 +18,7 @@ import wechat from "./components/tabs/wechat.vue";
 import own from "./components/tabs/own.vue";
 import con from "./components/tabs/cons.vue";
 import tab from "./components/contain/tab.vue";
+import login from "./components/tabs/login.vue";
 // 容器组件
 
 import chatdetail from "./components/contain/chatdetail.vue";
@@ -38,6 +39,7 @@ import add_friend from "./components/contain/add_friend.vue";
 import saoyisao from "./components/contain/sao-yi-sao.vue";
 import yaoyiyao from "./components/contain/yao-yi-yao.vue";
 import piaoliuping from "./components/contain/piao-liu-ping.vue";
+import searchContent from "./components/contain/searchContent.vue";
 // 配置路由
 var router = new VueRouter({
 	routes: [
@@ -104,11 +106,11 @@ var router = new VueRouter({
 			
 		},
         {
-        	path:"chatdetail",
+        	path:"/chatdetail",
         	component:chatdetail
         },
          {
-        	path:"chatInfo",
+        	path:"/chatInfo",
         	component:chatInfo
         },
         {
@@ -149,6 +151,15 @@ var router = new VueRouter({
 		{
             path: "/piao-liu-ping",
             component: piaoliuping
+		},
+		//登录页面
+		{
+			path: "/login",
+            component: login
+        },
+		{
+			path:"/searchContent",
+			component:searchContent
 		}
     ]
 });
@@ -158,7 +169,9 @@ var store = new Vuex.Store({
     state:{
         count:0,
         bool:true,
-        name:"ZLuLu"
+        name:"",
+        id:1,
+        wei_num:""
     }
 })
 

@@ -7,7 +7,7 @@
 			<div class="mine-conts">
 				<div class="left">
 					<h4 v-text="name"></h4>
-					<p>微信号:<span>zhanglu</span></p>
+					<p>微信号:<span v-text="wei_num"></span></p>
 				</div>
 				<span>
 					<img src="../../img/chat-info-qr.png"/><i></i>
@@ -18,14 +18,36 @@
 </template>
 
 <script>
+	import $ from 'jQuery';
 	export default{
 		data(){
 			return{
-				name:""
+				name:"",
+				wei_num:""
 			}
 		},
 		mounted(){
-	    	this.name = this.$store.state.name
+	    	var _this = this;
+	    	$.ajax({
+				type:"post",
+				url:"http://localhost:3000/getMessAll",
+				data:{
+					id:Number(_this.$store.state.id)
+				},
+				success(data){
+					data = JSON.parse(data);
+					console.log(data)
+					if(data.length!=0){
+						_this.name = data[0].my_name;
+						_this.$store.state.name = data[0].my_name;
+						_this.wei_num = data[0].wei_num
+						_this.$store.state.wei_num = data[0].wei_num;
+					}
+				},
+				error(){
+					console.log('error');
+				}
+			});
 	   	}
 	}
 </script>

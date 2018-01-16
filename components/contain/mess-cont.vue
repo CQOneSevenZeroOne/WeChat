@@ -13,7 +13,7 @@
 			<li>
 				<a href="#/own/name">
 					<span>昵称</span> 
-					<em>ZLuLu</em>
+					<em v-text="name"></em>
 				</a>
 			</li>
 			<li>
@@ -28,7 +28,7 @@
 					<img src="../../img/chat-info-qr.png"/>
 				</a>
 			</li>
-			<li>
+			<li @click="toMore">
 				<h4>
 					<span>更多</span> 
 				</h4>
@@ -47,12 +47,19 @@
 	export default{
 		data(){
 			return{
-				title:"个人信息"
+				title:"个人信息",
+				name:""
 			}
 		},
+		mounted(){
+	    	this.name = this.$store.state.name
+	   	},
 		methods:{
 			toMine:function(){
 				location.href = "#/tab/mine";
+			},
+			toMore:function(){
+				location.href = "#/own/more";
 			}
 		}
 	}

@@ -4,7 +4,7 @@
 			<p>
 				<a href="#/own"><img src="../../img/return.jpg" /></a><span v-text="title"></span>
 			</p>
-			<button>保存</button>
+			<button @click="change">保存</button>
 		</h3>
 		<p>
 			<input type="text" v-model="name"/>
@@ -17,10 +17,19 @@
 	export default{
 		data(){
 			return{
-				name:"zl",
+				name:"",
 				title:"更改名字"
 			}
-		}
+		},
+		mounted(){
+	    	this.name = this.$store.state.name
+	   	},
+	   	methods:{
+	   		change:function(){
+	   			this.$store.state.name = this.name
+	   			location.href = "#/own/cont";
+	  	 	}
+	  	}
 	}
 </script>
 

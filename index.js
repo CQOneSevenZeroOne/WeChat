@@ -38,6 +38,7 @@ import add_friend from "./components/contain/add_friend.vue";
 import saoyisao from "./components/contain/sao-yi-sao.vue";
 import yaoyiyao from "./components/contain/yao-yi-yao.vue";
 import piaoliuping from "./components/contain/piao-liu-ping.vue";
+import searchContent from "./components/contain/searchContent.vue";
 // 配置路由
 var router = new VueRouter({
 	routes: [
@@ -104,11 +105,11 @@ var router = new VueRouter({
 			
 		},
         {
-        	path:"chatdetail",
+        	path:"/chatdetail",
         	component:chatdetail
         },
          {
-        	path:"chatInfo",
+        	path:"/chatInfo",
         	component:chatInfo
         },
         {
@@ -139,16 +140,20 @@ var router = new VueRouter({
             ]
         },
         {
-            path: "sao-yi-sao",
+            path: "/sao-yi-sao",
             component: saoyisao
 		},
 		{
-            path: "yao-yi-yao",
+            path: "/yao-yi-yao",
             component: yaoyiyao
 		}, 
 		{
             path: "/piao-liu-ping",
             component: piaoliuping
+		},
+		{
+			path:"/searchContent",
+			component:searchContent
 		}
     ]
 });

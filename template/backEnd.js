@@ -25,6 +25,16 @@ app.post("/getChatList",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 })
+app.post("/getSearchList",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	console.log(req.body.sea)
+	connect.query(`SELECT * FROM chat where mycont like '%${req.body.sea}%' or youcont like '%${req.body.sea}%'`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
 //监听端口
 app.listen(3000);
 console.log("开启服务器");

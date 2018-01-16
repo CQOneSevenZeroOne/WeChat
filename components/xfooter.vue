@@ -7,11 +7,11 @@
                     </span>
                     <p class="weui-tabbar__label">微信</p>
                 </a>
-                <a href="javascript:;" class="weui-tabbar__item">
+                <a href="#/tab/contact" class="weui-tabbar__item">
                     <img :src="contactImg" alt="" class="weui-tabbar__icon">
                     <p class="weui-tabbar__label">通讯录</p>
                 </a>
-                <a href="javascript:;" class="weui-tabbar__item">
+                <a href="#/tab/discovery" class="weui-tabbar__item">
                     <span style="display: inline-block;position: relative;">
                         <img :src="disImg" alt="" class="weui-tabbar__icon">
                         <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>

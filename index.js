@@ -13,28 +13,16 @@ import "./template/weui.min.css";
 import "./template/wechat.css";
 // 选项卡组件
 import mine from "./components/tabs/mine.vue";
-<<<<<<< HEAD
-import contact from "./components/tabs/contact.vue";
-import discovery from "./components/tabs/discovery.vue";
-=======
 import discovery from "./components/tabs/discovery.vue";
 import contact from "./components/tabs/contact.vue";
 
-
-
->>>>>>> def7fe416e8d8e646fda18eb1cc36bd5b36bdacf
 // 容器组件
 import tab from "./components/contain/tab.vue";
 import chatdetail from "./components/contain/chatdetail.vue";
 import chatInfo from "./components/contain/chatInfo.vue";
-<<<<<<< HEAD
-// 配置路由
-=======
 
->>>>>>> def7fe416e8d8e646fda18eb1cc36bd5b36bdacf
 import wechat from "./components/tabs/wechat.vue";
 import own from "./components/tabs/own.vue";
-import con from "./components/tabs/con.vue";
 // 容器组件
 import name from "./components/contain/changeName.vue";
 import cont from "./components/contain/mess-cont.vue";
@@ -46,23 +34,6 @@ import new_friend from "./components/contain/new_friend.vue";
 import group_chat from "./components/contain/group_chat.vue";
 import person_info from "./components/contain/person_info.vue";
 import friendcircle from "./components/contain/friend-circle.vue";
-<<<<<<< HEAD
-// 配置路由
-var router = new VueRouter({
-	routes: [
-	{
-			path: "/tab",
-			component: tab,
-			children: [{
-					path: "wechat",
-					component: wechat
-				},
-				{
-					path: "mine",
-					component: mine
-				},
-				{
-=======
 import person_info_set from "./components/contain/person_info_set.vue";
 // 配置路由
 var router = new VueRouter({
@@ -77,13 +48,11 @@ var router = new VueRouter({
                     path: "mine",
                     component: mine
                 },{
->>>>>>> def7fe416e8d8e646fda18eb1cc36bd5b36bdacf
                     path:"discovery",
                     component:discovery
                 },{
                     path:"contact",
                     component:contact
-<<<<<<< HEAD
                 }
 			]
 		}, // 默认进入页面的时候跳转到
@@ -134,82 +103,11 @@ var router = new VueRouter({
         {
         	path:"/friend-circle",
         	component:friendcircle
-        },{
+        },
+        {
             path: "/new_friend",
             component: new_friend
-=======
-                }]
-		}, // 默认进入页面的时候跳转到
-        {
-            path: '/',
-            redirect: '/tab/wechat'
-        },
-        {
-            path: "/own",
-            component: own,
-            children:[
-            {
-                path: "name",
-                component: name,
-            },
-            {
-                path: "cont",
-                component: cont,
-            },
-            {
-                path: "coll",
-                component: coll,
-            },
-            {
-                path: "sets",
-                component: sets,
-            },
-            {
-                path: "expr",
-                component: expr,
-            },
-            {
-                path:"card",
-                component:card
-            }],
-            redirect: '/own/cont'
-        },
-        {
-            path: "/con",
-            component: con,
-            children:[
-                {
-                    path: "new_friend",
-                    component: new_friend
-                },{
-                    path: "group_chat",
-                    component: group_chat
-                },{
-                    path: "person_info",
-                    component: person_info
-                },{
-                    path: "person_info_set",
-                    component: person_info_set
-                }
-                
-            ]
-        },
-        {
-        path:"/chatdetail",
-        component:chatdetail
->>>>>>> def7fe416e8d8e646fda18eb1cc36bd5b36bdacf
-        },{
-        path:"/chatInfo",
-        component:chatInfo
-        },{
-<<<<<<< HEAD
-            path: "/person_info",
-            component: person_info
-=======
-            path:"/friend-circle",
-            component:friendcircle
->>>>>>> def7fe416e8d8e646fda18eb1cc36bd5b36bdacf
-        }
+		}
     ]
 })
 

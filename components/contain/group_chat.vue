@@ -2,7 +2,7 @@
   <div>
       <div class="_cover-top" >
         <div class="top-back" >
-            <a href="#/tab/contact" style="color:white"><div class="_ellipsis iconfont icon-return-arrow v-link-active" ><img src="../../img/left.png"/>返回</div></a>
+            <a href="#/tab/contact" style="color:white"><div class="_ellipsis iconfont icon-return-arrow v-link-active" >返回</div></a>
         </div>
         <div class="top-title _effect">
             <p>

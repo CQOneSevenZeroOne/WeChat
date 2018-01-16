@@ -11,32 +11,17 @@ import "./template/base.css";
 import "./template/weui.min.css";
 import "./template/wechat.css";
 // 选项卡组件
-<<<<<<< HEAD
 import mine from "./components/tabs/mine.vue";
 import discovery from "./components/tabs/discovery.vue";
 import contact from "./components/tabs/contact.vue";
-
-=======
-import discovery from "./components/tabs/discovery.vue";
-import contact from "./components/tabs/contact.vue";
-import wechat from "./components/tabs/wechat.vue";
-import own from "./components/tabs/own.vue";
-import mine from "./components/tabs/mine.vue";
->>>>>>> 4810dd76b96572d4ced14b53ae73867879b1b762
-
-// 容器组件
-import tab from "./components/contain/tab.vue";
-import chatdetail from "./components/contain/chatdetail.vue";
-import chatInfo from "./components/contain/chatInfo.vue";
-<<<<<<< HEAD
-// 配置路由
-
 import wechat from "./components/tabs/wechat.vue";
 import own from "./components/tabs/own.vue";
 import con from "./components/tabs/cons.vue";
+import tab from "./components/contain/tab.vue";
 // 容器组件
-=======
->>>>>>> 4810dd76b96572d4ced14b53ae73867879b1b762
+
+import chatdetail from "./components/contain/chatdetail.vue";
+import chatInfo from "./components/contain/chatInfo.vue";
 import name from "./components/contain/changeName.vue";
 import cont from "./components/contain/mess-cont.vue";
 import coll from "./components/contain/collection.vue";
@@ -49,15 +34,10 @@ import group_chat from "./components/contain/group_chat.vue";
 import person_info from "./components/contain/person_info.vue";
 import friendcircle from "./components/contain/friend-circle.vue";
 import person_info_set from "./components/contain/person_info_set.vue";
-<<<<<<< HEAD
 import add_friend from "./components/contain/add_friend.vue";
-import more from "./components/contain/more.vue";
-
-=======
 import saoyisao from "./components/contain/sao-yi-sao.vue";
 import yaoyiyao from "./components/contain/yao-yi-yao.vue";
 import piaoliuping from "./components/contain/piao-liu-ping.vue";
->>>>>>> 4810dd76b96572d4ced14b53ae73867879b1b762
 // 配置路由
 var router = new VueRouter({
 	routes: [
@@ -71,26 +51,17 @@ var router = new VueRouter({
                 {
                     path: "mine",
                     component: mine
-<<<<<<< HEAD
-                },{
-=======
                 },
                 {
->>>>>>> 4810dd76b96572d4ced14b53ae73867879b1b762
                     path:"discovery",
                     component:discovery
                 },{
                     path:"contact",
                     component:contact
-<<<<<<< HEAD
 
                 }]
-                },
-		// 默认进入页面的时候跳转到
-=======
-                }]
-		}, // 默认进入页面的时候跳转到
->>>>>>> 4810dd76b96572d4ced14b53ae73867879b1b762
+        },
+		 // 默认进入页面的时候跳转到
 		{
 			path: '/',
 			redirect: '/tab/wechat'
@@ -132,32 +103,19 @@ var router = new VueRouter({
 			redirect: '/own/cont'
 			
 		},
-         {
-        	path:"atdetail",
+        {
+        	path:"chatdetail",
         	component:chatdetail
         },
          {
-        	path:"atInfo",
+        	path:"chatInfo",
         	component:chatInfo
         },
         {
         	path:"/friend-circle",
         	component:friendcircle
-<<<<<<< HEAD
-        },
-		// 默认进入页面的时候跳转到
-        {
-            path: '/',
-            redirect: '/tab/wechat'
-=======
->>>>>>> 4810dd76b96572d4ced14b53ae73867879b1b762
         },
         {
-            path: "/new_friend",
-            component: new_friend
-		}, 
-        {
-<<<<<<< HEAD
             path: "/con",
             component: con,
             children:[
@@ -181,13 +139,6 @@ var router = new VueRouter({
             ]
         },
         {
-        path:"/chatdetail",
-        component:chatdetail
-        },{
-        path:"/chatInfo",
-        component:chatInfo
-        },{
-=======
             path: "sao-yi-sao",
             component: saoyisao
 		},
@@ -198,15 +149,7 @@ var router = new VueRouter({
 		{
             path: "/piao-liu-ping",
             component: piaoliuping
-		},
-        {
->>>>>>> 4810dd76b96572d4ced14b53ae73867879b1b762
-            path: "/person_info",
-            component: person_info
-        },{
-            path:"/friend-circle",
-            component:friendcircle
-        }
+		}
     ]
 });
 

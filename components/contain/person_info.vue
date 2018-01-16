@@ -2,13 +2,16 @@
   <div>
       <div class="_cover-top"  >
         <div class="top-back" >
-            <a href="#/tab/contact" style="color:white;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" ><img src="../../img/left.png"/>返回</div></a>
+            <a href="#/tab/contact" style="color:white;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" >返回</div></a>
         </div>
+        <a href="#/con/person_info_set">
+       
         <div class="top-other" >
             <div slot="right" class="_align-right"  style="float:right;">
                 <span ><img src="../../img/pot.png" alt=""></span>
             </div>
         </div>
+        </a>
         <div class="top-title _effect" >
             <p >
                 <span >详细资料</span>
@@ -26,7 +29,7 @@
             </div>
             <p class="wxid" >
                 <span >微信号:</span>
-                <span >wxid_yangtao</span>
+                <span >niyaowoa</span>
             </p>
             <p class="nickname" >
                 <span >昵称:</span>
@@ -123,6 +126,9 @@
     border-radius:5px;
     padding-left:15px;
 }
+.card_line{
+    margin-left: 15px;
+}
 .remark {
     font-size: 18px;
     color: #4f4f4f;
@@ -133,6 +139,20 @@
 }
 .weui_cells_access{
     font-size:17px;
+}
+.gender-man{
+    background-image: url(../../img/contact_male.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+}
+.gender {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 4px;
+    margin-top: -2px;
 }
 </style>
 

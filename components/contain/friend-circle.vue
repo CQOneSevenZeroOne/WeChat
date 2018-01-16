@@ -33,17 +33,8 @@
 										<img class="weui-media-box__thumb" src="../../img/touxiang.jpg">
 									</div>
 									<div class="weui-media-box__bd">
-										<h4 class="weui-media-box__title">标题一</h4>
-										<p class="weui-media-box__desc">由各种物质组成的巨型球状天体</p>
-									</div>
-								</a>
-								<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
-									<div class="weui-media-box__hd">
-										<img class="weui-media-box__thumb" src="../../img/touxiang.jpg">
-									</div>
-									<div class="weui-media-box__bd">
-										<h4 class="weui-media-box__title">标题二</h4>
-										<p class="weui-media-box__desc">由各种物质组成的巨型球状天体</p>
+										<h4 class="weui-media-box__title">是我呀</h4>
+										<p class="weui-media-box__desc">我饿了，要吃饭呀</p>
 									</div>
 								</a>
 							</div>
@@ -62,6 +53,20 @@
 </template>
 
 <script>
+	export default {
+		data() {
+			return {
+				touxiang:"../../img/touxiang.jpg",
+				nicheng:"是我呀",
+				content:"我饿了，要吃饭呀"
+			};
+		},
+		methods:{
+			showMore(){
+				
+			}
+		}
+	};
 </script>
 
 <style scoped>
@@ -155,7 +160,8 @@
 		font-size: 12px;
 		font-weight: bold;
 	}
-	.weui-media-box__desc{
+	
+	.weui-media-box__desc {
 		color: #000;
 		font-size: 12px;
 	}

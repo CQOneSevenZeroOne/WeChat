@@ -56,7 +56,7 @@
 		justify-content: flex-start;
 	}
 	.mine-cont a{
-		height: 3.3rem;
+		height: 4.3rem;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;

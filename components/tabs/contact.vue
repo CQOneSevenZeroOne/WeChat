@@ -4,14 +4,14 @@
     <xsearch/>
     <div style="padding-bottom:30px;background-color: #EFEFF4;">
         <div class="weui_cells_contact-head weui_cells weui_cells_access" style="margin-top:-1px">
-            <a class="weui_cell" href="#/new_friend" >
+            <a class="weui_cell" href="#/con/new_friend" >
                 <div class="weui_cell_hd" >
                     <img class="img-obj-cover" src="../../img/contact_top-friend-notify.png" > </div>
                 <div class="weui_cell_bd weui_cell_primary" >
                     <p >新的朋友</p>
                 </div>
             </a>
-            <a class="weui_cell" href="#/group_chat" >
+            <a class="weui_cell" href="#/con/group_chat" >
                 <div class="weui_cell_hd" >
                     <img class="img-obj-cover" src="../../img/contact_top-addgroup.png" > </div>
                 <div class="weui_cell_bd weui_cell_primary" >
@@ -36,7 +36,7 @@
         </div>
         <div class="contact-friends" >
             <p class="contact-alpha" >A</p>
-            <a href="#/person_info" style="color:black">
+            <a href="#/con/person_info" style="color:black">
                 <div class="weui_cells weui_cells_access" >
                     <div class="weui_cell"  style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                         <div class="weui_cell_hd" >

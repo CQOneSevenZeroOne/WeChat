@@ -1,12 +1,12 @@
 <template>
-	<div class="weui-mine-title">
+	<div class="weui-mine-titles">
 		<a href="#/own">
 			<div class="mine-img">
 				<img src="../../img/1.jpg">
 			</div>
-			<div class="mine-cont">
+			<div class="mine-conts">
 				<div class="left">
-					<h4>ZLuLu</h4>
+					<h4 v-text="name"></h4>
 					<p>微信号:<span>zhanglu</span></p>
 				</div>
 				<span>
@@ -18,12 +18,21 @@
 </template>
 
 <script>
+	export default{
+		data(){
+			return{
+				name:""
+			}
+		},
+		mounted(){
+	    	this.name = this.$store.state.name
+	   	}
+	}
 </script>
 
 <style scoped="scoped">
 	/*我的个人信息行*/
-.weui-mine-title{
-	display: flex;
+.weui-mine-titles{
 	width: 100%;
 	height: 7.4rem;
 	border-bottom: 1px solid #e4e3e8;
@@ -31,48 +40,47 @@
 	margin-top: 1.2rem;
 	background-color: #fff;
 }
-.weui-mine-title a{
+.weui-mine-titles a{
 	display: flex;
-	width: 100%;height: 5.5rem;
+	width: 100%;height: 7.5rem;
 	padding: 0.9rem;
-	flex-direction: row;
-	justify-content: flex-start;
+	justify-content: space-between;
 }
 .mine-img{
 	width: 5.5rem;height: 5.5rem;
-	padding-right: 1.7rem;
+	margin-right: 1.7rem;
 }
 .mine-img img{
 	width: 5.5rem;height: 5.5rem;
 	border-radius: 0.4rem;
 }
-.mine-cont{
+.mine-conts{
 	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
-.mine-cont h4{
+.mine-conts h4{
 	height: 1.8rem;
 	font-size: 1.5rem;
 	font-weight: 600;
 }
-.mine-cont p{
+.mine-conts p{
 	height: 1.6rem;
 	font-size: 1rem;
 }
-.mine-cont span{
+.mine-conts span{
 	width: 4.5rem;height: 2rem;
 	margin-top: 1.25rem;
 }
-.mine-cont span img{
+.mine-conts span img{
 	width: 2rem;height: 2rem;
 }
-.mine-cont span i{
+.mine-conts span i{
 	display: inline-block;
 	height: 2rem;width: 0.9rem;
 	background: url(../../img/right.jpg) no-repeat center;
-	padding-left: 1rem;
+	padding-left: 2rem;
 }
 .left{
 	display: flex;

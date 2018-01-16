@@ -20,8 +20,8 @@ import mine from "./components/tabs/mine.vue";
 
 import wechat from "./components/tabs/wechat.vue";
 import discovery from "./components/tabs/discovery.vue";
-//import contact from "./components/tabs/contact.vue";
-//import mine from "./components/tabs/mine.vue";
+import contact from "./components/tabs/contact.vue";
+import mine from "./components/tabs/mine.vue";
 
 
 
@@ -29,6 +29,9 @@ import discovery from "./components/tabs/discovery.vue";
 import tab from "./components/contain/tab.vue";
 import own from "./components/contain/own.vue";
 import friendcircle from "./components/contain/friend-circle.vue";
+import new_friend from "./components/contain/new_friend.vue";
+import group_chat from "./components/contain/group_chat.vue";
+import person_info from "./components/contain/person_info.vue";
 // 配置路由
 var router = new VueRouter({
 
@@ -43,11 +46,11 @@ var router = new VueRouter({
                 {
                     path: 'discovery',
                     component: discovery
-                },/*,
+                },,
                 {
                     path: 'contact',
                     component: contact
-                },*/
+                },
                 {
                     path: 'mine',
                     component: mine
@@ -66,6 +69,15 @@ var router = new VueRouter({
          {
         	path:"/friend-circle",
         	component:friendcircle
+        },{
+            path: "/new_friend",
+            component: new_friend
+        },{
+            path: "/group_chat",
+            component: group_chat
+        },{
+            path: "/person_info",
+            component: person_info
         }
     ]
 })

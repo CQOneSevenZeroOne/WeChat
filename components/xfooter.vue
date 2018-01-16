@@ -7,7 +7,7 @@
                     </span>
                     <p class="weui-tabbar__label">微信</p>
                 </a>
-                <a href="javascript:;" class="weui-tabbar__item">
+                <a href="#/tab/contact" class="weui-tabbar__item">
                     <img :src="contactImg" alt="" class="weui-tabbar__icon">
                     <p class="weui-tabbar__label">通讯录</p>
                 </a>

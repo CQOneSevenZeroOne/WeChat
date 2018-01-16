@@ -25,6 +25,25 @@ app.post("/getChatList",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 })
+app.post("/getMessAll",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`SELECT * FROM person_info where id = ${req.body.id}`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
+//登录
+app.post("/login",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`SELECT id FROM person_info where my_name = '${req.body.username}' and password = '${req.body.password}'`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
 //监听端口
 app.listen(3000);
 console.log("开启服务器");

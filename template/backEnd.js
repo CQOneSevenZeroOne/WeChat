@@ -86,7 +86,11 @@ app.post("/getTrend",function(req,res){
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});
+<<<<<<< HEAD
 });
+=======
+})
+>>>>>>> 4e746e7bb4eaa22fbb803ec18afbd7d66badcc1b
 //聊天
 var userList = [];
 io.on("connection",function(socket){
@@ -99,11 +103,14 @@ io.on("connection",function(socket){
 //		console.log(userList);
 //		socket.emit('returnUser',socket.id);
 	})
+<<<<<<< HEAD
 //	socket.on("sendMess",function(data){
 //		console.log(data);
 //		console.log('ss',data.message);
 //		io.sockets.sockets[data.id].emit('returnMess',data.message);
 //	})
+=======
+>>>>>>> 4e746e7bb4eaa22fbb803ec18afbd7d66badcc1b
 })
 //监听端口
 server.listen(3000);

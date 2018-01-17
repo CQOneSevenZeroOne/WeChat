@@ -24,54 +24,54 @@
             <dd >添加手机联系人</dd>
         </dl>
     </div>
-    <div class="weui_cells message-list" _v-2747733a="">
-        <div class="weui_cell" _v-2747733a="">
-            <div class="weui_cell_hd" _v-2747733a="">
+    <div class="weui_cells message-list" style="margin-top: 0px;" >
+        <div class="weui_cell" >
+            <div class="weui_cell_hd" >
                 <img src="//ad-gold-cdn.xitu.io/14999140634069b6825290779221783b3b59fbba0addd.jpg" alt="" style="width:40px;margin-right:5px;display:block"
-                    _v-2747733a=""> </div>
-            <div class="weui_cell_bd weui_cell_primary" _v-2747733a="">
-                <p _v-2747733a="">
-                    <b _v-2747733a="">陌生人</b>
+                    > </div>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <p >
+                    <b >陌生人</b>
                 </p>
-                <p _v-2747733a="">
-                    <span _v-2747733a="">我是群聊""的</span>
-                    <span _v-2747733a="">陌生人</span>
+                <p >
+                    <span >我是群聊""的</span>
+                    <span >陌生人</span>
                 </p>
             </div>
-            <div class="weui_cell_ft" _v-2747733a="">已添加</div>
+            <div class="weui_cell_ft" >已添加</div>
         </div>
-        <div class="weui_cell" _v-2747733a="">
-            <div class="weui_cell_hd" _v-2747733a="">
+        <div class="weui_cell" >
+            <div class="weui_cell_hd" >
                 <img src="//ad-gold-cdn.xitu.io/14999140634069b6825290779221783b3b59fbba0addd.jpg" alt="" style="width:40px;margin-right:5px;display:block"
-                    _v-2747733a="">
+                    >
             </div>
-            <div class="weui_cell_bd weui_cell_primary" _v-2747733a="">
-                <p _v-2747733a="">
-                    <b _v-2747733a="">陌生人</b>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <p >
+                    <b >陌生人</b>
                 </p>
-                <p _v-2747733a="">
-                    <span _v-2747733a="">我是群聊""的</span>
-                    <span _v-2747733a="">陌生人</span>
+                <p >
+                    <span >我是群聊""的</span>
+                    <span >陌生人</span>
                 </p>
             </div>
-            <div class="weui_cell_ft" _v-2747733a="">已拒绝</div>
+            <div class="weui_cell_ft" >已拒绝</div>
         </div>
-        <div class="weui_cell" _v-2747733a="">
-            <div class="weui_cell_hd" _v-2747733a="">
+        <div class="weui_cell" >
+            <div class="weui_cell_hd" >
                 <img src="//ad-gold-cdn.xitu.io/14999140634069b6825290779221783b3b59fbba0addd.jpg" alt="" style="width:40px;margin-right:5px;display:block"
-                    _v-2747733a="">
+                    >
             </div>
-            <div class="weui_cell_bd weui_cell_primary" _v-2747733a="">
-                <p _v-2747733a="">
-                    <b _v-2747733a="">陌生人</b>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <p >
+                    <b >陌生人</b>
                 </p>
-                <p _v-2747733a="">
-                    <span _v-2747733a="">我是群聊""的</span>
-                    <span _v-2747733a="">陌生人</span>
+                <p >
+                    <span >我是群聊""的</span>
+                    <span >陌生人</span>
                 </p>
             </div>
-            <div class="weui_cell_ft" _v-2747733a="">
-                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary" _v-2747733a="">接受</a>
+            <div class="weui_cell_ft" >
+                <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_primary" >接受</a>
             </div>
         </div>
     </div>

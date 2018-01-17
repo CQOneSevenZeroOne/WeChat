@@ -3,16 +3,22 @@
 		<div class="chatTitle">
 			<p>
 				<a href="#/tab/wechat"><img src="../../img/leftsanjiao.png" /></a>微信</p>
-			<span>你咬我啊i</span>
+			<span v-text="chatName" :data-id="socketId"></span>
 			<a href="#/chatInfo"><img src="../../img/icon-ren.png" alt="" /></a>
+		</div>
+		<div class="chatContent">
+			<ul>
+				<li v-for="a in chatArr" ><img :src="myphoto" /><span v-text="a"></span></li>
+			</ul>
 		</div>
 		<div class="chatFooter">
 			<img src="../../img/iconyuyin.png" @click="checkShow" v-show="isShowInput" />
-			<input type="text" v-show="isShowInput" />
+			<input type="text" v-show="isShowInput" id="mess" @input="saveMess"/>
 			<img src="../../img/key.png" v-show="isShow" @click="checkShow" />
 			<div class="chat-say" v-show="isShow" :style="{'background-color':isMouseDown?'#c6c7ca':'#fff'}"> <span class="one" v-show="isMouseUp" @mousedown="changeStatus">按住 说话</span> <span class="two" v-show="isMouseDown" @mouseup="changeStatus">松开 结束</span> </div>
-			<img src="../../img/iconxiao.png" />
-			<img src="../../img/iconjia.png" />
+			<p v-show="sendData==''"><img src="../../img/iconxiao.png" />
+			<img src="../../img/iconjia.png" /></p>
+			<button v-show="sendData!=''" @click="sendMessage">发送</button>
 		</div>
 		<div class="recording" v-show="isMouseDown">
 			<div class="recording-voice" >
@@ -31,13 +37,20 @@
 </template>
 
 <script>
+	import $ from 'jQuery';
+	import io from  '../../template/socket.io.js';
 	export default {
 		data() {
 			return {
 				isShow: false,
 				isShowInput: true,
 				isMouseDown: false,
-				isMouseUp: true
+				isMouseUp: true,
+				chatName:'',
+				socketId:'',
+				sendData:'',
+				chatArr:[],
+				myphoto:''
 			}
 		},
 		methods: {
@@ -48,7 +61,43 @@
 			changeStatus(event) {
 				this.isMouseDown = !this.isMouseDown;
 				this.isMouseUp = !this.isMouseUp;
+			},
+			saveMess(){
+				this.sendData = $("#mess").val();
+			},
+			sendMessage(){
+				var _this = this;
+				var socket = io("http://localhost:3000");
+				socket.emit("sendMess",{
+					//发送的消息
+					message:_this.sendData,
+					//聊天的id
+					id:_this.$store.state.id,
+					//聊天的名字
+					name:_this.$store.state.name
+				})
+				$("#mess").val('');
+				this.sendData = $("#mess").val();
 			}
+		},
+		mounted(){
+			this.chatName = this.$store.state.chat_name;
+			this.myphoto = this.$store.state.my_photo;
+			var _this = this;
+			var socket = io("http://localhost:3000");
+//			socket.emit("addUser",{
+//				chatName:this.$store.state.chat_name,
+//				username:this.$store.state.name
+//			})
+//			socket.on('returnUser',function(data){
+//					_this.$store.state.socket_Id = data;
+//					_this.socketId = _this.$store.state.socket_Id;
+//					console.log('要聊天的id为：',_this.socketId);
+//			})
+//			socket.on('returnMess',function(data){
+//				console.log('返回',data);
+//				_this.chatArr.push(data);
+//			})
 		}
 	}
 </script>
@@ -73,7 +122,29 @@
 	.chatTitle a img {
 		vertical-align: sub;
 	}
-	
+	.chatContent{
+		padding: 15px;
+	}
+	.chatContent li img{
+		width: 40px;
+		height: 40px;
+		float: left;
+	}
+	.chatContent li {
+		overflow: hidden;
+		padding-bottom: 20px;
+	}
+	.chatContent li span{
+		display: inline-block;
+		padding: 0 10px;
+		line-height: 26px;
+		color: #fff;
+		background: green;
+		width: 100px;
+		border-radius: 4px;
+		margin-left: 10px;
+   		 margin-top: 10px;
+	}
 	.chatFooter {
 		position: fixed;
 		left: 0;
@@ -86,7 +157,14 @@
 		border-top: 1px solid #dbdbdb;
 		background: #fff;
 	}
-	
+	.chatFooter button{
+		width: 50px;
+		height: 30px;
+		border: 0;
+		outline: none;
+		background: deepskyblue;
+		color: #fff;
+	}
 	input {
 		width: 185px;
 		border-radius: 6px;
@@ -95,7 +173,10 @@
 		outline: none;
 		padding: 0 10px;
 	}
-	
+	.chatFooter p img{
+		vertical-align: sub;
+		margin-right: 7px;
+	}
 	.chat-say {
 		width: 185px;
 		border-radius: 6px;

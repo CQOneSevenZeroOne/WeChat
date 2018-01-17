@@ -18,22 +18,23 @@
             </p>
         </div>
     </div>
-    <div class="weui_cells">
+    <div class="weui_cells" v-for="a in arr">
     <div class="weui_cell" >
         <div class="card_pic _left" >
+        	<img :src="a.photo" style="width:55px;border-radius: 5px;"/>
         </div>
         <div class="card_line" >
             <div class="remark" >
-                <span>你咬我啊i</span>
+                <span v-text="a.beizhu" id="wx"></span>
                 <span class="gender gender-man" ></span>
             </div>
             <p class="wxid" >
                 <span >微信号:</span>
-                <span >niyaowoa</span>
+                <span v-text="a.weixin"></span>
             </p>
             <p class="nickname" >
                 <span >昵称:</span>
-                <span>你咬我啊i</span>
+                <span v-text="a.contactname"></span>
             </p>
         </div>
     </div>
@@ -48,38 +49,79 @@
             <div class="weui_cell_bd weui_cell_primary" >
                 <div >
                     <span >电话号码</span>&nbsp;&nbsp;
-                    <a href="tel:18812345678" >18812345678</a>
+                    <a v-text="a.phone" :href="a.phone"></a>
                 </div>
             </div>
         </div>
     </div>
     </div>
-    <div class="weui_cells weui_cells_access weui_cells_apm" _v-cada3410="">
-        <a class="weui_cell" href="javascript:;" _v-cada3410="">
-            <div class="weui_cell_bd weui_cell_primary" _v-cada3410="">
-                <span class="apm _left" _v-cada3410="">地区</span>
-                <div class="apm_content" _v-cada3410=""></div>
+    <div class="weui_cells weui_cells_access weui_cells_apm" v-for="aa in arr">
+        <a class="weui_cell" href="javascript:;" >
+            <div class="weui_cell_bd weui_cell_primary" >
+                <span class="apm _left" >地区<i v-text="aa.address" style="font-style: normal;font-size: 15px;color:#888;margin-left:20px;"></i></span>
+                <div class="apm_content" ></div>
             </div>
         </a>
-        <a class="weui_cell weui_cells_photos" href="javascript:;" _v-cada3410="">
-            <div class="weui_cell_bd weui_cell_primary" _v-cada3410="">
-                <span class="apm _left" _v-cada3410="">个人相册</span>
-                <div class="apm_content" _v-cada3410=""></div>
+        <a class="weui_cell weui_cells_photos" href="javascript:;" >
+            <div class="weui_cell_bd weui_cell_primary" >
+                <span class="apm _left" >个人相册</span>
+                <div class="apm_content" ></div>
             </div>
-            <div class="weui_cell_ft" _v-cada3410=""></div>
+            <div class="weui_cell_ft" ></div>
         </a>
-        <a class="weui_cell" href="javascript:;" _v-cada3410="">
-            <div class="weui_cell_bd weui_cell_primary" _v-cada3410="">
-                <span class="apm _left" _v-cada3410="">更多</span>
-                <div class="apm_content" _v-cada3410=""></div>
+        <a class="weui_cell" href="javascript:;" >
+            <div class="weui_cell_bd weui_cell_primary" >
+                <span class="apm _left" >更多</span>
+                <div class="apm_content" ></div>
             </div>
-            <div class="weui_cell_ft" _v-cada3410="">
-                <span _v-cada3410=""></span>
+            <div class="weui_cell_ft" >
+                <span></span>
             </div>
         </a>
-    </div>
+        <div style="height: 67px;padding-top: 20px;background-color: #f0eff5;">
+        <a href="#/chatdetail" class="weui-btn weui-btn_primary" style="width:365px;" @click="getname(aa.beizhu,aa.s_id)">发消息</a>
+        </div>
+    </div>  
   </div>
 </template>
+<script>
+	import $ from 'jQuery';
+	import io from '../../template/socket.io.js';
+	export default{
+		data(){
+			return {
+				arr:[]
+			}
+		},
+		mounted:function(){
+			var _this=this;
+			$.ajax({
+				url:"http://localhost:3000/showinfo",
+				type:"post",
+				dataType:'json',
+				data:{
+					id:_this.$store.state.count+1,
+				},
+				success(data){
+					for(var i in data){
+					_this.arr.push({'contactname':data[i].contact_name,'photo':data[i].photo,'id':data[i].id,"beizhu":data[i].beizhu,"phone":data[i].phone,"address":data[i].address,"weixin":data[i].contact_num,"s_id":data[i].socket_id})
+					}	
+				}
+			})
+		},
+		methods:{
+			getname(beizhu,scocket_id){
+				this.$store.state.chat_name=beizhu;
+				this.$store.state.socket_Id = scocket_id;
+				var socket = io("http://localhost:3000");
+				socket.emit("addUser",{
+					chatName:this.$store.state.chat_name,
+					username:this.$store.state.name
+				})
+			}
+		}
+	}
+</script>
 <style scoped>
      ._cover-top {
     position: relative;
@@ -120,11 +162,8 @@
     width:23px;
 }
 .card_pic{
-    background:url("../../img/2-small.jpg") no-repeat;
     width:55px;
     height:55px;
-    border-radius:5px;
-    padding-left:15px;
 }
 .card_line{
     margin-left: 15px;

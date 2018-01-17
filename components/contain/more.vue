@@ -10,11 +10,11 @@
 			</li>
 			<li>
 				<span>地区</span>
-				<em>重庆 南岸</em>
+				<em v-text="addr">重庆 南岸</em>
 			</li>
 			<li>
 				<span>个性签名</span>
-				<em>未填写</em>
+				<em v-text="sign">未填写</em>
 			</li>
 		</ul>
 		<h4 v-show="bool">
@@ -31,19 +31,62 @@
 </template>
 
 <script>
+	import $ from 'jQuery';
 	export default{
 		data(){
 			return{
 				title:"更多",
 				bool:false,
-				sex:"女"
+				sex:"",
+				sign:"",
+				addr:""
 			}
 		},
 		methods:{
 			sexChange:function(){
-				this.bool = !this.bool;
+				console.log(this.sex)
+				var _this = this;
+		    	$.ajax({
+					type:"post",
+					url:"http://localhost:3000/changeSex",
+					data:{
+						id:Number(_this.$store.state.id),
+						sex:_this.sex
+					},
+					success(data){
+						data = JSON.parse(data);
+						_this.bool = !_this.bool;
+					},
+					error(){
+						console.log('error');
+					}
+				});
 			}
-		}
+		},
+		mounted(){
+	    	var _this = this;
+	    	$.ajax({
+				type:"post",
+				url:"http://localhost:3000/getMessAll",
+				data:{
+					id:Number(_this.$store.state.id)
+				},
+				success(data){
+					data = JSON.parse(data);
+					if(data.length!=0){
+						//将数据库的姓名提出显示
+						_this.sex = data[0].sex;
+						//将数据库的微信号提出并显示
+						_this.sign = data[0].sign
+						//将数据库的头像提出并显示
+						_this.addr = data[0].area;
+					}
+				},
+				error(){
+					console.log('error');
+				}
+			});
+	   	}
 	}
 </script>
 

@@ -10,11 +10,13 @@
 			<li> <span class="iconfont icon-tips-xiaoxi"></span>
 				<div>发起群聊</div>
 			</li>
-			<li > <span class="iconfont icon-tips-add-friend"></span>
-				<div>添加朋友</div>
-			</li>
+			<a href="#/con/add_friend">
+				<li > <span class="iconfont icon-tips-add-friend"></span>
+					<div>添加朋友</div>
+				</li>
+			</a>
 			<li > <span class="iconfont icon-tips-saoyisao"></span>
-				<div>扫一扫</div>
+				<div @click="sao">扫一扫</div>
 			</li>
 			<li> <span class="iconfont icon-tips-fukuan"></span>
 				<div>收付款</div>
@@ -32,6 +34,9 @@
 		methods:{
 			changeShow(){
 				this.isShow = !this.isShow;
+			},
+			sao(){
+				location.href="#/sao-yi-sao";
 			}
 		}
 	}

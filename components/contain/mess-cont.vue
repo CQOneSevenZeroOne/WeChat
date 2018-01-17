@@ -7,7 +7,7 @@
 			<li class="hight">
 				<a class="margins">
 					<span>头像</span> 
-					<img src="../../img/1.jpg"/>
+					<img :src="img"/>
 				</a>
 			</li>
 			<li>
@@ -22,10 +22,11 @@
 					<em>zhanglu</em>
 				</a>
 			</li>
-			<li>
+			<li @click="sexChange">
 				<a>
 					<span>二维码名片</span> 
-					<img src="../../img/chat-info-qr.png"/>
+					<!--<img src="../../img/chat-info-qr.png"/>-->
+					<canvas id="canvas"></canvas>
 				</a>
 			</li>
 			<li @click="toMore">
@@ -39,20 +40,42 @@
 				</h4>
 			</li>
 		</ul>
+		<p v-show="bool">
+			<canvas id="canvas2"></canvas>
+			<!--<vue-q-art :config="config"></vue-q-art>-->
+		</p>
+		<strong v-show="bool" @click="sexChange"></strong>
 	</div>
 	
 </template>
 
 <script>
+//	import Vue from "vue";
+//	import VueQArt from 'vue-qart';
+	import $ from 'jQuery';
+	import Vue from 'vue'
+	import QRCode from 'qrcode'
+	Vue.use(QRCode)
 	export default{
 		data(){
 			return{
 				title:"个人信息",
-				name:""
+				name:"",
+				img:"",
+				bool:false,
+//				config: {
+//		            value: "1123456",
+//		            imagePath: require('../../img/1.jpg'),
+//		            filter: 'color',
+//		            size:330
+//		        }
 			}
 		},
+//		components: {VueQArt},
 		mounted(){
 	    	this.name = this.$store.state.name
+	    	this.img = this.$store.state.img
+	    	this.useqrcode(this.name);
 	   	},
 		methods:{
 			toMine:function(){
@@ -60,6 +83,34 @@
 			},
 			toMore:function(){
 				location.href = "#/own/more";
+			},
+			sexChange:function(){
+				var _this = this;
+		    	$.ajax({
+					type:"post",
+					url:"http://localhost:3000/changeSex",
+					data:{
+						id:Number(_this.$store.state.id),
+						sex:_this.sex
+					},
+					success(data){
+						data = JSON.parse(data);
+						_this.bool = !_this.bool;
+					},
+					error(){
+						console.log('error');
+					}
+				});
+			},
+			useqrcode(name){
+				var canvas = document.getElementById('canvas');
+				var str = name + this.$store.state.wei_num;
+				QRCode.toCanvas(canvas,str, function (error) {
+					if (error) console.error(error)
+				})
+				QRCode.toCanvas(canvas2,str, function (error) {
+					if (error) console.error(error)
+				})
 			}
 		}
 	}
@@ -131,5 +182,27 @@
 	}
 	.hight a img{
 		width:3.5rem;height: 3.5rem;
+	}
+	/*二维码弹出显示*/
+	p{
+		position: absolute;
+		left: 25%;top: 30%;
+		z-index: 3;
+	}
+	strong{
+		display: block;
+		position: absolute;
+		width: 100%;height: 100%;
+		background-color: #000;
+		opacity: 0.3;
+		top: 0;
+	}
+	#canvas{
+		width:3rem !important;
+		height:3rem !important;
+	}
+	#canvas2{
+		width:15rem !important;
+		height:15rem !important;
 	}
 </style>

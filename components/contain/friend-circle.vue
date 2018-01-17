@@ -28,18 +28,26 @@
 						</header>
 						<section class="home-content">
 							<div class="weui-panel__bd">
-								<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+								<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" v-for="item in arr">
 									<div class="weui-media-box__hd">
-										<img class="weui-media-box__thumb" src="../../img/touxiang.jpg">
+										<img class="weui-media-box__thumb" :src="item.img">
 									</div>
 									<div class="weui-media-box__bd">
-										<h4 class="weui-media-box__title">是我呀</h4>
-										<p class="weui-media-box__desc">我饿了，要吃饭呀</p>
+										<h4 class="weui-media-box__title">{{item.contact_name}}</h4>
+										<p class="weui-media-box__desc">{{item.trends}}</p>
+										<p class="weui-media-box__desc"><img  :src="item.img"></p>
+										<p class="weui-media-box__desc call">
+											<span id="show_time">{{item.time}}</span>
+											<span class="panel"><em class="Zan"><img src="../../img/点赞.png" alt="" />赞</em><em class="pinglun"><img src="../../img/comment.png" alt="" />评论</em></span>
+											<span class="dianZan">
+												<img src="../../img/comment.png"  />
+											</span>
+										</p>
 									</div>
 								</a>
 							</div>
-							<div class="weui-panel__ft">
-								<a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+							<div class="weui-panel__ft" >
+								<a @click="showMore" href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
 									<div class="weui-cell__bd">查看更多</div>
 									<span class="weui-cell__ft"></span>
 								</a>
@@ -53,17 +61,35 @@
 </template>
 
 <script>
+	import $ from 'jQuery';
+	
 	export default {
 		data() {
 			return {
-				touxiang:"../../img/touxiang.jpg",
-				nicheng:"是我呀",
-				content:"我饿了，要吃饭呀"
+				arr:[],
+				num:0
 			};
+		},
+		mounted:function(){
+			this.showMore();
 		},
 		methods:{
 			showMore(){
-				
+				var _this=this;
+				this.num++;
+				$.ajax({
+					type:"post",
+					url:"http://localhost:3000/getFriendCircleTrend",
+					async: true,
+					dataType: "json",
+					data:{
+						id:_this.num
+					},
+					success:function(data){
+						console.log(data)
+						_this.arr=_this.arr.concat(data);
+					}
+				});
 			}
 		}
 	};
@@ -152,9 +178,12 @@
 		width: 40px;
 		height: 40px;
 		line-height: 40px;
-		margin-right: 0rem;
+		margin-right: 0.4rem;
+		
 	}
-	
+	.weui-media-box_appmsg .weui-media-box__hd img{
+		border-radius: 5px;
+	}
 	.weui-media-box__title {
 		color: cornflowerblue;
 		font-size: 12px;
@@ -164,5 +193,51 @@
 	.weui-media-box__desc {
 		color: #000;
 		font-size: 12px;
+		margin-top: 10px;
+	}
+	
+	.weui-media-box_appmsg{
+		align-items: flex-start; 
+	}
+	.call{
+		overflow: hidden;
+	}
+	.call .dianZan{
+		float: right;
+	}
+	.call .dianZan img{
+		width: 30px;
+		height:30px;
+		margin-top: 4px;
+	}
+	.call .panel{
+		display: inline-block;
+	    width: 160px;
+	    height: 35px;
+	    background: #333333;
+	    margin-left: 55px;
+	    border-radius: 3px;
+	}
+	.call .panel .Zan{
+		font-style: normal;
+		display: inline-block;
+		width: 60px;
+		height: 35px;
+	}
+	.call .panel .pinglun{
+		font-style: normal;
+		display: inline-block;
+		width: 60px;
+		height: 35px;
+	}
+	.call .panel .Zan img{
+		height: 30px;
+		width: 30px;
+		z-index: 10;
+	}
+	.call .panel .pinglun img{
+		height: 30px;
+		width: 30px;
+		z-index: 10;
 	}
 </style>

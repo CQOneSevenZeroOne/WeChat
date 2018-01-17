@@ -10,6 +10,7 @@ import "weui";
 import "./template/base.css";
 import "./template/weui.min.css";
 import "./template/wechat.css";
+
 // 选项卡组件
 import mine from "./components/tabs/mine.vue";
 import discovery from "./components/tabs/discovery.vue";

@@ -55,6 +55,20 @@ app.post("/getSearchList",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 })
+//获取朋友圈动态
+app.post("/getFriendCircleTrend",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	console.log(req.body.id)
+	var a=`select * from contact_trend where  id>=${req.body.id} order by id asc limit 1`;
+	console.log(a)
+	connect.query(a, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+		
+	});
+})
 //监听端口
 app.listen(3000);
 console.log("开启服务器");

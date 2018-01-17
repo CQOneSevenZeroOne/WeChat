@@ -15,7 +15,7 @@
 				</div>
 			</div>
 			<div class="_cover-content _effect" >
-				<div class="sao-yi-sao-panel" >
+				<div class="sao-yi-sao-panel">
 					<div  class="scan-qr-code">
 						<div class="frame" > <span class="green-line" ></span> <span class="left-top" ></span> <span class="right-top" ></span> <span class="left-bottom" ></span> <span class="right-bottom" ></span> </div>
 						<div class="desc" >
@@ -46,28 +46,32 @@
 						title:"二维码/条码",
 						footer:"扫码",
 						beImg:require("../../img/sao-yi-sao/scan-qr-code.png"),
-						afImg:require("../../img/sao-yi-sao/scan-qr-code_hl.png")
+						afImg:require("../../img/sao-yi-sao/scan-qr-code_hl.png"),
+						panel:"scan-qr-code"
 					},
 					{
 						id:2,
 						title:"封面/电影海报",
 						footer:"封面",
 						beImg:require("../../img/sao-yi-sao/scan-book.png"),
-						afImg:require("../../img/sao-yi-sao/scan-book_hl.png")
+						afImg:require("../../img/sao-yi-sao/scan-book_hl.png"),
+						panel:"scan-book"
 					},
 					{
 						id:3,
 						title:"街景",
 						footer:"街景",
 						beImg:require("../../img/sao-yi-sao/scan-street.png"),
-						afImg:require("../../img/sao-yi-sao/scan-street_hl.png")
+						afImg:require("../../img/sao-yi-sao/scan-street_hl.png"),
+						panel:"scan-street"
 					},
 					{
 						id:4,
 						title:"翻译",
 						footer:"翻译",
 						beImg:require("../../img/sao-yi-sao/scan-word.png"),
-						afImg:require("../../img/sao-yi-sao/scan-word_hl.png")
+						afImg:require("../../img/sao-yi-sao/scan-word_hl.png"),
+						panel:"scan-word"
 					}
 				],
 				id:1

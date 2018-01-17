@@ -35,6 +35,10 @@
 		},
 		methods:{
 			toMine:function(){
+//				router.push({
+//					path: "mine",
+//                  component: mine
+//				})
 				location.href = "#/tab/mine";
 			}
 		}

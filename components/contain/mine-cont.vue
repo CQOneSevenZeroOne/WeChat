@@ -7,7 +7,7 @@
 			</div>
 			<img src="../../img/right.jpg"/>
 		</a>
-		<a class="margins">
+		<a class="margins"  href="#/own/my_photo">
 			<div class="left">
 				<img src="../../img/me_more-my-album.png"/>
 				<em>相册</em>

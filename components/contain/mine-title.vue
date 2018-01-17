@@ -2,7 +2,7 @@
 	<div class="weui-mine-titles">
 		<a href="#/own">
 			<div class="mine-img">
-				<img src="../../img/1.jpg">
+				<img :src="img">
 			</div>
 			<div class="mine-conts">
 				<div class="left">
@@ -23,7 +23,8 @@
 		data(){
 			return{
 				name:"",
-				wei_num:""
+				wei_num:"",
+				img:""
 			}
 		},
 		mounted(){
@@ -36,12 +37,16 @@
 				},
 				success(data){
 					data = JSON.parse(data);
-					console.log(data)
 					if(data.length!=0){
+						//将数据库的姓名提出显示
 						_this.name = data[0].my_name;
 						_this.$store.state.name = data[0].my_name;
+						//将数据库的微信号提出并显示
 						_this.wei_num = data[0].wei_num
 						_this.$store.state.wei_num = data[0].wei_num;
+						//将数据库的头像提出并显示
+						_this.img = data[0].my_photo;
+						_this.$store.state.img = data[0].my_photo;
 					}
 				},
 				error(){

@@ -57,7 +57,7 @@
 		display: block;
 		padding: 0 1.2rem;
 		border-bottom: 1px solid #e4e3e8;
-		height: 3.5rem;line-height: 3.5rem;
+		height: 4.3rem;line-height: 4.3rem;
 		background-color: #fff;
 		font-size: 1.5rem;
 		color: #666;

@@ -7,7 +7,7 @@
 			<li class="hight">
 				<a class="margins">
 					<span>头像</span> 
-					<img src="../../img/1.jpg"/>
+					<img :src="img"/>
 				</a>
 			</li>
 			<li>
@@ -48,11 +48,13 @@
 		data(){
 			return{
 				title:"个人信息",
-				name:""
+				name:"",
+				img:""
 			}
 		},
 		mounted(){
 	    	this.name = this.$store.state.name
+	    	this.img = this.$store.state.img
 	   	},
 		methods:{
 			toMine:function(){

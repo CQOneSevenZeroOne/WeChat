@@ -25,6 +25,7 @@ app.post("/getChatList",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 })
+//获取当前登录者的所有信息
 app.post("/getMessAll",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
@@ -39,7 +40,7 @@ app.post("/login",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
-	connect.query(`SELECT id FROM person_info where my_name = '${req.body.username}' and password = '${req.body.password}'`, function(error, results, fields) {
+	connect.query(`SELECT id FROM person_info where phone = '${req.body.username}' and password = '${req.body.password}'`, function(error, results, fields) {
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});
@@ -49,8 +50,37 @@ app.post("/getSearchList",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
-	console.log(req.body.sea)
 	connect.query(`SELECT * FROM chat where mycont like '%${req.body.sea}%' or youcont like '%${req.body.sea}%'`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
+//修改名字
+app.post("/changeName",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`UPDATE person_info SET my_name='${req.body.name}' WHERE id = '${req.body.id}'`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
+//修改性别
+app.post("/changeSex",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`UPDATE person_info SET sex='${req.body.sex}' WHERE id = '${req.body.id}'`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
+//根据用户id获取当前用户的动态信息
+app.post("/getTrend",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`SELECT * FROM person_trend where person_id = ${req.body.id} ORDER BY time desc`, function(error, results, fields) {
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});

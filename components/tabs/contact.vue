@@ -35,49 +35,19 @@
             </a>
         </div>
         <div class="contact-friends" >
-            <p class="contact-alpha" >A</p>
-            <a href="#/con/person_info" style="color:black">
+            <p class="contact-alpha" >N</p>
+            <a href="#/con/person_info" style="color:black" v-for="(items,index) in arr" @click="showinfo(index)">
                 <div class="weui_cells weui_cells_access" >
                     <div class="weui_cell"  style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                         <div class="weui_cell_hd" >
-                            <img  src="../../img/2-small.jpg">
+                            <img  :src="items.photo">
                         </div>
                         <div class="weui_cell_bd weui_cell_primary" >
-                            <p >你咬我啊i</p>
+                            <p v-text="items.contactname"></p>
                         </div>
                     </div>
                 </div>
             </a>
-            <p class="contact-alpha" >B</p>
-            <div class="weui_cells weui_cells_access" >
-                <div class="weui_cell"  style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                    <div class="weui_cell_hd" >
-                        <img  src="//ad-gold-cdn.xitu.io/1499914019068553d2c25d0b33b83481795c552e0b47f.jpg">
-                    </div>
-                    <div class="weui_cell_bd weui_cell_primary" >
-                        <p >白加黑</p>
-                    </div>
-                </div>
-            </div>
-            <p class="contact-alpha" >X</p>
-            <div class="weui_cells weui_cells_access">
-                <div class="weui_cell" _ style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                    <div class="weui_cell_hd" >
-                        <img  src="//ad-gold-cdn.xitu.io/1499913563353063825fa09e5e83359a90c91417e029e.jpg">
-                    </div>
-                    <div class="weui_cell_bd weui_cell_primary" >
-                        <p >小明</p>
-                    </div>
-                </div>
-                <div class="weui_cell"  style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                    <div class="weui_cell_hd" >
-                        <img  src="//ad-gold-cdn.xitu.io/14999140634069b6825290779221783b3b59fbba0addd.jpg">
-                    </div>
-                    <div class="weui_cell_bd weui_cell_primary" >
-                        <p >小亮</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -85,7 +55,37 @@
 <script>
     import xheader from "../xheader.vue";
     import xsearch from "../xsearch.vue";
+    import  $ from "jQuery"
     export default {
+    	data(){
+    		return{
+    			arr:[],
+    			
+    		}
+    	},
+    	mounted:function(){
+    		var _this=this;
+    		$.ajax({
+    			url:"http://localhost:3000/getcontactList",
+    			type:"post",
+    			success(data){
+					var obj = JSON.parse(data)	
+					
+					for(var i in obj){						
+						_this.arr.push({'contactname':obj[i].beizhu,'photo':obj[i].photo,'id':obj[i].id})
+						
+					}
+				},
+				error(){
+					console.log('error');
+				}
+    		})
+    	},
+    	methods:{
+	    		showinfo(index){	
+		    		this.$store.state.count=index;
+    		}
+    	},
         components:{
             xheader,
             xsearch

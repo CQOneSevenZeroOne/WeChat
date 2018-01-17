@@ -55,6 +55,26 @@ app.post("/getSearchList",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 })
+//显示联系人列表
+app.post("/getcontactList",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`SELECT * FROM contact_info`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
+//跳转到联系人信息页面
+app.post("/showinfo",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`SELECT * FROM contact_info where id='${req.body.id}'`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
 //监听端口
 app.listen(3000);
 console.log("开启服务器");

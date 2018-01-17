@@ -171,7 +171,9 @@ var store = new Vuex.Store({
         bool:true,
         name:"",
         id:1,
-        wei_num:""
+        wei_num:"",
+        chat_name:"",
+        socket_Id:''
     }
 })
 

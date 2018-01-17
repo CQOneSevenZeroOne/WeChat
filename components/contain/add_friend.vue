@@ -12,7 +12,7 @@
     </div>
     <div class="search-line" >
         <span class="iconfont icon-search" ></span>
-        <input type="text" placeholder="微信号/手机号" > 
+        <input type="text" placeholder="微信号/手机号" @blur="searchChat" id="searchpeople"> 
     </div>
     <p class="_align-center" style="padding-top:8px">
         <span >我的微信号:</span>
@@ -21,7 +21,7 @@
             <img src="../../img/contact_add-friend-my-qr.png" style="width:24px" class="_align-middle">
         </b>
     </p>
-    <div class="weui_cells weui_cells_access add-friends-options" >
+    <div class="weui_cells weui_cells_access add-friends-options" :style="{'display':isshow?'block':'none'}">
         <a class="weui_cell" href="javascript:;" >
             <div class="weui_cell_hd" >
                 <img src="../../img/contact_add-friend-reda.png" >
@@ -73,8 +73,58 @@
             <div class="weui_cell_ft" ></div>
         </a>
     </div>
+    <div class="contentBox" :style="{'display':isshow?'none':'block'}">
+			<h3>添加朋友</h3>
+			<div v-show="searchArr==''" class="result">未查询到相关信息</div>
+			<a href="#/chatdetail" class="weui-cell" v-show="searchArr!=''" v-for="ar in searchArr">
+				<div class="weui-cell__hd" style="position: relative;margin-right: 10px;border-radius: 5px;">
+					<img :src="ar.photo" style="width: 50px;display: block">
+				</div>
+				<div class="weui-cell__bd">
+					<p style="font-size: 16px;" v-text="ar.contact_name"></p>
+					<p style="font-size: 13px;color: #888888;" v-text="ar.phone"></p>
+				</div>
+			</a>
+		</div>
 </div>
 </template>
+<script>
+	import $ from "jQuery";
+	export default{
+		data(){
+			return{
+				isshow:true,
+				searchArr:[]
+			}
+		},
+		methods:{
+			hidebox(){
+				this.isshow=true;
+			},
+			searchChat(){
+				this.isshow=false;
+				this.searchArr = [];
+				var _this = this;
+				var stra= $("#searchpeople").val();
+				console.log(stra)
+				$.ajax({
+					type:"post",
+					url:"http://localhost:3000/getstrager",
+					dataType:'json',
+					data:{
+						strager_num:stra
+					},
+					success(data){
+						_this.searchArr=data;
+					},
+					error(){
+						console.log('error')
+					}
+				});
+			}
+		}
+	}
+</script>
 <style scoped>
     ._cover-top .top-title {
     padding: 0 8px;
@@ -118,5 +168,25 @@
     font-size: 12px;
         color: #b7b7b7;
 }
+.contentBox {
+		background: #fff;
+	}
+	.contentBox h3{
+		font-size: 13px;
+		color: #333;
+		font-weight: 500;
+		line-height: 30px;
+		padding-left: 15px;
+	}
+	.weui-cell {
+		border-bottom: 1px solid #dedede;
+		color: #000;
+	}
+	.result{
+		padding:15px;
+		font-size: 14px;
+		color: #666;
+		text-align: center;
+	}
 </style>
 

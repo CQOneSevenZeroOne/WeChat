@@ -35,7 +35,7 @@
             </a>
         </div>
         <div class="contact-friends" >
-            <p class="contact-alpha" >N</p>
+            <p class="contact-alpha" >H</p>
             <a href="#/con/person_info" style="color:black" v-for="(items,index) in arr" @click="showinfo(index)">
                 <div class="weui_cells weui_cells_access" >
                     <div class="weui_cell"  style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
@@ -70,7 +70,6 @@
     			type:"post",
     			success(data){
 					var obj = JSON.parse(data)	
-					
 					for(var i in obj){						
 						_this.arr.push({'contactname':obj[i].beizhu,'photo':obj[i].photo,'id':obj[i].id})
 						

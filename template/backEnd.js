@@ -1,5 +1,7 @@
 var express = require("express");
 var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 var mysql = require("mysql");
 //创建数据库连接
 var connect = mysql.createConnection({
@@ -74,7 +76,29 @@ app.post("/showinfo",function(req,res){
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});
-})
+});
+//聊天
+io.on("connection",function(socket){
+	socket.on("addUser",function(data){
+		console.log(socket.id);
+		console.log(data);
+		connect.query(`update contact_info set socket_id = '${socket.id}'  where beizhu = '${data.chatName}'`, function(error, results, fields) {
+			if(error) throw error;
+		});	
+	})
+});
+//添加朋友
+app.post("/getstrager",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	var str=`SELECT * FROM strager where phone=${req.body.strager_num}`;
+	console.log(str)
+	connect.query(str, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+});
 //监听端口
-app.listen(3000);
-console.log("开启服务器");
+server.listen(3000);
+console.log("开启服务器")

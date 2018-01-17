@@ -25,7 +25,7 @@
         </div>
         <div class="card_line" >
             <div class="remark" >
-                <span v-text="a.beizhu"></span>
+                <span v-text="a.beizhu" id="wx"></span>
                 <span class="gender gender-man" ></span>
             </div>
             <p class="wxid" >
@@ -55,8 +55,8 @@
         </div>
     </div>
     </div>
-    <div class="weui_cells weui_cells_access weui_cells_apm" >
-        <a class="weui_cell" href="javascript:;" v-for="aa in arr">
+    <div class="weui_cells weui_cells_access weui_cells_apm" v-for="aa in arr">
+        <a class="weui_cell" href="javascript:;" >
             <div class="weui_cell_bd weui_cell_primary" >
                 <span class="apm _left" >地区<i v-text="aa.address" style="font-style: normal;font-size: 15px;color:#888;margin-left:20px;"></i></span>
                 <div class="apm_content" ></div>
@@ -78,12 +78,15 @@
                 <span></span>
             </div>
         </a>
-    </div>
-    <a href="#/chatdetail" class="weui-btn weui-btn_primary" style="width:365px;margin-top: 20px;">发起聊天</a>
+        <div style="height: 67px;padding-top: 20px;background-color: #f0eff5;">
+        <a href="#/chatdetail" class="weui-btn weui-btn_primary" style="width:365px;" @click="getname(aa.beizhu,aa.s_id)">发消息</a>
+        </div>
+    </div>  
   </div>
 </template>
 <script>
 	import $ from 'jQuery';
+	import io from '../../template/socket.io.js';
 	export default{
 		data(){
 			return {
@@ -100,12 +103,22 @@
 					id:_this.$store.state.count+1,
 				},
 				success(data){
-					console.log(data)
 					for(var i in data){
-					_this.arr.push({'contactname':data[i].contact_name,'photo':data[i].photo,'id':data[i].id,"beizhu":data[i].beizhu,"phone":data[i].phone,"address":data[i].address,"weixin":data[i].contact_num})
+					_this.arr.push({'contactname':data[i].contact_name,'photo':data[i].photo,'id':data[i].id,"beizhu":data[i].beizhu,"phone":data[i].phone,"address":data[i].address,"weixin":data[i].contact_num,"s_id":data[i].socket_id})
 					}	
 				}
 			})
+		},
+		methods:{
+			getname(beizhu,scocket_id){
+				this.$store.state.chat_name=beizhu;
+				this.$store.state.socket_Id = scocket_id;
+				var socket = io("http://localhost:3000");
+				socket.emit("addUser",{
+					chatName:this.$store.state.chat_name,
+					username:this.$store.state.name
+				})
+			}
 		}
 	}
 </script>

@@ -177,7 +177,12 @@ var store = new Vuex.Store({
         name:"",
         id:1,
         wei_num:"",
+<<<<<<< HEAD
         img:""
+=======
+        chat_name:"",
+        socket_Id:''
+>>>>>>> ffceab58a13152cbac04f31f6e3a60785435a2f9
     }
 })
 

@@ -1,5 +1,7 @@
 var express = require("express");
 var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 var mysql = require("mysql");
 //创建数据库连接
 var connect = mysql.createConnection({
@@ -55,6 +57,7 @@ app.post("/getSearchList",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 })
+<<<<<<< HEAD
 //修改名字
 app.post("/changeName",function(req,res){
 	//解决跨域问题
@@ -84,7 +87,15 @@ app.post("/getTrend",function(req,res){
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});
+=======
+//聊天
+io.on("connection",function(socket){
+	socket.on("addUser",function(data){
+		console.log(socket.id);
+		console.log(data);
+	})
+>>>>>>> ffceab58a13152cbac04f31f6e3a60785435a2f9
 })
 //监听端口
-app.listen(3000);
+server.listen(3000);
 console.log("开启服务器");

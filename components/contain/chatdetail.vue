@@ -3,16 +3,17 @@
 		<div class="chatTitle">
 			<p>
 				<a href="#/tab/wechat"><img src="../../img/leftsanjiao.png" /></a>微信</p>
-			<span>你咬我啊i</span>
+			<span v-text="chatName" :data-id="socketId"></span>
 			<a href="#/chatInfo"><img src="../../img/icon-ren.png" alt="" /></a>
 		</div>
 		<div class="chatFooter">
 			<img src="../../img/iconyuyin.png" @click="checkShow" v-show="isShowInput" />
-			<input type="text" v-show="isShowInput" />
+			<input type="text" v-show="isShowInput" id="mess" @input="saveMess"/>
 			<img src="../../img/key.png" v-show="isShow" @click="checkShow" />
 			<div class="chat-say" v-show="isShow" :style="{'background-color':isMouseDown?'#c6c7ca':'#fff'}"> <span class="one" v-show="isMouseUp" @mousedown="changeStatus">按住 说话</span> <span class="two" v-show="isMouseDown" @mouseup="changeStatus">松开 结束</span> </div>
-			<img src="../../img/iconxiao.png" />
-			<img src="../../img/iconjia.png" />
+			<p v-show="sendData==''"><img src="../../img/iconxiao.png" />
+			<img src="../../img/iconjia.png" /></p>
+			<button v-show="sendData!=''" @click="sendMessage">发送</button>
 		</div>
 		<div class="recording" v-show="isMouseDown">
 			<div class="recording-voice" >
@@ -31,13 +32,18 @@
 </template>
 
 <script>
+	import $ from 'jQuery';
+	import io from  '../../template/socket.io.js';
 	export default {
 		data() {
 			return {
 				isShow: false,
 				isShowInput: true,
 				isMouseDown: false,
-				isMouseUp: true
+				isMouseUp: true,
+				chatName:'',
+				socketId:'',
+				sendData:''
 			}
 		},
 		methods: {
@@ -48,7 +54,17 @@
 			changeStatus(event) {
 				this.isMouseDown = !this.isMouseDown;
 				this.isMouseUp = !this.isMouseUp;
+			},
+			saveMess(){
+				this.sendData = $("#mess").val();
+			},
+			sendMessage(){
+				
 			}
+		},
+		mounted(){
+			this.chatName = this.$store.state.chat_name;
+			this.socketId = this.$store.state.socket_Id;
 		}
 	}
 </script>
@@ -86,7 +102,14 @@
 		border-top: 1px solid #dbdbdb;
 		background: #fff;
 	}
-	
+	.chatFooter button{
+		width: 50px;
+		height: 30px;
+		border: 0;
+		outline: none;
+		background: deepskyblue;
+		color: #fff;
+	}
 	input {
 		width: 185px;
 		border-radius: 6px;
@@ -95,7 +118,10 @@
 		outline: none;
 		padding: 0 10px;
 	}
-	
+	.chatFooter p img{
+		vertical-align: sub;
+		margin-right: 7px;
+	}
 	.chat-say {
 		width: 185px;
 		border-radius: 6px;

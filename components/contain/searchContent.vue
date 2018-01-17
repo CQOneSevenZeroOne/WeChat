@@ -5,35 +5,26 @@
 				<div class="weui-search-bar__box">
 					<i class="weui-icon-search"></i>
 					<input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="" @blur="searchChat">
-					<a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+					<a href="javascript:" class="weui-icon-clear" id="searchClear" @click="clearSearch"></a>
 				</div>
 				<label class="weui-search-bar__label" id="searchText">
                     <i class="weui-icon-search"></i>
                     <span>搜索</span>
                 </label>
 			</form>
-			<a @click="back" href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+			<a href="#/tab/wechat" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
 		</div>
 		<div class="contentBox">
 			<h3>聊天记录</h3>
-			<a href="#/chatdetail" class="weui-cell">
+			<div v-show="searchArr==''" class="result">未查询到相关信息</div>
+			<a href="#/chatdetail" class="weui-cell" v-show="searchArr!=''" v-for="a in searchArr">
 				<div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-					<img src="../../img/2-small.jpg" style="width: 50px;display: block">
+					<img :src="a.img" style="width: 50px;display: block">
 					<!--<span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</span>-->
 				</div>
 				<div class="weui-cell__bd">
-					<p style="font-size: 16px;">ninini</p>
-					<p style="font-size: 13px;color: #888888;">xxxx</p>
-				</div>
-			</a>
-			<a href="#/chatdetail" class="weui-cell">
-				<div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-					<img src="../../img/2-small.jpg" style="width: 50px;display: block">
-					<!--<span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</span>-->
-				</div>
-				<div class="weui-cell__bd">
-					<p style="font-size: 16px;">ninini</p>
-					<p style="font-size: 13px;color: #888888;">xxxx</p>
+					<p style="font-size: 16px;" v-text="a.name"></p>
+					<p style="font-size: 13px;color: #888888;" v-text="a.content"></p>
 				</div>
 			</a>
 		</div>
@@ -43,11 +34,15 @@
 <script>
 	import $ from 'jQuery';
 	export default {
+		data(){
+			return {
+				searchArr:[]
+			}
+		},
 		methods:{
-			back(){
-				location.href='#/tab/wechat'
-			},
 			searchChat(){
+				this.searchArr = [];
+				var _this = this;
 				var sea = $("#searchInput").val();
 				$.ajax({
 					type:"post",
@@ -57,9 +52,22 @@
 					},
 					async:true,
 					success(data){
-						console.log(data)
+						var list = JSON.parse(data);
+						for(var i in list){
+							_this.searchArr.push({
+								name:list[i].chatname,
+								content:list[i].youcont,
+								img:list[i].youphoto
+							})
+						}
+					},
+					error(){
+						console.log('error')
 					}
 				});
+			},
+			clearSearch(){
+				$("#searchInput").val('');
 			}
 		}
 	}
@@ -79,5 +87,11 @@
 	.weui-cell {
 		border-bottom: 1px solid #dedede;
 		color: #000;
+	}
+	.result{
+		padding:15px;
+		font-size: 14px;
+		color: #666;
+		text-align: center;
 	}
 </style>

@@ -6,6 +6,11 @@
 			<span v-text="chatName" :data-id="socketId"></span>
 			<a href="#/chatInfo"><img src="../../img/icon-ren.png" alt="" /></a>
 		</div>
+		<div class="chatContent">
+			<ul>
+				<li v-for="a in chatArr" ><img :src="myphoto" /><span v-text="a"></span></li>
+			</ul>
+		</div>
 		<div class="chatFooter">
 			<img src="../../img/iconyuyin.png" @click="checkShow" v-show="isShowInput" />
 			<input type="text" v-show="isShowInput" id="mess" @input="saveMess"/>
@@ -43,7 +48,9 @@
 				isMouseUp: true,
 				chatName:'',
 				socketId:'',
-				sendData:''
+				sendData:'',
+				chatArr:[],
+				myphoto:''
 			}
 		},
 		methods: {
@@ -59,12 +66,38 @@
 				this.sendData = $("#mess").val();
 			},
 			sendMessage(){
-				
+				var _this = this;
+				var socket = io("http://localhost:3000");
+				socket.emit("sendMess",{
+					//发送的消息
+					message:_this.sendData,
+					//聊天的id
+					id:_this.$store.state.id,
+					//聊天的名字
+					name:_this.$store.state.name
+				})
+				$("#mess").val('');
+				this.sendData = $("#mess").val();
 			}
 		},
 		mounted(){
 			this.chatName = this.$store.state.chat_name;
-			this.socketId = this.$store.state.socket_Id;
+			this.myphoto = this.$store.state.my_photo;
+			var _this = this;
+			var socket = io("http://localhost:3000");
+//			socket.emit("addUser",{
+//				chatName:this.$store.state.chat_name,
+//				username:this.$store.state.name
+//			})
+//			socket.on('returnUser',function(data){
+//					_this.$store.state.socket_Id = data;
+//					_this.socketId = _this.$store.state.socket_Id;
+//					console.log('要聊天的id为：',_this.socketId);
+//			})
+//			socket.on('returnMess',function(data){
+//				console.log('返回',data);
+//				_this.chatArr.push(data);
+//			})
 		}
 	}
 </script>
@@ -89,7 +122,29 @@
 	.chatTitle a img {
 		vertical-align: sub;
 	}
-	
+	.chatContent{
+		padding: 15px;
+	}
+	.chatContent li img{
+		width: 40px;
+		height: 40px;
+		float: left;
+	}
+	.chatContent li {
+		overflow: hidden;
+		padding-bottom: 20px;
+	}
+	.chatContent li span{
+		display: inline-block;
+		padding: 0 10px;
+		line-height: 26px;
+		color: #fff;
+		background: green;
+		width: 100px;
+		border-radius: 4px;
+		margin-left: 10px;
+   		 margin-top: 10px;
+	}
 	.chatFooter {
 		position: fixed;
 		left: 0;

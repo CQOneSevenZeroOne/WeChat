@@ -14,6 +14,7 @@
 </template>
 
 <script>
+	import $ from 'jQuery';
 	export default{
 		data(){
 			return{
@@ -27,7 +28,22 @@
 	   	methods:{
 	   		change:function(){
 	   			this.$store.state.name = this.name
-	   			location.href = "#/own/cont";
+	   			var _this = this;
+		    	$.ajax({
+					type:"post",
+					url:"http://localhost:3000/changeName",
+					data:{
+						id:Number(_this.$store.state.id),
+						name:_this.name
+					},
+					success(data){
+						data = JSON.parse(data);					
+						location.href = "#/own/cont";
+					},
+					error(){
+						console.log('error');
+					}
+				});
 	  	 	}
 	  	}
 	}

@@ -1,6 +1,6 @@
 <template>
 	<div class="chatBox">
-		<a href="#/chatdetail" class="weui-cell" v-for="(a,index) in chatArr" @click="getChatName(index)" :data-id='a.socketId'>
+		<a href="#/chatdetail" class="weui-cell" v-for="(a,index) in chatArr" @click="getChatName(index,a.my_photo)" :data-img='a.my_photo'>
 	        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
 	            <img :src="a.img" style="width: 50px;display: block">
 	            <!--<span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</span>-->
@@ -36,7 +36,8 @@
 								'chatname':obj[i].chatname,
 								'content':obj[i].mycont,
 								img:obj[i].youphoto,
-								socketId:obj[i].socketid
+								socketId:obj[i].socketid,
+								my_photo:obj[i].anotherphoto
 							}
 						);
 					}
@@ -47,15 +48,14 @@
 			});
 		},
 		methods:{
-			getChatName(index){
+			getChatName(index,photo){
 				this.$store.state.chat_name = $(".chatName").eq(index).html();
-				this.$store.state.socket_Id = $(".weui-cell").eq(index).attr('data-id');
-				console.log('要聊天的id为：',this.$store.state.socket_Id)
-				/*var socket = io("http://localhost:3000");
+				this.$store.state.my_photo = photo
+				var _this = this;
+				var socket = io("http://localhost:3000");
 				socket.emit("addUser",{
-					chatName:this.$store.state.chat_name,
-					username:this.$store.state.name
-				})*/
+					id:this.$store.state.id
+				})
 			}
 		}
 	}

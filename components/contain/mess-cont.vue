@@ -25,7 +25,8 @@
 			<li @click="sexChange">
 				<a>
 					<span>二维码名片</span> 
-					<img src="../../img/chat-info-qr.png"/>
+					<!--<img src="../../img/chat-info-qr.png"/>-->
+					<canvas id="canvas"></canvas>
 				</a>
 			</li>
 			<li @click="toMore">
@@ -40,7 +41,8 @@
 			</li>
 		</ul>
 		<p v-show="bool">
-			<vue-q-art :config="config"></vue-q-art>
+			<canvas id="canvas2"></canvas>
+			<!--<vue-q-art :config="config"></vue-q-art>-->
 		</p>
 		<strong v-show="bool" @click="sexChange"></strong>
 	</div>
@@ -48,9 +50,12 @@
 </template>
 
 <script>
-	import Vue from "vue";
-	import VueQArt from 'vue-qart';
+//	import Vue from "vue";
+//	import VueQArt from 'vue-qart';
 	import $ from 'jQuery';
+	import Vue from 'vue'
+	import QRCode from 'qrcode'
+	Vue.use(QRCode)
 	export default{
 		data(){
 			return{
@@ -58,18 +63,19 @@
 				name:"",
 				img:"",
 				bool:false,
-				config: {
-		            value: "1123456",
-		            imagePath: require('../../img/1.jpg'),
-		            filter: 'color',
-		            size:330
-		        }
+//				config: {
+//		            value: "1123456",
+//		            imagePath: require('../../img/1.jpg'),
+//		            filter: 'color',
+//		            size:330
+//		        }
 			}
 		},
-		components: {VueQArt},
+//		components: {VueQArt},
 		mounted(){
 	    	this.name = this.$store.state.name
 	    	this.img = this.$store.state.img
+	    	this.useqrcode(this.name);
 	   	},
 		methods:{
 			toMine:function(){
@@ -95,6 +101,16 @@
 						console.log('error');
 					}
 				});
+			},
+			useqrcode(name){
+				var canvas = document.getElementById('canvas');
+				var str = name + this.$store.state.wei_num;
+				QRCode.toCanvas(canvas,str, function (error) {
+					if (error) console.error(error)
+				})
+				QRCode.toCanvas(canvas2,str, function (error) {
+					if (error) console.error(error)
+				})
 			}
 		}
 	}
@@ -180,5 +196,13 @@
 		background-color: #000;
 		opacity: 0.3;
 		top: 0;
+	}
+	#canvas{
+		width:3rem !important;
+		height:3rem !important;
+	}
+	#canvas2{
+		width:15rem !important;
+		height:15rem !important;
 	}
 </style>

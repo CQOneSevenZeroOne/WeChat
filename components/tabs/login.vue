@@ -42,7 +42,7 @@
 						data = JSON.parse(data);
 						if(data.length!=0){
 							_this.$store.state.id = data[0].id;
-							_this.$store.state.name = _this.name;
+							_this.$store.state.name = data[0].my_name;
 							location.href = "#/tab/wechat";
 						}
 						else{

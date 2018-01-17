@@ -42,7 +42,7 @@ app.post("/login",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
-	connect.query(`SELECT id FROM person_info where phone = '${req.body.username}' and password = '${req.body.password}'`, function(error, results, fields) {
+	connect.query(`SELECT * FROM person_info where phone = '${req.body.username}' and password = '${req.body.password}'`, function(error, results, fields) {
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});
@@ -57,7 +57,6 @@ app.post("/getSearchList",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 })
-<<<<<<< HEAD
 //修改名字
 app.post("/changeName",function(req,res){
 	//解决跨域问题
@@ -87,14 +86,13 @@ app.post("/getTrend",function(req,res){
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});
-=======
+})
 //聊天
 io.on("connection",function(socket){
 	socket.on("addUser",function(data){
 		console.log(socket.id);
 		console.log(data);
 	})
->>>>>>> ffceab58a13152cbac04f31f6e3a60785435a2f9
 })
 //监听端口
 server.listen(3000);

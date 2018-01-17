@@ -33,7 +33,9 @@
 				type:"post",
 				url:"http://localhost:3000/getMessAll",
 				data:{
-					id:Number(_this.$store.state.id)
+					id:Number(_this.$store.state.id 
+
+)
 				},
 				success(data){
 					data = JSON.parse(data);

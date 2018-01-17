@@ -22,7 +22,7 @@
 					<em>zhanglu</em>
 				</a>
 			</li>
-			<li>
+			<li @click="sexChange">
 				<a>
 					<span>二维码名片</span> 
 					<img src="../../img/chat-info-qr.png"/>
@@ -39,19 +39,34 @@
 				</h4>
 			</li>
 		</ul>
+		<p v-show="bool">
+			<vue-q-art :config="config"></vue-q-art>
+		</p>
+		<strong v-show="bool" @click="sexChange"></strong>
 	</div>
 	
 </template>
 
 <script>
+	import Vue from "vue";
+	import VueQArt from 'vue-qart';
+	import $ from 'jQuery';
 	export default{
 		data(){
 			return{
 				title:"个人信息",
 				name:"",
-				img:""
+				img:"",
+				bool:false,
+				config: {
+		            value: "1123456",
+		            imagePath: require('../../img/1.jpg'),
+		            filter: 'color',
+		            size:330
+		        }
 			}
 		},
+		components: {VueQArt},
 		mounted(){
 	    	this.name = this.$store.state.name
 	    	this.img = this.$store.state.img
@@ -62,6 +77,24 @@
 			},
 			toMore:function(){
 				location.href = "#/own/more";
+			},
+			sexChange:function(){
+				var _this = this;
+		    	$.ajax({
+					type:"post",
+					url:"http://localhost:3000/changeSex",
+					data:{
+						id:Number(_this.$store.state.id),
+						sex:_this.sex
+					},
+					success(data){
+						data = JSON.parse(data);
+						_this.bool = !_this.bool;
+					},
+					error(){
+						console.log('error');
+					}
+				});
 			}
 		}
 	}
@@ -133,5 +166,19 @@
 	}
 	.hight a img{
 		width:3.5rem;height: 3.5rem;
+	}
+	/*二维码弹出显示*/
+	p{
+		position: absolute;
+		left: 25%;top: 30%;
+		z-index: 3;
+	}
+	strong{
+		display: block;
+		position: absolute;
+		width: 100%;height: 100%;
+		background-color: #000;
+		opacity: 0.3;
+		top: 0;
 	}
 </style>

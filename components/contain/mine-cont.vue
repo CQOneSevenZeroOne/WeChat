@@ -1,12 +1,12 @@
 <template>
 	<div class="mine-cont">
-		<a class="margins">
+		<!--<a class="margins">
 			<div class="left">
 				<img src="../../img/me_more-my-bank-card.png"/>
 				<em>钱包</em>
 			</div>
 			<img src="../../img/right.jpg"/>
-		</a>
+		</a>-->
 		<a class="margins"  href="#/own/my_photo">
 			<div class="left">
 				<img src="../../img/me_more-my-album.png"/>

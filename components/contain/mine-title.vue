@@ -111,6 +111,7 @@
 	display: flex;
 	width: 100%;height: 7.5rem;
 	padding: 0.9rem;
+	box-sizing: border-box;
 	justify-content: space-between;
 }
 .mine-img{
@@ -122,7 +123,7 @@
 	border-radius: 0.4rem;
 }
 .mine-conts{
-	width: 100%;
+	width: 100%;height: 5.5rem;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;

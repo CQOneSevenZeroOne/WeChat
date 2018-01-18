@@ -3,6 +3,7 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var mysql = require("mysql");
+app.use(express.static('../public'));
 //创建数据库连接
 var connect = mysql.createConnection({
 	host:'10.40.153.73',
@@ -22,7 +23,7 @@ app.post("/getChatList",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
-	connect.query('SELECT * FROM chat', function(error, results, fields) {
+	connect.query('SELECT * FROM person_info', function(error, results, fields) {
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});
@@ -148,17 +149,34 @@ app.post("/addstrager",function(req,res){
 });
 //聊天
 io.on('connection', function (socket) {
+
     socket.on("addUser", function (data) {
-		connect.query(`update contact_info set socket_id = '${socket.id}'  where beizhu = '${data.chatName}'`, function(error, results, fields) {
+    	console.log('登录数据',data);
+		connect.query(`update person_info set socketid = '${socket.id}'  where id = '${data.id}'`, function(error, results, fields) {
 			if(error) throw error;
 		});
-		socket.emit('returnUser',socket.id);
 	})
-//	socket.on("sendMess",function(data){
-//		console.log(data);
+	socket.on("sendMess",function(data){
+		console.log('聊天数据',data);
 //		console.log('ss',data.message);
-//		io.sockets.sockets[data.id].emit('returnMess',data.message);
-//	})
+		connect.query(`select socketid from person_info  where id = '${data.tid}'`, function(error, results, fields) {
+			if(error) throw error;
+			console.log(results[0].socketid);
+			console.log(1);
+			io.sockets.sockets[results[0].socketid].emit('returnMess',data.message);
+			console.log(data.message);
+		});
+		
+	})
+})
+app.post("/getChatId",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`SELECT * FROM person_info where my_name = '${req.body.chatName}'`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
 })
 //监听端口
 server.listen(3000);

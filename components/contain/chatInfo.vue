@@ -8,8 +8,8 @@
 		</div>
 		<div class="chat-dialogue">
 			<p class="chatPic">
-				<img src="../../img/2-small.jpg" />
-				<span>你咬我啊i</span>
+				<img :src="chatphoto" />
+				<span v-text="chatName"></span>
 			</p>
 			<p class="jiaBox">
 				<img src="../../img/jia.png" />
@@ -48,7 +48,9 @@
 				isOpen:false,
 				isOpen1:false,
 				openImg:require('../../img/kai.png'),
-				closeImg:require('../../img/kaiguan.jpg')
+				closeImg:require('../../img/kaiguan.jpg'),
+				chatName:'',
+				chatphoto:''
 			}
 		},
 		methods:{
@@ -58,6 +60,10 @@
 			checkOpen1(){
 				this.isOpen1 = !this.isOpen1;
 			}
+		},
+		mounted(){
+			this.chatName = this.$store.state.chat_name;
+			this.chatphoto = this.$store.state.chat_photo;
 		}
 	}
 </script>

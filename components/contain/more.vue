@@ -56,6 +56,7 @@
 					success(data){
 						data = JSON.parse(data);
 						_this.bool = !_this.bool;
+						_this.$store.state.sex = _this.sex;
 					},
 					error(){
 						console.log('error');

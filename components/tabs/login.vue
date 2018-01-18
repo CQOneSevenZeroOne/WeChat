@@ -90,7 +90,7 @@ a{
 	h3{
 		line-height: 4.5rem;
 		background: #393a3f;
-		font-size: 1.8rem;
+		font-size: 2rem;
 		color: #fff;
 		font-weight: 500;
 		padding:0 1.2rem;
@@ -112,19 +112,22 @@ p{
 }
 p span{
 	float: left;
-	width: 4rem;height: 4rem;
+	width: 20%;height: 4rem;
+	font-size: 1.5rem;
 }
 p input{
-	border: 0;width: 15rem;
+	border: 0;width: 80%;
 	height: 3.5rem;
+	outline: none;
+	font-size: 2rem;
 }
 button{
 	width: 100%;
-	height: 2.5rem;
+	height: 3.5rem;
 	background-color: green;
 	color: #fff;
 	border: 0;
-	font-size: 1rem;
+	font-size: 2rem;
 	margin: 1rem 0;
 }
 .login div{

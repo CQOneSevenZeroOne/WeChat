@@ -9,7 +9,6 @@ import "weui";
 // 全局样式
 import "./template/base.css";
 import "./template/weui.min.css";
-import "./template/wechat.css";
 
 // 选项卡组件
 import mine from "./components/tabs/mine.vue";

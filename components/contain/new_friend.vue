@@ -2,7 +2,7 @@
 <div>
     <div class="_cover-top"  >
         <div class="top-back" >
-            <a href="#/tab/contact" style="color:white;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" >通讯录</div></a>
+            <a href="#/tab/contact" style="color:white;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" ><img src="../../img/leftsanjiao.png" style="width:12px;height:19px;line-height: 45px;vertical-align: middle;margin-right: 5px;"/>通讯录</div></a>
         </div>
         <div class="top-other" >
             <div slot="right" class="_align-right"  style="float:right;">
@@ -15,7 +15,7 @@
             </p>
         </div>
     </div>
-    <xsearch />
+    
     <div class="weui_cell" >
         <dl class="add-tel-address" >
             <dt >

@@ -114,7 +114,7 @@ p{
 p span{
 	float: left;
 	width: 20%;height: 4rem;
-	font-size: 1rem;
+	font-size:1rem;
 }
 p input{
 	border: 0;width: 80%;

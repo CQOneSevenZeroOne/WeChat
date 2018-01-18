@@ -35,18 +35,30 @@
 									<div class="weui-media-box__bd">
 										<h4 class="weui-media-box__title">{{item.contact_name}}</h4>
 										<p class="weui-media-box__desc">{{item.trends}}</p>
-										<p class="weui-media-box__desc"><img  :src="item.img"></p>
+										<p class="weui-media-box__desc"><img :src="item.img"></p>
 										<p class="weui-media-box__desc call">
 											<span id="show_time">{{item.time}}</span>
-											<span class="panel"><em class="Zan"><img src="../../img/点赞.png" alt="" />赞</em><em class="pinglun"><img src="../../img/comment.png" alt="" />评论</em></span>
-											<span class="dianZan">
+											<transition name="toggle">
+												<div v-show="isShowSideBar" class="comment_box">
+													<span class="panel">
+														<em class="Zan" @click="dianZan" >
+															<img src="../../img/xin.png" alt="" />赞
+														</em>
+														<em class="pinglun">
+															<img src="../../img/ping.png" alt="" />评论
+														</em>
+													</span>
+												</div>
+											</transition>
+											<span @click="showSide" class="dianZan">
 												<img src="../../img/comment.png"  />
 											</span>
 										</p>
+										<p v-show="bool" class="weui-media-box__desc name_info"><img src="../../img/star.png" alt="" />{{item.contact_name}}</p>
 									</div>
 								</a>
 							</div>
-							<div class="weui-panel__ft" >
+							<div class="weui-panel__ft">
 								<a @click="showMore" href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
 									<div class="weui-cell__bd">查看更多</div>
 									<span class="weui-cell__ft"></span>
@@ -62,40 +74,129 @@
 
 <script>
 	import $ from 'jQuery';
-	
 	export default {
 		data() {
 			return {
-				arr:[],
-				num:0
+				arr: [],
+				num: 0,
+				isShowSideBar: false,
+				bool: false
 			};
 		},
-		mounted:function(){
+		mounted: function() {
 			this.showMore();
 		},
-		methods:{
-			showMore(){
-				var _this=this;
+		methods: {
+			showMore() {
+				var _this = this;
 				this.num++;
 				$.ajax({
-					type:"post",
-					url:"http://localhost:3000/getFriendCircleTrend",
+					type: "post",
+					url: "http://localhost:3000/getFriendCircleTrend",
 					async: true,
 					dataType: "json",
-					data:{
-						id:_this.num
+					data: {
+						id: _this.num
 					},
-					success:function(data){
+					success: function(data) {
 						console.log(data)
-						_this.arr=_this.arr.concat(data);
+						_this.arr = _this.arr.concat(data);
 					}
 				});
+			},
+			showSide() {
+				this.isShowSideBar = !this.isShowSideBar;
+			},
+			dianZan() {
+				this.bool = !this.bool;
 			}
 		}
 	};
 </script>
 
 <style scoped>
+	._cover-top {
+		position: relative;
+		z-index: 2;
+		overflow: hidden;
+		height: 45px;
+		padding: 0 15px 0 10px;
+		line-height: 45px;
+		background: linear-gradient(180deg, #303036, #3c3b40);
+		opacity: 1;
+		color: #fff;
+		user-select: none;
+		-webkit-user-select: none;
+		transition: all .22s ease;
+	}
+	
+	._cover-top .top-back {
+		max-width: 85px;
+		float: left;
+	}
+	
+	._cover-top .top-back .icon-return-arrow {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	._ellipsis,
+	._ellipsis-3 {
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	._ellipsis {
+		white-space: nowrap;
+	}
+	
+	.iconfont {
+		font-family: iconfont!important;
+		font-size: 16px;
+		font-style: normal;
+		-webkit-font-smoothing: antialiased;
+		-webkit-text-stroke-width: .2px;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	
+	._cover-top .top-back .iconfont:before {
+		font-size: 20px;
+		vertical-align: middle;
+	}
+	
+	.icon-return-arrow:before {
+		content: "\E60A";
+	}
+	
+	:after,
+	 :before {
+		box-sizing: inherit;
+	}
+	
+	._cover-top .top-title {
+		padding: 0 8px;
+		overflow: hidden;
+		font-size: 18px;
+		justify-content: center;
+		text-align: center;
+	}
+	
+	._cover-top .top-title {
+		transition: all .2s ease;
+	}
+	
+	._effect {
+		opacity: 1;
+		transition: all .3s ease;
+	}
+	
+	._cover-top .top-title>p {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
 	._cover-content {
 		width: 100%;
 		padding-top: 0;
@@ -116,6 +217,12 @@
 		background-color: #ffffff;
 	}
 	
+	@font-face {
+		font-family: iconfont;
+		src: url("//at.alicdn.com/t/font_1474796923_6082804.eot");
+		src: url("//at.alicdn.com/t/font_1474796923_6082804.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1474796923_6082804.woff") format("woff"), url("//at.alicdn.com/t/font_1474796923_6082804.ttf") format("truetype"), url("//at.alicdn.com/t/font_1474796923_6082804.svg#iconfont") format("svg")
+	}
+	
 	.home-pic {
 		width: 100%;
 		margin-top: -90px;
@@ -127,11 +234,10 @@
 	
 	.home-pic-base {
 		position: absolute;
-		left: 0;
+		right: 12px;
 		bottom: -22px;
 		width: 100%;
 		height: 70px;
-		padding: 0 15px;
 	}
 	
 	.home-pic-base .top-pic {
@@ -179,11 +285,12 @@
 		height: 40px;
 		line-height: 40px;
 		margin-right: 0.4rem;
-		
 	}
-	.weui-media-box_appmsg .weui-media-box__hd img{
+	
+	.weui-media-box_appmsg .weui-media-box__hd img {
 		border-radius: 5px;
 	}
+	
 	.weui-media-box__title {
 		color: cornflowerblue;
 		font-size: 12px;
@@ -196,48 +303,109 @@
 		margin-top: 10px;
 	}
 	
-	.weui-media-box_appmsg{
-		align-items: flex-start; 
+	.weui-media-box_appmsg {
+		align-items: flex-start;
 	}
-	.call{
+	
+	.call {
 		overflow: hidden;
+		line-height: 35px;
+		height: 35px;
 	}
-	.call .dianZan{
+	
+	.call .dianZan {
 		float: right;
 	}
-	.call .dianZan img{
+	
+	.call .dianZan img {
 		width: 30px;
-		height:30px;
+		height: 30px;
 		margin-top: 4px;
 	}
-	.call .panel{
-		display: inline-block;
-	    width: 160px;
-	    height: 35px;
-	    background: #333333;
-	    margin-left: 55px;
-	    border-radius: 3px;
+	
+	.call .comment_box {
+		position: fixed;
+		width: 160px;
+		line-height: 35px;
+		height: 35px;
+		border-radius: 3px;
+		left: 163px;
+		margin-top: -37px;
 	}
-	.call .panel .Zan{
+	
+	.call .panel {
+		display: inline-block;
+		width: 160px;
+		height: 35px;
+		background: #333333;
+		line-height: 35px;
+		margin-right: -160px;
+	}
+	
+	.call .panel .Zan {
 		font-style: normal;
 		display: inline-block;
 		width: 60px;
 		height: 35px;
+		color: #fff;
+		line-height: 35px;
+		margin: 0 18px;
 	}
-	.call .panel .pinglun{
+	
+	.call .panel .pinglun {
 		font-style: normal;
 		display: inline-block;
 		width: 60px;
 		height: 35px;
+		color: #fff;
+		line-height: 35px;
 	}
-	.call .panel .Zan img{
-		height: 30px;
-		width: 30px;
-		z-index: 10;
+	
+	.call .panel .Zan img {
+		height: 18px;
+		width: 18px;
+		vertical-align: middle;
+		margin-right: 3px;
 	}
-	.call .panel .pinglun img{
-		height: 30px;
-		width: 30px;
-		z-index: 10;
+	
+	.call .panel .pinglun img {
+		height: 20px;
+		width: 20px;
+		vertical-align: middle;
+		margin-right: 3px;
+	}
+	
+	.name_info {
+		height: 25px;
+		line-height: 25px;
+		background: #EDEDED;
+		color: #86C4E5;
+		border-radius: 3px;
+		margin-top: 2px;
+	}
+	
+	.name_info img {
+		height: 15px;
+		width: 16px;
+		vertical-align: middle;
+		margin-right: 2px;
+		margin-left: 5px;
+	}
+	
+	.toggle-enter-active {
+		animation: move 1s;
+	}
+	
+	.toggle-leave-active {
+		animation: move .5s;
+	}
+	
+	@keyframes move {
+		from {
+			right: -160px
+		}
+		to {
+			right: 0
+		}
 	}
 </style>

@@ -32,7 +32,13 @@
 				chatImg:require('../img/chat.png'),
 				contactImg:require('../img/contact.png'),
 				disImg:require('../img/discovery.png'),
-				myImg:require('../img/mine.png')
+				myImg:require('../img/mine.png'),
+				changecolor:false
+			}
+		},
+		methods:{
+			change(){
+				this.changecolor=true;
 			}
 		}
 	}

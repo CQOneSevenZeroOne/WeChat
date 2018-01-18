@@ -7,7 +7,7 @@
 			<h4>
 				<span>微信号</span>
 				<p>
-					<em>cpyj</em>
+					<em v-text="wei_num">cpyj</em>
 				</p>
 			</h4>
 		</div>
@@ -16,7 +16,7 @@
 				<span>手机号</span>
 				<p>
 					<img src="../../img/locked.png"/>
-					<em>13368037646</em>
+					<em v-text="num">13368037646</em>
 				</p>
 			</h4>
 			
@@ -52,17 +52,45 @@
 </template>
 
 <script>
+	import $ from 'jQuery';
 	export default{
 		data(){
 			return{
-				title:"账号与安全"
+				title:"账号与安全",
+				bool:false,
+				sex:"",
+				sign:"",
+				addr:"",
+				wei_num:"",
+				num:""
 			}
 		},
 		methods:{
 			toMine:function(){
 				location.href = "#/own/sets";
 			}
-		}
+		},
+		mounted(){
+	    	var _this = this;
+	    	$.ajax({
+				type:"post",
+				url:"http://localhost:3000/getMessAll",
+				data:{
+					id:Number(_this.$store.state.id)
+				},
+				success(data){
+					data = JSON.parse(data);
+					if(data.length!=0){
+						//将数据库的微信号提出并显示
+						_this.num = data[0].phone
+						_this.wei_num = data[0].wei_num;
+					}
+				},
+				error(){
+					console.log('error');
+				}
+			});
+	   	}
 	}
 </script>
 

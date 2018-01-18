@@ -53,7 +53,7 @@
 								_this.$store.state.id = data[0].id;
 								_this.$store.state.sex = data[0].sex;
 								_this.$store.state.name = data[0].my_name;
-								_this.$store.state.my_photo = data[0].my_photo;
+								_this.$store.state.img = data[0].my_photo;
 								location.href = "#/tab/wechat";
 							}
 							else{
@@ -114,7 +114,7 @@ p{
 p span{
 	float: left;
 	width: 20%;height: 4rem;
-	font-size: 1rem;
+	font-size:1rem;
 }
 p input{
 	border: 0;width: 80%;

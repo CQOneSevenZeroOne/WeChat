@@ -147,6 +147,19 @@ app.post("/addstrager",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 });
+//删除添加了的联系人
+app.post("/deletestrager",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	var ar=req.body.Arr;
+	var oA=JSON.parse(ar);
+	var obj=oA[0];
+	connect.query(`DELETE FROM strager WHERE id='${obj.id}'`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+});
 //聊天
 io.on('connection', function (socket) {
 

@@ -9,10 +9,6 @@ import "weui";
 // 全局样式
 import "./template/base.css";
 import "./template/weui.min.css";
-<<<<<<< HEAD
-
-=======
->>>>>>> 35bb213fb009e9812511f125f8655caec0cae69e
 
 // 选项卡组件
 import mine from "./components/tabs/mine.vue";

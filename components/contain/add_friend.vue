@@ -5,7 +5,7 @@
             <a href="#/tab/contact" style="color:white;float: left;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" ><img src="../../img/leftsanjiao.png" style="width:12px;height:19px;line-height: 45px;vertical-align: middle;margin-right: 5px;"/>通讯录</div></a>
         </div>
         <div class="top-title _effect" style="width: 230px;">
-            <p >
+            <p>
                 <span style="color:white;">添加朋友</span>
             </p>
         </div>
@@ -89,11 +89,10 @@
 			<div class="weui-dialog"  v-show="bool">
 		    <div class="weui-dialog__bd">添加成功</div>
 		    <div class="weui-dialog__ft">
-		        <a href="#/tab/contact" class="weui-dialog__btn weui-dialog__btn_primary">知道了</a>
+		        <a href="#/tab/wechat" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
 		    </div>
     </div>
 		</div>
-		
 </div>
 </template>
 <script>
@@ -138,7 +137,17 @@
 						arr:JSON.stringify(self.searchArr)
 					},
 					success(data){
-			
+						$.ajax({
+							type:"post",
+							url:"http://localhost:3000/deletestrager",
+							dataType:'json',
+							data:{
+								Arr:JSON.stringify(self.searchArr)
+							},
+							error(){
+								console.log('error')
+							}
+						})
 					},
 					error(){
 						console.log('error')

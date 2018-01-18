@@ -223,12 +223,15 @@
 		display: inline-block;
 		width: 60px;
 		height: 35px;
+		color: #fff;
 	}
 	.call .panel .pinglun{
 		font-style: normal;
 		display: inline-block;
 		width: 60px;
 		height: 35px;
+		color: #fff;
+
 	}
 	.call .panel .Zan img{
 		height: 30px;

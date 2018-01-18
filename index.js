@@ -9,6 +9,13 @@ import "weui";
 // 全局样式
 import "./template/base.css";
 import "./template/weui.min.css";
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 35bb213fb009e9812511f125f8655caec0cae69e
+>>>>>>> deceabb03348f4e4b9b445cec69c53eaabb26c10
 
 // 选项卡组件
 import mine from "./components/tabs/mine.vue";
@@ -41,6 +48,7 @@ import yaoyiyao from "./components/contain/yao-yi-yao.vue";
 import piaoliuping from "./components/contain/piao-liu-ping.vue";
 import searchContent from "./components/contain/searchContent.vue";
 import my_photo from "./components/contain/my_photo.vue";
+import safe from "./components/contain/safe.vue";
 // 配置路由
 var router = new VueRouter({
 	routes: [
@@ -67,7 +75,7 @@ var router = new VueRouter({
 		 // 默认进入页面的时候跳转到
 		{
 			path: '/',
-			redirect: '/tab/wechat'
+			redirect: '/login'
 		},
 		//我的页面及其组件
 		{
@@ -105,6 +113,10 @@ var router = new VueRouter({
 				{
 					path:"my_photo",
 					component:my_photo
+				},
+				{
+					path:"safe",
+					component:safe
 				}
 			],
 			redirect: '/own/cont'
@@ -181,7 +193,8 @@ var store = new Vuex.Store({
         chat_name:"",
         chat_Id:'',
         my_photo:'',
-        socket_Id:''
+        chat_photo:'',
+        sex:""
     }
 })
 

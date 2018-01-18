@@ -8,7 +8,7 @@
 		</div>
 		<div class="chatContent">
 			<ul>
-				<li v-for="a in chatArr" :style="{'textAlign':a.status==0?'right':'left'}"><img :src="myphoto" :style="{'float':a.status==0?'right':'left'}" /><span v-text="a.message" :style="{'color':a.status==0?'#fff':'#333','background':a.status==0?'green':'#fff'}"></span></li>
+				<li v-for="a in chatArr" :style="{'textAlign':a.status==0?'right':'left'}"><img :src="a.status==0?myphoto:chatphoto" :style="{'float':a.status==0?'right':'left'}" /><span v-text="a.message" :style="{'color':a.status==0?'#fff':'#333','background':a.status==0?'green':'#fff'}"></span></li>
 			</ul>
 		</div>
 		<div class="chatFooter">
@@ -88,7 +88,7 @@
 			this.chatName = this.$store.state.chat_name;
 			this.myphoto = this.$store.state.my_photo;
 			this.chatphoto = this.$store.state.chat_photo;
-			console.log(this.$store.state.chat_photo)
+			console.log('',this.$store.state.chat_photo)
 			var _this = this;
 			this.socket.emit("addUser",{id:_this.$store.state.id})
 //			var socket = io("http://localhost:3000");

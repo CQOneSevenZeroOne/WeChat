@@ -2,7 +2,7 @@
   <div>
       <div class="_cover-top"  >
         <div class="top-back" >
-            <a href="#/tab/contact" style="color:white;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" >返回</div></a>
+            <a href="#/tab/contact" style="color:white;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" ><img src="../../img/leftsanjiao.png" style="width:12px;height:19px;line-height: 45px;vertical-align: middle;margin-right: 5px;"/>返回</div></a>
         </div>
         <a href="#/con/person_info_set">
        
@@ -49,7 +49,7 @@
             <div class="weui_cell_bd weui_cell_primary" >
                 <div >
                     <span >电话号码</span>&nbsp;&nbsp;
-                    <a v-text="a.phone" :href="a.phone"></a>
+                    <a v-text="a.phone" style="color:blue"></a>
                 </div>
             </div>
         </div>

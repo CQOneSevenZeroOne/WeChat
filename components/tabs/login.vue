@@ -53,6 +53,7 @@
 								_this.$store.state.id = data[0].id;
 								_this.$store.state.sex = data[0].sex;
 								_this.$store.state.name = data[0].my_name;
+								_this.$store.state.my_photo = data[0].my_photo;
 								location.href = "#/tab/wechat";
 							}
 							else{

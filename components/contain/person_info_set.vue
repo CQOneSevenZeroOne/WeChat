@@ -2,11 +2,11 @@
 <div>
   <div class="_cover-top"  >
         <div class="top-back" >
-            <a href="#/con/person_info" style="color:white;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" >返回</div></a>
+            <a href="#/con/person_info" style="color:white;float: left;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" ><img src="../../img/leftsanjiao.png" style="width:12px;height:19px;line-height: 45px;vertical-align: middle;margin-right: 5px;"/>返回</div></a>
         </div>
-        <div class="top-title _effect" >
+        <div class="top-title _effect" style="width: 230px;">
             <p >
-                <span>资料设置</span>
+                <span style="color:white;">资料设置</span>
             </p>
         </div>
     </div>
@@ -59,6 +59,12 @@
 </div>
 </template>
 <style>
+	._cover-top{
+	height: 45px;
+    padding: 0 15px 0 10px;
+    line-height: 45px;
+    background: linear-gradient(180deg,#303036,#3c3b40);
+    }
 ._cover-top .top-title {
     padding: 0 8px;
     overflow: hidden;

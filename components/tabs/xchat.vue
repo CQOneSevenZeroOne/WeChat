@@ -50,26 +50,26 @@
 			getChatName(index,photo){
 				var _this = this;
 				this.$store.state.chat_name = this.chatArr[index].chatname;
-				this.$store.state.my_photo = photo
-				$.ajax({
-					type:"post",
-					url:"http://localhost:3000/getChatId",
-					dataType:'json',
-					data:{
-						chatName:_this.$store.state.chat_name
-					},
-					success(data){
-						for(var i in data){
-							_this.$store.state.chat_Id=data[i].id,
-							_this.$store.state.chat_photo=data[i].my_photo
-						}
-						console.log(_this.$store.state.chat_Id);
-					}
-				});
-//				var socket = io("http://localhost:3000");
-//				socket.emit("addUser",{
-//					id:_this.$store.state.id
-//				})
+//				this.$store.state.my_photo = photo
+				console.log('自己的头像',_this.$store.state.my_photo);
+				_this.$store.state.chat_Id=this.chatArr[index].id;
+				_this.$store.state.chat_photo=this.chatArr[index].img;
+				console.log('别人的头像',_this.$store.state.chat_photo);
+//				$.ajax({
+//					type:"post",
+//					url:"http://localhost:3000/getChatId",
+//					dataType:'json',
+//					data:{
+//						chatName:_this.$store.state.chat_name
+//					},
+//					success(data){
+//						for(var i in data){
+//							_this.$store.state.chat_Id=data[i].id,
+//							_this.$store.state.chat_photo=data[i].my_photo
+//						}
+//						console.log('聊天的头像',_this.$store.state.chat_photo);
+//					}
+//				});
 			}
 		}
 	}

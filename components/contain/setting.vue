@@ -4,7 +4,7 @@
 			<img src="../../img/return.jpg" @click="toMine"/></a><span v-text="title"></span>
 		</h3>
 		<div class="cont">
-			<a href="##" class="margins">账号与安全</a>
+			<a href="#/own/safe" class="margins">账号与安全</a>
 			<a href="##">新消息提醒</a>
 			<a href="##">勿扰模式</a>
 			<a href="##">聊天</a>
@@ -13,7 +13,7 @@
 			<a href="##" class="margins">关于微信</a>
 			<a>帮助与反馈</a>
 			<a href="##">插件</a>
-			<a href="##" class="margins">退出</a>
+			<a href="##" class="margins" @click="quit">退出</a>
 		</div>
 	</div>
 </template>
@@ -28,6 +28,12 @@
 		methods:{
 			toMine:function(){
 				location.href = "#/tab/mine";
+			},
+			quit(){
+				console.log(this.$store.state.id)
+				this.$store.state.id = "";
+				console.log(this.$store.state.id)
+				location.href = "#/login";
 			}
 		}
 	}

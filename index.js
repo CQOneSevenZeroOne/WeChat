@@ -42,6 +42,7 @@ import yaoyiyao from "./components/contain/yao-yi-yao.vue";
 import piaoliuping from "./components/contain/piao-liu-ping.vue";
 import searchContent from "./components/contain/searchContent.vue";
 import my_photo from "./components/contain/my_photo.vue";
+import safe from "./components/contain/safe.vue";
 // 配置路由
 var router = new VueRouter({
 	routes: [
@@ -106,6 +107,10 @@ var router = new VueRouter({
 				{
 					path:"my_photo",
 					component:my_photo
+				},
+				{
+					path:"safe",
+					component:safe
 				}
 			],
 			redirect: '/own/cont'
@@ -182,7 +187,8 @@ var store = new Vuex.Store({
         chat_name:"",
         chat_Id:'',
         my_photo:'',
-        socket_Id:''
+        socket_Id:'',
+        sex:""
     }
 })
 

@@ -11,7 +11,9 @@
 				<span>密码：</span><input type="password" id="password"v-model="password" />
 			</p>
 			<button @click="login">登录</button>
+			<em v-text="prompts" v-show="bool">用户名或密码错误</em>
 		</div>
+		
 	</div>
 </template>
 
@@ -22,7 +24,9 @@
 			return{
 				title:"登录微信",
 				name:"",
-				password:""
+				password:"",
+				prompts:"",
+				bool:false
 			}
 		},
 		mounted(){
@@ -31,28 +35,38 @@
 	  	methods:{
 	   		login:function(){
 	   			var _this = this;
-	   			$.ajax({
-					type:"post",
-					url:"http://localhost:3000/login",
-					data:{
-						username:_this.name,
-						password:_this.password
-					},
-					success(data){
-						data = JSON.parse(data);
-						if(data.length!=0){
-							_this.$store.state.id = data[0].id;
-							_this.$store.state.name = data[0].my_name;
-							location.href = "#/tab/wechat";
+	   			if(this.name.length==0||this.password.length==0){
+	   				this.bool = true;
+	   				this.prompts = "用户名或密码不可为空！"
+	   			}else{
+//	   				this.bool = false;
+	   				$.ajax({
+						type:"post",
+						url:"http://localhost:3000/login",
+						data:{
+							username:_this.name,
+							password:_this.password
+						},
+						success(data){
+							data = JSON.parse(data);
+							if(data.length!=0){
+								console.log(data[0].id)
+								_this.$store.state.id = data[0].id;
+								_this.$store.state.sex = data[0].sex;
+								_this.$store.state.name = data[0].my_name;
+								location.href = "#/tab/wechat";
+							}
+							else{
+								_this.bool = true;
+	   							_this.prompts = "用户名或密码错误！"
+							}
+						},
+						error(){
+							console.log('error');
 						}
-						else{
-							console.log("用户名或密码错误")
-						}
-					},
-					error(){
-						console.log('error');
-					}
-				});
+					});
+	   			}
+	   			
 	   		}
 	   	}
 	}
@@ -116,5 +130,13 @@ button{
 }
 .login div{
 	padding: 0 2rem;
+}
+.login div em{
+	display: block;
+	width: 100%;height: 4rem;
+	text-align: center;
+	font-size: 2.2rem;line-height: 4rem;
+	color: red;
+	font-style: normal;
 }
 </style>

@@ -65,6 +65,7 @@
 		},
 		mounted(){
 	    	var _this = this;
+	    	_this.sex = _this.$store.state.sex;
 	    	$.ajax({
 				type:"post",
 				url:"http://localhost:3000/getMessAll",
@@ -74,8 +75,9 @@
 				success(data){
 					data = JSON.parse(data);
 					if(data.length!=0){
+						console.log(data[0].sex)
 						//将数据库的姓名提出显示
-						_this.sex = data[0].sex;
+//						_this.sex = data[0].sex;
 						//将数据库的微信号提出并显示
 						_this.sign = data[0].sign
 						//将数据库的头像提出并显示

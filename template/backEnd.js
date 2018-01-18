@@ -63,7 +63,7 @@ app.post("/getFriendCircleTrend",function(req,res){
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
 	console.log(req.body.id)
-	var a=`select * from contact_trend where  id>=${req.body.id} order by id asc limit 1`;
+	var a=`select * from contact_trend where  id>=${req.body.id} order by time asc limit 1`;
 	console.log(a)
 	connect.query(a, function(error, results, fields) {
 		if(error) throw error;

@@ -21,6 +21,7 @@
     "jquery": "^3.2.1",
     "json-loader": "^0.5.7",
     "mysql": "^2.15.0",
+    "qrcode": "^1.2.0",
     "socket.io": "^2.0.4",
     "style-loader": "^0.19.1",
     "text-loader": "^0.0.1",
@@ -34,7 +35,5 @@
     "webpack-dev-server": "^2.10.1",
     "weui": "^1.1.2"
   },
-  "dependencies": {
-    "vue-qart": "^2.1.1"
-  }
+  "dependencies": {}
 }

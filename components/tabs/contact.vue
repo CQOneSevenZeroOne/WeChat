@@ -34,10 +34,10 @@
                 </div>
             </a>
         </div>
-        <div class="contact-friends" >
+        <div class="contact-friends " >
             <p class="contact-alpha" >H</p>
             <a href="#/con/person_info" style="color:black" v-for="(items,index) in arr" @click="showinfo(index)">
-                <div class="weui_cells weui_cells_access" >
+                <div class="weui_cells weui_cells_access" style="border-bottom: 1px solid #D9D9D9;">
                     <div class="weui_cell"  style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
                         <div class="weui_cell_hd" >
                             <img  :src="items.photo">
@@ -48,6 +48,7 @@
                     </div>
                 </div>
             </a>
+            
         </div>
     </div>
 </div>
@@ -145,6 +146,9 @@
     width: 35px;
     margin-right: 5px;
     display: block;
+}
+.weui_cell:before{
+	    border-top: 1px solid #d9d9d9;
 }
 </style>
 

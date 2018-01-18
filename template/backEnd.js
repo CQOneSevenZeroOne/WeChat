@@ -121,14 +121,27 @@ app.post("/getTrend",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 });
-//添加朋友
+//搜索朋友
 app.post("/getstrager",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
-	var str=`SELECT * FROM strager where phone=${req.body.strager_num}`;
-	console.log(str)
+	var str=`SELECT * FROM strager where phone like '%${req.body.strager_num}%'`;
 	connect.query(str, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+});
+//添加朋友
+app.post("/addstrager",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	var arr=req.body.arr;
+	var aA=JSON.parse(arr);
+	var Obj=aA[0];
+	var str1=`INSERT INTO contact_info(id, contact_name, photo, contact_num, beizhu, phone, address) VALUES ('${Obj.id}','${Obj.contact_name}','${Obj.photo}','${Obj.contact_num}','${Obj.beizhu}','${Obj.phone}','${Obj.address}')`;
+	connect.query(str1, function(error, results, fields) {
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});

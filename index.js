@@ -180,12 +180,9 @@ var store = new Vuex.Store({
         wei_num:"",
         img:"",
         chat_name:"",
-<<<<<<< HEAD
         chat_Id:'',
-        my_photo:''
-=======
+        my_photo:'',
         socket_Id:''
->>>>>>> 4e746e7bb4eaa22fbb803ec18afbd7d66badcc1b
     }
 })
 

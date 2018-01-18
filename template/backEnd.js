@@ -57,7 +57,6 @@ app.post("/getSearchList",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 })
-<<<<<<< HEAD
 //获取朋友圈动态
 app.post("/getFriendCircleTrend",function(req,res){
 	//解决跨域问题
@@ -72,27 +71,26 @@ app.post("/getFriendCircleTrend",function(req,res){
 		
 	});
 })
-=======
-<<<<<<< HEAD
 //显示联系人列表
 app.post("/getcontactList",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
 	connect.query(`SELECT * FROM contact_info`, function(error, results, fields) {
-=======
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	})
+});
 //修改名字
 app.post("/changeName",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
 	connect.query(`UPDATE person_info SET my_name='${req.body.name}' WHERE id = '${req.body.id}'`, function(error, results, fields) {
->>>>>>> 753a61adbffcc5c2dc672261d4f0532b9b9f92d1
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});
 })
-<<<<<<< HEAD
 //跳转到联系人信息页面
 app.post("/showinfo",function(req,res){
 	//解决跨域问题
@@ -103,7 +101,6 @@ app.post("/showinfo",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 });
-=======
 //修改性别
 app.post("/changeSex",function(req,res){
 	//解决跨域问题
@@ -123,23 +120,6 @@ app.post("/getTrend",function(req,res){
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});
-<<<<<<< HEAD
-});
-=======
-})
->>>>>>> 4e746e7bb4eaa22fbb803ec18afbd7d66badcc1b
->>>>>>> 753a61adbffcc5c2dc672261d4f0532b9b9f92d1
-//聊天
-var userList = [];
-io.on("connection",function(socket){
-	socket.on("addUser",function(data){
-		console.log(socket.id);
-		console.log(data);
-<<<<<<< HEAD
-		connect.query(`update contact_info set socket_id = '${socket.id}'  where beizhu = '${data.chatName}'`, function(error, results, fields) {
-			if(error) throw error;
-		});	
-	})
 });
 //添加朋友
 app.post("/getstrager",function(req,res){
@@ -153,24 +133,20 @@ app.post("/getstrager",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 });
-=======
-		connect.query(`update person_info set socketid='${socket.id}' where id='${data.id}'`, function(error, results, fields) {
+//聊天
+io.on('connection', function (socket) {
+    socket.on("addUser", function (data) {
+		connect.query(`update contact_info set socket_id = '${socket.id}'  where beizhu = '${data.chatName}'`, function(error, results, fields) {
 			if(error) throw error;
 		});
-//		console.log(userList);
-//		socket.emit('returnUser',socket.id);
+		socket.emit('returnUser',socket.id);
 	})
-<<<<<<< HEAD
 //	socket.on("sendMess",function(data){
 //		console.log(data);
 //		console.log('ss',data.message);
 //		io.sockets.sockets[data.id].emit('returnMess',data.message);
 //	})
-=======
->>>>>>> 4e746e7bb4eaa22fbb803ec18afbd7d66badcc1b
 })
->>>>>>> 753a61adbffcc5c2dc672261d4f0532b9b9f92d1
->>>>>>> 901f5edefbbedb8e1db55373527d5230b8a85bf3
 //监听端口
 server.listen(3000);
 console.log("开启服务器")

@@ -15,16 +15,16 @@
 				</div>
 			</div>
 			<div class="_cover-content _effect">
-				<div class="sao-yi-sao-panel">
-					<div class="scan-qr-code">
+				<div class="sao-yi-sao-panel" >
+					<div :class="toggle">
 						<div class="frame"> <span class="green-line"></span> <span class="left-top"></span> <span class="right-top"></span> <span class="left-bottom"></span> <span class="right-bottom"></span> </div>
 						<div class="desc">
-							<p>将二维码/条码放入框内,即可自动扫描</p>
+							<p v-text="txt"></p>
 						</div>
 					</div>
 				</div>
 				<ul class="sao-yi-sao-footer">
-					<li class="scan-qr-code current" :style='{"-webkit-tap-highlight-color":aa.id==id?"rgba(0, 0, 0, 0)":""}' @click="show(aa.id)" v-for="aa in name">
+					<li class="scan-qr-code current" :style='{"-webkit-tap-highlight-color":aa.id==id?"rgba(0, 0, 0, 0)":""}' @click="show(aa)" v-for="aa in name">
 						<div>
 							<img :src="aa.id==id?aa.afImg:aa.beImg" />
 						</div>
@@ -46,7 +46,8 @@
 						footer: "扫码",
 						beImg: require("../../img/sao-yi-sao/scan-qr-code.png"),
 						afImg: require("../../img/sao-yi-sao/scan-qr-code_hl.png"),
-						panel: "scan-qr-code"
+						panel: "scan-qr-code",
+						text: '将二维码/条码放入框内,即可自动扫描'
 					},
 					{
 						id: 2,
@@ -54,7 +55,8 @@
 						footer: "封面",
 						beImg: require("../../img/sao-yi-sao/scan-book.png"),
 						afImg: require("../../img/sao-yi-sao/scan-book_hl.png"),
-						panel: "scan-book"
+						panel: "scan-book",
+						text: '讲书、CD、电影海报放入框内,即可自动扫描'
 					},
 					{
 						id: 3,
@@ -62,7 +64,8 @@
 						footer: "街景",
 						beImg: require("../../img/sao-yi-sao/scan-street.png"),
 						afImg: require("../../img/sao-yi-sao/scan-street_hl.png"),
-						panel: "scan-street"
+						panel: "scan-street",
+						text: '扫一下周边环境,即可自动扫描'
 					},
 					{
 						id: 4,
@@ -70,17 +73,20 @@
 						footer: "翻译",
 						beImg: require("../../img/sao-yi-sao/scan-word.png"),
 						afImg: require("../../img/sao-yi-sao/scan-word_hl.png"),
-						panel: "scan-word"
+						panel: "scan-word",
+						text: '将英文单词放入框内'
 					}
 				],
-				id: 1
+				id: 1,
+				toggle:'scan-qr-code',
+				txt:'将二维码/条码放入框内,即可自动扫描'
 			}
 		},
 		methods: {
-			show(id) {
-
-				this.id = id;
-				console.log(this.id)
+			show(obj) {
+				this.id = obj.id;
+				this.toggle = obj.panel;
+				this.txt=obj.text;
 			}
 		}
 	}
@@ -265,25 +271,25 @@
 		}
 	}
 	
-	.sao-yi-sao-panel .scan-qr-code .frame {
+	.sao-yi-sao-panel .scan-qr-code  .frame{
 		width: 70%;
 		padding-top: 70%;
 		height: 0;
 	}
 	
-	.sao-yi-sao-panel .scan-book .frame {
+	.sao-yi-sao-panel .scan-book  .frame{
 		width: 90%;
 		padding-top: 100%;
 		height: 0;
 	}
 	
-	.sao-yi-sao-panel .scan-street .frame {
+	.sao-yi-sao-panel .scan-street  .frame{
 		width: 90%;
 		padding-top: 100%;
 		height: 0;
 	}
 	
-	.sao-yi-sao-panel .scan-word .frame {
+	.sao-yi-sao-panel .scan-word  .frame{
 		width: 50%;
 		height: 50px;
 	}
@@ -384,7 +390,9 @@
 		height: 2px;
 		background-color: #09bb07;
 	}
-	
+	.sao-yi-sao-panel .desc p{
+		color: #fff;
+	}
 	.sao-yi-sao-footer {
 		display: flex;
 		justify-content: center;

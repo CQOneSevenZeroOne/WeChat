@@ -50,7 +50,6 @@
 						success(data){
 							data = JSON.parse(data);
 							if(data.length!=0){
-								console.log(data[0].id)
 								_this.$store.state.id = data[0].id;
 								_this.$store.state.sex = data[0].sex;
 								_this.$store.state.name = data[0].my_name;

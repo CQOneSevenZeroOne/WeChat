@@ -1,6 +1,6 @@
 <template>
 	<div class="chatBox">
-		<a href="#/chatdetail" class="weui-cell" v-for="(a,index) in chatArr" @click="getChatName(index,a.my_photo)" :data-img='a.my_photo'>
+		<a href="#/chatdetail" class="weui-cell" v-for="(a,index) in chatArr" @click="getChatName(index,a.img)">
 	        <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
 	            <img :src="a.img" style="width: 50px;display: block">
 	            <!--<span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</span>-->
@@ -16,7 +16,7 @@
 
 <script>
 	import $ from 'jQuery';
-	import io from '../../template/socket.io.js';
+//	import io from '../../template/socket.io.js';
 	export default {
 		data(){
 			return {
@@ -33,11 +33,10 @@
 					for(var i in obj){
 						_this.chatArr.push(
 							{
-								'chatname':obj[i].chatname,
-								'content':obj[i].mycont,
-								img:obj[i].youphoto,
-								socketId:obj[i].socketid,
-								my_photo:obj[i].anotherphoto
+								id:obj[i].id,
+								chatname:obj[i].my_name,
+								content:obj[i].sign,
+								img:obj[i].my_photo,
 							}
 						);
 					}
@@ -49,13 +48,28 @@
 		},
 		methods:{
 			getChatName(index,photo){
-				this.$store.state.chat_name = $(".chatName").eq(index).html();
-				this.$store.state.my_photo = photo
 				var _this = this;
-				var socket = io("http://localhost:3000");
-				socket.emit("addUser",{
-					id:this.$store.state.id
-				})
+				this.$store.state.chat_name = this.chatArr[index].chatname;
+				this.$store.state.my_photo = photo
+				$.ajax({
+					type:"post",
+					url:"http://localhost:3000/getChatId",
+					dataType:'json',
+					data:{
+						chatName:_this.$store.state.chat_name
+					},
+					success(data){
+						for(var i in data){
+							_this.$store.state.chat_Id=data[i].id,
+							_this.$store.state.chat_photo=data[i].my_photo
+						}
+						console.log(_this.$store.state.chat_Id);
+					}
+				});
+//				var socket = io("http://localhost:3000");
+//				socket.emit("addUser",{
+//					id:_this.$store.state.id
+//				})
 			}
 		}
 	}
@@ -64,6 +78,7 @@
 <style scoped>
 	.chatBox{
 		background:#fff;
+		margin-bottom: 55px;
 	}
 	.weui-cell{
 		border-bottom:1px solid #dedede;

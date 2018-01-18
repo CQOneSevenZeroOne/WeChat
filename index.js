@@ -9,7 +9,7 @@ import "weui";
 // 全局样式
 import "./template/base.css";
 import "./template/weui.min.css";
-import "./template/wechat.css";
+/*import "./template/wechat.css";*/
 
 // 选项卡组件
 import mine from "./components/tabs/mine.vue";
@@ -68,7 +68,7 @@ var router = new VueRouter({
 		 // 默认进入页面的时候跳转到
 		{
 			path: '/',
-			redirect: '/tab/wechat'
+			redirect: '/login'
 		},
 		//我的页面及其组件
 		{
@@ -182,7 +182,7 @@ var store = new Vuex.Store({
         chat_name:"",
         chat_Id:'',
         my_photo:'',
-        socket_Id:''
+        chat_photo:''
     }
 })
 

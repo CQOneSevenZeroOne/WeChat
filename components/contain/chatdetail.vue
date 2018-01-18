@@ -3,12 +3,12 @@
 		<div class="chatTitle">
 			<p>
 				<a href="#/tab/wechat"><img src="../../img/leftsanjiao.png" /></a>微信</p>
-			<span v-text="chatName" :data-id="socketId"></span>
+			<span v-text="chatName"></span>
 			<a href="#/chatInfo"><img src="../../img/icon-ren.png" alt="" /></a>
 		</div>
 		<div class="chatContent">
 			<ul>
-				<li v-for="a in chatArr" ><img :src="myphoto" /><span v-text="a"></span></li>
+				<li v-for="a in chatArr" :style="{'textAlign':a.status==0?'right':'left'}"><img :src="myphoto" :style="{'float':a.status==0?'right':'left'}" /><span v-text="a.message" :style="{'color':a.status==0?'#fff':'#333','background':a.status==0?'green':'#fff'}"></span></li>
 			</ul>
 		</div>
 		<div class="chatFooter">
@@ -47,10 +47,11 @@
 				isMouseDown: false,
 				isMouseUp: true,
 				chatName:'',
-				socketId:'',
 				sendData:'',
 				chatArr:[],
-				myphoto:''
+				myphoto:'',
+				chatphoto:'',
+				socket:io("http://localhost:3000")
 			}
 		},
 		methods: {
@@ -67,14 +68,17 @@
 			},
 			sendMessage(){
 				var _this = this;
-				var socket = io("http://localhost:3000");
-				socket.emit("sendMess",{
+				this.socket.emit("sendMess",{
 					//发送的消息
 					message:_this.sendData,
 					//聊天的id
-					id:_this.$store.state.id,
-					//聊天的名字
+					tid:_this.$store.state.chat_Id,
+					//登录名
 					name:_this.$store.state.name
+				})
+				this.chatArr.push({
+					message:this.sendData,
+					status:0
 				})
 				$("#mess").val('');
 				this.sendData = $("#mess").val();
@@ -83,21 +87,22 @@
 		mounted(){
 			this.chatName = this.$store.state.chat_name;
 			this.myphoto = this.$store.state.my_photo;
+			this.chatphoto = this.$store.state.chat_photo;
+			console.log(this.$store.state.chat_photo)
 			var _this = this;
-			var socket = io("http://localhost:3000");
+			this.socket.emit("addUser",{id:_this.$store.state.id})
+//			var socket = io("http://localhost:3000");
 //			socket.emit("addUser",{
 //				chatName:this.$store.state.chat_name,
 //				username:this.$store.state.name
 //			})
-//			socket.on('returnUser',function(data){
-//					_this.$store.state.socket_Id = data;
-//					_this.socketId = _this.$store.state.socket_Id;
-//					console.log('要聊天的id为：',_this.socketId);
-//			})
-//			socket.on('returnMess',function(data){
-//				console.log('返回',data);
-//				_this.chatArr.push(data);
-//			})
+			this.socket.on('returnMess',function(data){
+				console.log('返回'+data);
+				_this.chatArr.push({
+					message:data,
+					status:1
+				});
+			})
 		}
 	}
 </script>
@@ -110,8 +115,12 @@
 		color: #fff;
 		flex-direction: row;
 		justify-content: space-between;
-		padding: 0 10px;
 		font-size: 16px;
+		position: fixed;
+		top:0;
+		left: 0;
+		width: 100%;
+		z-index: 11;
 	}
 	
 	.chatTitle p img {
@@ -124,6 +133,7 @@
 	}
 	.chatContent{
 		padding: 15px;
+		margin: 46px 0;
 	}
 	.chatContent li img{
 		width: 40px;
@@ -133,17 +143,20 @@
 	.chatContent li {
 		overflow: hidden;
 		padding-bottom: 20px;
+		font-size: 14px;
 	}
 	.chatContent li span{
 		display: inline-block;
 		padding: 0 10px;
 		line-height: 26px;
-		color: #fff;
-		background: green;
+		color: #333;
+		background: #fff;
 		width: 100px;
 		border-radius: 4px;
 		margin-left: 10px;
+		margin-right: 10px;
    		 margin-top: 10px;
+   		 text-align: left;
 	}
 	.chatFooter {
 		position: fixed;

@@ -148,10 +148,7 @@ io.on('connection', function (socket) {
 //		console.log('ss',data.message);
 		connect.query(`select socketid from person_info  where id = '${data.tid}'`, function(error, results, fields) {
 			if(error) throw error;
-			console.log(results[0].socketid);
-			console.log(1);
 			io.sockets.sockets[results[0].socketid].emit('returnMess',data.message);
-			console.log(data.message);
 		});
 		
 	})
@@ -161,6 +158,24 @@ app.post("/getChatId",function(req,res){
 	res.append("Access-Control-Allow-Origin","*");
 	//连接后执行相应功能
 	connect.query(`SELECT * FROM person_info where my_name = '${req.body.chatName}'`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
+app.post("/saveChatInfo",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`INSERT INTO chat( username, chatname, mycont, sendtime) VALUES('${req.body.username}','${req.body.chatname}','${req.body.message}','${req.body.time}')`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
+app.post("/getMyChat",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`SELECT * FROM chat where username = '${req.body.username}' and chatname = '${req.body.chatname}'`, function(error, results, fields) {
 		if(error) throw error;
 		res.send(JSON.stringify(results));
 	});

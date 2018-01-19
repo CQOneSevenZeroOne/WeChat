@@ -51,6 +51,7 @@
 				chatArr:[],
 				myphoto:'',
 				chatphoto:'',
+				insertId:'',
 				socket:io("http://localhost:3000")
 			}
 		},
@@ -103,7 +104,10 @@
 						message:_this.sendData,
 						username:_this.$store.state.name,
 						chatname:_this.chatName,
-						time:_this.stringTime('-')
+						time:_this.stringTime('-'),
+					},
+					success(data){
+						_this.insertId = data.insertId;
 					}
 				});
 				$("#mess").val('');
@@ -131,6 +135,16 @@
 					message:data,
 					status:1
 				});
+				$.ajax({
+					type:"post",
+					url:"http://localhost:3000/saveReturnMess",
+					async:true,
+					data:{
+						id : _this.insertId,
+						returnMess:data,
+						time:_this.stringTime('-')
+					}
+				});
 			})
 			var _this = this;
 			//从数据库拿聊天的数据
@@ -144,7 +158,16 @@
 					chatname:_this.$store.state.chat_name
 				},
 				success(data){
-					console.log(data);
+					for(var i in data){
+						_this.chatArr.push({
+							message:data[i].mycont,
+							status:0
+						});
+						_this.chatArr.push({
+							message:data[i].youcont,
+							status:1
+						});
+					}
 				}
 			});
 		}

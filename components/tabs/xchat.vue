@@ -51,10 +51,8 @@
 				var _this = this;
 				this.$store.state.chat_name = this.chatArr[index].chatname;
 //				this.$store.state.my_photo = photo
-				console.log('自己的头像',_this.$store.state.img);
 				_this.$store.state.chat_Id=this.chatArr[index].id;
 				_this.$store.state.chat_photo=this.chatArr[index].img;
-				console.log('别人的头像',_this.$store.state.chat_photo);
 //				$.ajax({
 //					type:"post",
 //					url:"http://localhost:3000/getChatId",

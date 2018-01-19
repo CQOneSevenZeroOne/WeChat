@@ -188,6 +188,7 @@ app.post("/getChatId",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 })
+//存聊天记录
 app.post("/saveChatInfo",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");
@@ -197,6 +198,17 @@ app.post("/saveChatInfo",function(req,res){
 		res.send(JSON.stringify(results));
 	});
 })
+//将返回数据存入数据库
+app.post("/saveReturnMess",function(req,res){
+	//解决跨域问题
+	res.append("Access-Control-Allow-Origin","*");
+	//连接后执行相应功能
+	connect.query(`update chat set youcont = '${req.body.returnMess}', chattime = '${req.body.time}' where id = '${req.body.id}'`, function(error, results, fields) {
+		if(error) throw error;
+		res.send(JSON.stringify(results));
+	});
+})
+//获取聊天记录
 app.post("/getMyChat",function(req,res){
 	//解决跨域问题
 	res.append("Access-Control-Allow-Origin","*");

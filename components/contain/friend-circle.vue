@@ -21,9 +21,9 @@
 						<header class="home-pic">
 							<div class="home-pic-base">
 								<div class="top-pic">
-									<div class="top-pic-inner"> </div>
+									<div class="top-pic-inner"><img :src="photo" style="width: 100%;"/></div>
 								</div>
-								<div class="top-name _ellipsis">Mrs liu</div>
+								<div class="top-name _ellipsis" v-text="name"></div>
 							</div>
 						</header>
 						<section class="home-content">
@@ -80,7 +80,9 @@
 				arr: [],
 				num: 0,
 				isShowSideBar: false,
-				bool: false
+				bool: false,
+				photo:this.$store.state.img,
+				name:this.$store.state.name,
 			};
 		},
 		mounted: function() {
@@ -88,6 +90,7 @@
 		},
 		methods: {
 			showMore() {
+				console.log(this.$store.state)
 				var _this = this;
 				this.num++;
 				$.ajax({
@@ -97,16 +100,18 @@
 					dataType: "json",
 					data: {
 						id: _this.num
+						
 					},
 					success: function(data) {
-						console.log(data)
+						//console.log(data)
+						
 						_this.arr = _this.arr.concat(data);
 					}
 				});
 			},
 			showSide() {
 				this.isShowSideBar = !this.isShowSideBar;
-				console.log(this.isShowSideBar)
+				//console.log(this.isShowSideBar)
 			},
 			dianZan() {
 				this.bool = !this.bool;
@@ -271,7 +276,7 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center center;
-		background-image: url(../../img/touxiang.jpg);
+		
 	}
 	
 	.home-content {

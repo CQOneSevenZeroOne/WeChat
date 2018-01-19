@@ -39,8 +39,8 @@
 										<p class="weui-media-box__desc call">
 											<span id="show_time">{{item.time}}</span>
 											<transition name="toggle">
-												<div v-show="isShowSideBar" class="comment_box">
-													<span class="panel">
+												<div class="box_panel">
+													<span class="panel" v-show="isShowSideBar" >
 														<em class="Zan" @click="dianZan" >
 															<img src="../../img/xin.png" alt="" />赞
 														</em>
@@ -106,9 +106,12 @@
 			},
 			showSide() {
 				this.isShowSideBar = !this.isShowSideBar;
+				console.log(this.isShowSideBar)
 			},
 			dianZan() {
 				this.bool = !this.bool;
+				this.isShowSideBar = false;
+				
 			}
 		}
 	};
@@ -228,7 +231,7 @@
 		margin-top: -90px;
 		position: relative;
 		height: 370px;
-		background: url(../../img/find-bg.png) no-repeat center center;
+		background: url(../../img/maomao.jpg) no-repeat center center;
 		background-size: cover;
 	}
 	
@@ -311,10 +314,15 @@
 		overflow: hidden;
 		line-height: 35px;
 		height: 35px;
+		position: relative;
+		border-radius: 3px;
 	}
 	
 	.call .dianZan {
-		float: right;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		left: 274px;
 	}
 	
 	.call .dianZan img {
@@ -322,24 +330,25 @@
 		height: 30px;
 		margin-top: 4px;
 	}
-	
-	.call .comment_box {
-		position: fixed;
+	.call .box_panel {
+		position: absolute;
+		left: 112px;
+		top: 0;
+		display: inline-block;
 		width: 160px;
-		line-height: 35px;
 		height: 35px;
-		border-radius: 3px;
-		left: 163px;
-		margin-top: -37px;
+		/*background: #333333;*/
+		line-height: 35px;
 	}
-	
-	.call .panel {
+	.call .box_panel .panel {
+		position: absolute;
+		left: 0px;
+		top: 0;
 		display: inline-block;
 		width: 160px;
 		height: 35px;
 		background: #333333;
 		line-height: 35px;
-		margin-right: -160px;
 	}
 	
 	.call .panel .Zan {
@@ -392,20 +401,20 @@
 		margin-left: 5px;
 	}
 	
-	.toggle-enter-active {
-		animation: move 1s;
+	/*.toggle-enter-active {
+		animation: move 3s;
 	}
 	
 	.toggle-leave-active {
-		animation: move .5s;
+		animation: move 3s;
 	}
 	
 	@keyframes move {
 		from {
-			right: -160px
+			left: 200px
 		}
 		to {
-			right: 0
+			left: 114px
 		}
-	}
+	}*/
 </style>

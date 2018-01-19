@@ -11,7 +11,7 @@
 					<div class="_align-right"> <span class="iconfont"></span> </div>
 				</div>
 				<div class="top-title _effect">
-					<p> <span>摇一摇</span> </p>
+					<p v-for="arr in name"> <span v-text="arr.title" v-show="arr.id==id">摇一摇</span> </p>
 				</div>
 			</div>
 			<div class="_cover-content _effect">
@@ -19,17 +19,9 @@
 					<div class="mobile-hand"></div>
 				</div>
 				<ul class="yao-yi-yao-footer">
-					<li class="people" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-						<div></div>
-						<p>人</p>
-					</li>
-					<li class="music" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-						<div></div>
-						<p>歌曲</p>
-					</li>
-					<li class="tv current" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-						<div></div>
-						<p>电视</p>
+					<li @click="show(arr)" v-for="arr in name" class="people" style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+						<div><img :src="arr.id==id?arr.afImg:arr.beImg" /></div>
+						<p v-text="arr.footer" :style="{'color':arr.id==id?'#09bb07':''}"></p>
 					</li>
 				</ul>
 			</div>
@@ -38,6 +30,43 @@
 </template>
 
 <script>
+	export default{
+		data(){
+			return{
+				name:[
+					{
+						id:1,
+						title:"摇一摇",
+						footer:"人",
+						beImg:require("../../img/yao-yi-yao/shake_icon_people.png"),
+						afImg:require("../../img/yao-yi-yao/shake_icon_people-hl.png")
+					},
+					{
+						id:2,
+						title:"摇歌曲",
+						footer:"歌曲",
+						beImg:require("../../img/yao-yi-yao/shake_icon_music.png"),
+						afImg:require("../../img/yao-yi-yao/shake_icon_music-hl.png")
+					},
+					{
+						id:3,
+						title:"摇电视",
+						footer:"电视",
+						beImg:require("../../img/yao-yi-yao/shake_icon_tv.png"),
+						afImg:require("../../img/yao-yi-yao/shake_icon_tv-hl.png")
+					}
+				],
+				id:1
+				
+			}
+		},
+		methods:{
+			show(obj){
+				this.id=obj.id;
+				console.log(this.id)
+			}
+		}
+	}
 </script>
 
 <style scoped>
@@ -349,28 +378,8 @@
 		background-size: contain;
 		background-repeat: no-repeat;
 	}
-	
-	.yao-yi-yao-footer li.people div {
-		background-image: url(../../img/yao-yi-yao/shake_icon_people.png);
-	}
-	
-	.yao-yi-yao-footer li.music div {
-		background-image: url(../../img/yao-yi-yao/shake_icon_music.png);
-	}
-	
-	.yao-yi-yao-footer li.tv div {
-		background-image: url(../../img/yao-yi-yao/shake_icon_tv.png);
-	}
-	
-	.yao-yi-yao-footer li.people.current div {
-		background-image: url(../../img/yao-yi-yao/shake_icon_people-hl.png);
-	}
-	
-	.yao-yi-yao-footer li.music.current div {
-		background-image: url(../../img/yao-yi-yao/shake_icon_music-hl.png);
-	}
-	
-	.yao-yi-yao-footer li.tv.current div {
-		background-image: url(../../img/yao-yi-yao/shake_icon_tv-hl.png);
+	.yao-yi-yao-footer li div img{
+		width: 40px;
+		height: 40px;
 	}
 </style>

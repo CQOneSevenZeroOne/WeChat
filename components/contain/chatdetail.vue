@@ -51,6 +51,7 @@
 				chatArr:[],
 				myphoto:'',
 				chatphoto:'',
+				insertId:'',
 				socket:io("http://localhost:3000")
 			}
 		},
@@ -66,6 +67,19 @@
 			saveMess(){
 				this.sendData = $("#mess").val();
 			},
+			stringTime(sign){
+				var d = new Date();
+				if(!sign){
+					sign = '/'
+				}
+				return d.getFullYear()+sign+this.String3num((d.getMonth()+1))+sign+this.String3num(d.getDate())+' '+this.String3num(d.getHours())+':'+this.String3num(d.getMinutes())+':'+this.String3num(d.getSeconds());
+			},
+			String3num(num){
+				if(num<10){
+					num = '0'+num
+				}
+				return num;
+			},
 			sendMessage(){
 				var _this = this;
 				this.socket.emit("sendMess",{
@@ -80,15 +94,34 @@
 					message:this.sendData,
 					status:0
 				})
+				//存储聊天数据
+				$.ajax({
+					type:"post",
+					url:"http://localhost:3000/saveChatInfo",
+					async:true,
+					dataType:'json',
+					data:{
+						message:_this.sendData,
+						username:_this.$store.state.name,
+						chatname:_this.chatName,
+						time:_this.stringTime('-'),
+					},
+					success(data){
+						_this.insertId = data.insertId;
+					}
+				});
 				$("#mess").val('');
 				this.sendData = $("#mess").val();
 			}
 		},
 		mounted(){
 			this.chatName = this.$store.state.chat_name;
-			this.myphoto = this.$store.state.my_photo;
+			if(this.$store.state.my_photo==''){
+				this.myphoto = this.$store.state.img;
+			}else{
+				this.myphoto = this.$store.state.my_photo;
+			}
 			this.chatphoto = this.$store.state.chat_photo;
-			console.log('',this.$store.state.chat_photo)
 			var _this = this;
 			this.socket.emit("addUser",{id:_this.$store.state.id})
 //			var socket = io("http://localhost:3000");
@@ -102,7 +135,41 @@
 					message:data,
 					status:1
 				});
+				$.ajax({
+					type:"post",
+					url:"http://localhost:3000/saveReturnMess",
+					async:true,
+					data:{
+						id : _this.insertId,
+						returnMess:data,
+						time:_this.stringTime('-')
+					}
+				});
 			})
+			var _this = this;
+			//从数据库拿聊天的数据
+			$.ajax({
+				type:"post",
+				url:"http://localhost:3000/getMyChat",
+				async:true,
+				dataType:'json',
+				data:{
+					username:_this.$store.state.name,
+					chatname:_this.$store.state.chat_name
+				},
+				success(data){
+					for(var i in data){
+						_this.chatArr.push({
+							message:data[i].mycont,
+							status:0
+						});
+						_this.chatArr.push({
+							message:data[i].youcont,
+							status:1
+						});
+					}
+				}
+			});
 		}
 	}
 </script>
@@ -157,6 +224,7 @@
 		margin-right: 10px;
    		 margin-top: 10px;
    		 text-align: left;
+   		height: 26px;
 	}
 	.chatFooter {
 		position: fixed;

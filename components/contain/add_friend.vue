@@ -12,7 +12,7 @@
     </div>
     <div class="search-line">
         <span class="iconfont icon-search" ><img src="../../img/search.png" style="width: 20px;vertical-align: middle;"/></span>
-        <input type="text" placeholder="微信号/手机号" @input="searchChat" id="searchpeople"> 
+        <input type="text" placeholder="微信号/手机号" @input="searchChat" id="searchpeople" v-model="sear"> 
     </div>
     <p class="_align-center" style="padding-top:8px;text-align: center;">
         <span >我的微信号:</span>
@@ -102,14 +102,15 @@
 			return{
 				isshow:true,
 				searchArr:[],
-				bool:false
+                bool:false,
+                sear:''
 			}
 		},
 		methods:{
 			searchChat(){
 				this.isshow=false;
 				var _this = this;
-				var stra= $("#searchpeople").val();
+				var stra= this.sear;
 				$.ajax({
 					type:"post",
 					url:"http://localhost:3000/getstrager",

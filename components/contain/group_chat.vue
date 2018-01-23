@@ -11,64 +11,64 @@
         </div>
     </div>
     <xsearch />
-    <div class="weui_cells group-list" _v-420c9804="">
-        <div class="weui_cell" _v-420c9804="">
-            <div class="weui_cell_hd" _v-420c9804="">
-                <img src="//ad-gold-cdn.xitu.io/1499913766441c45960d8bd44ed5ffcf0d4a67d0aa317.jpg" alt="" _v-420c9804="">
+    <div class="weui_cells group-list" >
+        <div class="weui_cell" >
+            <div class="weui_cell_hd" >
+                <img src="//ad-gold-cdn.xitu.io/1499913766441c45960d8bd44ed5ffcf0d4a67d0aa317.jpg" alt="" >
             </div>
-            <div class="weui_cell_bd weui_cell_primary" _v-420c9804="">
-                <p _v-420c9804="">web前端交流群
-                    <span _v-420c9804="">0 </span>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <p >web前端交流群
+                    <span >0 </span>
                 </p>
             </div>
         </div>
-        <div class="weui_cell" _v-420c9804="">
-            <div class="weui_cell_hd" _v-420c9804="">
-                <img src="//ad-gold-cdn.xitu.io/1499913766441c45960d8bd44ed5ffcf0d4a67d0aa317.jpg" alt="" _v-420c9804="">
+        <div class="weui_cell" >
+            <div class="weui_cell_hd" >
+                <img src="//ad-gold-cdn.xitu.io/1499913766441c45960d8bd44ed5ffcf0d4a67d0aa317.jpg" alt="" >
             </div>
-            <div class="weui_cell_bd weui_cell_primary" _v-420c9804="">
-                <p _v-420c9804="">web前端交流群
-                    <span _v-420c9804="">1 </span>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <p >web前端交流群
+                    <span >1 </span>
                 </p>
             </div>
         </div>
-        <div class="weui_cell" _v-420c9804="">
-            <div class="weui_cell_hd" _v-420c9804="">
-                <img src="//ad-gold-cdn.xitu.io/1499913766441c45960d8bd44ed5ffcf0d4a67d0aa317.jpg" alt="" _v-420c9804="">
+        <div class="weui_cell" >
+            <div class="weui_cell_hd" >
+                <img src="//ad-gold-cdn.xitu.io/1499913766441c45960d8bd44ed5ffcf0d4a67d0aa317.jpg" alt="" >
             </div>
-            <div class="weui_cell_bd weui_cell_primary" _v-420c9804="">
-                <p _v-420c9804="">web前端交流群
-                    <span _v-420c9804="">2 </span>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <p >web前端交流群
+                    <span >2 </span>
                 </p>
             </div>
         </div>
-        <div class="weui_cell" _v-420c9804="">
-            <div class="weui_cell_hd" _v-420c9804="">
-                <img src="//ad-gold-cdn.xitu.io/1499913766441c45960d8bd44ed5ffcf0d4a67d0aa317.jpg" alt="" _v-420c9804="">
+        <div class="weui_cell" >
+            <div class="weui_cell_hd" >
+                <img src="//ad-gold-cdn.xitu.io/1499913766441c45960d8bd44ed5ffcf0d4a67d0aa317.jpg" alt="" >
             </div>
-            <div class="weui_cell_bd weui_cell_primary" _v-420c9804="">
-                <p _v-420c9804="">web前端交流群
-                    <span _v-420c9804="">3 </span>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <p >web前端交流群
+                    <span >3 </span>
                 </p>
             </div>
         </div>
-        <div class="weui_cell" _v-420c9804="">
-            <div class="weui_cell_hd" _v-420c9804="">
-                <img src="//ad-gold-cdn.xitu.io/1499913766441c45960d8bd44ed5ffcf0d4a67d0aa317.jpg" alt="" _v-420c9804="">
+        <div class="weui_cell" >
+            <div class="weui_cell_hd" >
+                <img src="//ad-gold-cdn.xitu.io/1499913766441c45960d8bd44ed5ffcf0d4a67d0aa317.jpg" alt="" >
             </div>
-            <div class="weui_cell_bd weui_cell_primary" _v-420c9804="">
-                <p _v-420c9804="">web前端交流群
-                    <span _v-420c9804="">4 </span>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <p >web前端交流群
+                    <span >4 </span>
                 </p>
             </div>
         </div>
-        <div class="weui_cell" _v-420c9804="">
-            <div class="weui_cell_hd" _v-420c9804="">
-                <img src="//ad-gold-cdn.xitu.io/1499913766441c45960d8bd44ed5ffcf0d4a67d0aa317.jpg" alt="" _v-420c9804="">
+        <div class="weui_cell" >
+            <div class="weui_cell_hd" >
+                <img src="//ad-gold-cdn.xitu.io/1499913766441c45960d8bd44ed5ffcf0d4a67d0aa317.jpg" alt="" >
             </div>
-            <div class="weui_cell_bd weui_cell_primary" _v-420c9804="">
-                <p _v-420c9804="">web前端交流群
-                    <span _v-420c9804="">5 </span>
+            <div class="weui_cell_bd weui_cell_primary" >
+                <p >web前端交流群
+                    <span >5 </span>
                 </p>
             </div>
         </div>  

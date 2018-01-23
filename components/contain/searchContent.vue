@@ -4,7 +4,7 @@
 			<form class="weui-search-bar__form">
 				<div class="weui-search-bar__box">
 					<i class="weui-icon-search"></i>
-					<input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="" @blur="searchChat">
+					<input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="" @blur="searchChat" v-model="inputtxt">
 					<a href="javascript:" class="weui-icon-clear" id="searchClear" @click="clearSearch"></a>
 				</div>
 				<label class="weui-search-bar__label" id="searchText">
@@ -36,14 +36,15 @@
 	export default {
 		data(){
 			return {
-				searchArr:[]
+				searchArr:[],
+				inputtxt:''
 			}
 		},
 		methods:{
 			searchChat(){
 				this.searchArr = [];
 				var _this = this;
-				var sea = $("#searchInput").val();
+				var sea = this.inputtxt;
 				$.ajax({
 					type:"post",
 					url:"http://localhost:3000/getSearchList",

@@ -13,7 +13,7 @@
 		</div>
 		<div class="chatFooter">
 			<img src="../../img/iconyuyin.png" @click="checkShow" v-show="isShowInput" />
-			<input type="text" v-show="isShowInput" id="mess" @input="saveMess"/>
+			<input type="text" v-show="isShowInput" id="mess" @input="saveMess" v-model="sendData"/>
 			<img src="../../img/key.png" v-show="isShow" @click="checkShow" />
 			<div class="chat-say" v-show="isShow" :style="{'background-color':isMouseDown?'#c6c7ca':'#fff'}"> <span class="one" v-show="isMouseUp" @mousedown="changeStatus">按住 说话</span> <span class="two" v-show="isMouseDown" @mouseup="changeStatus">松开 结束</span> </div>
 			<p v-show="sendData==''"><img src="../../img/iconxiao.png" />
@@ -65,7 +65,7 @@
 				this.isMouseUp = !this.isMouseUp;
 			},
 			saveMess(){
-				this.sendData = $("#mess").val();
+				var send=this.sendData 
 			},
 			stringTime(sign){
 				var d = new Date();
@@ -110,8 +110,8 @@
 						_this.insertId = data.insertId;
 					}
 				});
-				$("#mess").val('');
-				this.sendData = $("#mess").val();
+				
+				this.sendData = '';
 			}
 		},
 		mounted(){

@@ -27,7 +27,7 @@
 			var _this = this;
 			$.ajax({
 				type:"post",
-				url:"http://localhost:3000/getChatList",
+				url:"http://120.78.142.165:5555/getChatList",
 				success(data){
 					var obj = JSON.parse(data)
 					for(var i in obj){
@@ -55,7 +55,7 @@
 				_this.$store.state.chat_photo=this.chatArr[index].img;
 //				$.ajax({
 //					type:"post",
-//					url:"http://localhost:3000/getChatId",
+//					url:"http://120.78.142.165:5555/getChatId",
 //					dataType:'json',
 //					data:{
 //						chatName:_this.$store.state.chat_name

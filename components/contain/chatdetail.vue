@@ -2,9 +2,9 @@
 	<div>
 		<div class="chatTitle">
 			<p>
-				<a href="#/tab/wechat"><img src="../../img/leftsanjiao.png" /></a>微信</p>
+				<a href="#/tab/wechat"><img src="../../public/img/leftsanjiao.png" /></a>微信</p>
 			<span v-text="chatName"></span>
-			<a href="#/chatInfo"><img src="../../img/icon-ren.png" alt="" /></a>
+			<a href="#/chatInfo"><img src="../../public/img/icon-ren.png" alt="" /></a>
 		</div>
 		<div class="chatContent">
 			<ul>
@@ -12,12 +12,12 @@
 			</ul>
 		</div>
 		<div class="chatFooter">
-			<img src="../../img/iconyuyin.png" @click="checkShow" v-show="isShowInput" />
+			<img src="../../public/img/iconyuyin.png" @click="checkShow" v-show="isShowInput" />
 			<input type="text" v-show="isShowInput" id="mess" @input="saveMess" v-model="sendData"/>
-			<img src="../../img/key.png" v-show="isShow" @click="checkShow" />
+			<img src="../../public/img/key.png" v-show="isShow" @click="checkShow" />
 			<div class="chat-say" v-show="isShow" :style="{'background-color':isMouseDown?'#c6c7ca':'#fff'}"> <span class="one" v-show="isMouseUp" @mousedown="changeStatus">按住 说话</span> <span class="two" v-show="isMouseDown" @mouseup="changeStatus">松开 结束</span> </div>
-			<p v-show="sendData==''"><img src="../../img/iconxiao.png" />
-			<img src="../../img/iconjia.png" /></p>
+			<p v-show="sendData==''"><img src="../../public/img/iconxiao.png" />
+			<img src="../../public/img/iconjia.png" /></p>
 			<button v-show="sendData!=''" @click="sendMessage">发送</button>
 		</div>
 		<div class="recording" v-show="isMouseDown">
@@ -52,7 +52,7 @@
 				myphoto:'',
 				chatphoto:'',
 				insertId:'',
-				socket:io("http://localhost:3000")
+				socket:io("http://120.78.142.165:5555")
 			}
 		},
 		methods: {
@@ -97,7 +97,7 @@
 				//存储聊天数据
 				$.ajax({
 					type:"post",
-					url:"http://localhost:3000/saveChatInfo",
+					url:"http://120.78.142.165:5555/saveChatInfo",
 					async:true,
 					dataType:'json',
 					data:{
@@ -124,7 +124,7 @@
 			this.chatphoto = this.$store.state.chat_photo;
 			var _this = this;
 			this.socket.emit("addUser",{id:_this.$store.state.id})
-//			var socket = io("http://localhost:3000");
+//			var socket = io("http://120.78.142.165:5555");
 //			socket.emit("addUser",{
 //				chatName:this.$store.state.chat_name,
 //				username:this.$store.state.name
@@ -137,7 +137,7 @@
 				});
 				$.ajax({
 					type:"post",
-					url:"http://localhost:3000/saveReturnMess",
+					url:"http://120.78.142.165:5555/saveReturnMess",
 					async:true,
 					data:{
 						id : _this.insertId,
@@ -150,7 +150,7 @@
 			//从数据库拿聊天的数据
 			$.ajax({
 				type:"post",
-				url:"http://localhost:3000/getMyChat",
+				url:"http://120.78.142.165:5555/getMyChat",
 				async:true,
 				dataType:'json',
 				data:{
@@ -294,7 +294,7 @@
 	.voice-inner .voice-icon {
 		width: 55px;
 		height: 90px;
-		background: url(../../img/recording-bkg.png) no-repeat 50%;
+		background: url(../../public/img/recording-bkg.png) no-repeat 50%;
 		background-size: contain;
 	}
 	
@@ -353,7 +353,7 @@
 		width: 110px;
 		height: 110px;
 		margin: 0 auto;
-		background-image: url(../../img/record-cancel.png);
+		background-image: url(../../public/img/record-cancel.png);
 		background-repeat: no-repeat;
 		background-position: 50%;
 		background-size: contain;

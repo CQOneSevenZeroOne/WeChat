@@ -6,9 +6,9 @@ var mysql = require("mysql");
 app.use(express.static('../public'));
 //创建数据库连接
 var connect = mysql.createConnection({
-	host:'10.40.153.73',
-	user:'pyj',
-	password:'123',
+	host:'localhost',
+	user:'root',
+	password:'2907lrh',
 	database:'wechat'
 });
 // 处理post请求的请求体模块
@@ -219,5 +219,5 @@ app.post("/getMyChat",function(req,res){
 	});
 })
 //监听端口
-server.listen(3000);
+server.listen(5555);
 console.log("开启服务器")

@@ -2,13 +2,13 @@
   <div>
       <div class="_cover-top"  >
         <div class="top-back" >
-            <a href="#/tab/contact" style="color:white;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" ><img src="../../img/leftsanjiao.png" style="width:12px;height:19px;line-height: 45px;vertical-align: middle;margin-right: 5px;"/>返回</div></a>
+            <a href="#/tab/contact" style="color:white;font-size: 16px;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" ><img src="../../public/img/leftsanjiao.png" style="width:12px;height:19px;line-height: 45px;vertical-align: middle;margin-right: 5px;"/>返回</div></a>
         </div>
         <a href="#/con/person_info_set">
        
         <div class="top-other" >
             <div slot="right" class="_align-right"  style="float:right;">
-                <span ><img src="../../img/pot.png" alt=""></span>
+                <span ><img src="../../public/img/pot.png" alt=""></span>
             </div>
         </div>
         </a>
@@ -96,7 +96,7 @@
 		mounted:function(){
 			var _this=this;
 			$.ajax({
-				url:"http://localhost:3000/showinfo",
+				url:"http://120.78.142.165:5555/showinfo",
 				type:"post",
 				dataType:'json',
 				data:{
@@ -113,7 +113,7 @@
 			getname(beizhu,scocket_id){
 				this.$store.state.chat_name=beizhu;
 				this.$store.state.socket_Id = scocket_id;
-				var socket = io("http://localhost:3000");
+				var socket = io("http://120.78.142.165:5555");
 				socket.emit("addUser",{
 					chatName:this.$store.state.chat_name,
 					username:this.$store.state.name
@@ -180,7 +180,7 @@
     font-size:17px;
 }
 .gender-man{
-    background-image: url(../../img/contact_male.png);
+    background-image: url(../../public/img/contact_male.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 50%;

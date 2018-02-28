@@ -4,7 +4,7 @@
 			<div class="_cover-top">
 				<a href="#/tab/discovery">
 					<div class="top-back">
-						<div class="_ellipsis iconfont icon-return-arrow v-link-active">返回</div>
+						<div class="_ellipsis iconfont v-link-active"><img src="../../public/img/leftsanjiao.png" style="width:12px;height:19px;line-height: 45px;vertical-align: middle;margin-right: 5px;"/>返回</div>
 					</div>
 				</a>
 				<div class="top-other">
@@ -44,8 +44,8 @@
 						id: 1,
 						title: "二维码/条码",
 						footer: "扫码",
-						beImg: require("../../img/sao-yi-sao/scan-qr-code.png"),
-						afImg: require("../../img/sao-yi-sao/scan-qr-code_hl.png"),
+						beImg: require("../../public/img/sao-yi-sao/scan-qr-code.png"),
+						afImg: require("../../public/img/sao-yi-sao/scan-qr-code_hl.png"),
 						panel: "scan-qr-code",
 						text: '将二维码/条码放入框内,即可自动扫描'
 					},
@@ -53,8 +53,8 @@
 						id: 2,
 						title: "封面/电影海报",
 						footer: "封面",
-						beImg: require("../../img/sao-yi-sao/scan-book.png"),
-						afImg: require("../../img/sao-yi-sao/scan-book_hl.png"),
+						beImg: require("../../public/img/sao-yi-sao/scan-book.png"),
+						afImg: require("../../public/img/sao-yi-sao/scan-book_hl.png"),
 						panel: "scan-book",
 						text: '讲书、CD、电影海报放入框内,即可自动扫描'
 					},
@@ -62,8 +62,8 @@
 						id: 3,
 						title: "街景",
 						footer: "街景",
-						beImg: require("../../img/sao-yi-sao/scan-street.png"),
-						afImg: require("../../img/sao-yi-sao/scan-street_hl.png"),
+						beImg: require("../../public/img/sao-yi-sao/scan-street.png"),
+						afImg: require("../../public/img/sao-yi-sao/scan-street_hl.png"),
 						panel: "scan-street",
 						text: '扫一下周边环境,即可自动扫描'
 					},
@@ -71,8 +71,8 @@
 						id: 4,
 						title: "翻译",
 						footer: "翻译",
-						beImg: require("../../img/sao-yi-sao/scan-word.png"),
-						afImg: require("../../img/sao-yi-sao/scan-word_hl.png"),
+						beImg: require("../../public/img/sao-yi-sao/scan-word.png"),
+						afImg: require("../../public/img/sao-yi-sao/scan-word_hl.png"),
 						panel: "scan-word",
 						text: '将英文单词放入框内'
 					}

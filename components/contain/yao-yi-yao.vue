@@ -4,7 +4,7 @@
 			<div class="_cover-top">
 				<a href="#/tab/discovery">
 					<div class="top-back">
-						<div class="_ellipsis iconfont icon-return-arrow v-link-active">返回</div>
+						<div class="_ellipsis iconfont v-link-active"><img src="../../public/img/leftsanjiao.png" style="width:12px;height:19px;line-height: 45px;vertical-align: middle;margin-right: 5px;"/>返回</div>
 					</div>
 				</a>
 				<div class="top-other">
@@ -38,22 +38,22 @@
 						id:1,
 						title:"摇一摇",
 						footer:"人",
-						beImg:require("../../img/yao-yi-yao/shake_icon_people.png"),
-						afImg:require("../../img/yao-yi-yao/shake_icon_people-hl.png")
+						beImg:require("../../public/img/yao-yi-yao/shake_icon_people.png"),
+						afImg:require("../../public/img/yao-yi-yao/shake_icon_people-hl.png")
 					},
 					{
 						id:2,
 						title:"摇歌曲",
 						footer:"歌曲",
-						beImg:require("../../img/yao-yi-yao/shake_icon_music.png"),
-						afImg:require("../../img/yao-yi-yao/shake_icon_music-hl.png")
+						beImg:require("../../public/img/yao-yi-yao/shake_icon_music.png"),
+						afImg:require("../../public/img/yao-yi-yao/shake_icon_music-hl.png")
 					},
 					{
 						id:3,
 						title:"摇电视",
 						footer:"电视",
-						beImg:require("../../img/yao-yi-yao/shake_icon_tv.png"),
-						afImg:require("../../img/yao-yi-yao/shake_icon_tv-hl.png")
+						beImg:require("../../public/img/yao-yi-yao/shake_icon_tv.png"),
+						afImg:require("../../public/img/yao-yi-yao/shake_icon_tv-hl.png")
 					}
 				],
 				id:1
@@ -350,7 +350,7 @@
 		margin-top: -20%;
 		width: 50%;
 		padding-top: 50%;
-		background-image: url(../../img/yao-yi-yao/mobile-hand.png);
+		background-image: url(../../public/img/yao-yi-yao/mobile-hand.png);
 		background-repeat: no-repeat;
 		background-position: center center;
 		background-size: contain;

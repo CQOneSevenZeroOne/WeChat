@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h3>
-			<img src="../../img/return.jpg" @click="toMine"/></a><span v-text="title"></span>
+			<img src="../../public/img/return.jpg" @click="toMine"/></a><span v-text="title"></span>
 		</h3>
 		<div class="cont">
 			<a href="#/own/safe" class="margins">账号与安全</a>

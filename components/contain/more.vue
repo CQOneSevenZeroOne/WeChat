@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h3>
-			<a href="#/own/cont"><img src="../../img/return.jpg" /></a><span v-text="title"></span>
+			<a href="#/own/cont"><img src="../../public/img/return.jpg" /></a><span v-text="title"></span>
 		</h3>
 		<ul>
 			<li @click="sexChange">
@@ -48,7 +48,7 @@
 				var _this = this;
 		    	$.ajax({
 					type:"post",
-					url:"http://localhost:3000/changeSex",
+					url:"http://120.78.142.165:5555/changeSex",
 					data:{
 						id:Number(_this.$store.state.id),
 						sex:_this.sex
@@ -69,7 +69,7 @@
 	    	_this.sex = _this.$store.state.sex;
 	    	$.ajax({
 				type:"post",
-				url:"http://localhost:3000/getMessAll",
+				url:"http://120.78.142.165:5555/getMessAll",
 				data:{
 					id:Number(_this.$store.state.id)
 				},

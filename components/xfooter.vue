@@ -31,20 +31,20 @@
 		data(){
 			return {
 				arr:[{					
-					Img:require('../img/chat.png'),
-					chat:require('../img/chat_c.png'),
+					Img:require('../public/img/chat.png'),
+					chat:require('../public/img/chat_c.png'),
 				},
 				{					
-					Img:require('../img/contact.png'),
-					chat:require('../img/contact_c.png'),
+					Img:require('../public/img/contact.png'),
+					chat:require('../public/img/contact_c.png'),
 				},
 				{					
-					Img:require('../img/discovery.png'),
-					chat:require('../img/discovery_c.png'),
+					Img:require('../public/img/discovery.png'),
+					chat:require('../public/img/discovery_c.png'),
 				},
 				{					
-					Img:require('../img/mine.png'),
-					chat:require('../img/mine_c.png'),
+					Img:require('../public/img/mine.png'),
+					chat:require('../public/img/mine_c.png'),
 				}
 				],
 				changecolor:0
@@ -58,5 +58,9 @@
 	}
 </script>
 
-<style>
+<style scoped="scoped">
+	.weui-tabbar{
+		position: fixed;
+		bottom: 0;
+	}
 </style>

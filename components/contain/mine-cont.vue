@@ -2,45 +2,45 @@
 	<div class="mine-cont">
 		<!--<a class="margins">
 			<div class="left">
-				<img src="../../img/me_more-my-bank-card.png"/>
+				<img src="../../public../../public/img/me_more-my-bank-card.png"/>
 				<em>钱包</em>
 			</div>
-			<img src="../../img/right.jpg"/>
+			<img src="../../public../../public/img/right.jpg"/>
 		</a>-->
 		<a class="margins"  href="#/own/my_photo">
 			<div class="left">
-				<img src="../../img/me_more-my-album.png"/>
+				<img src="../../public../../public/img/me_more-my-album.png"/>
 				<em>相册</em>
 			</div>
-			<img src="../../img/right.jpg"/>
+			<img src="../../public../../public/img/right.jpg"/>
 		</a>
 		<a href="#/own/coll">
 			<div class="left" >
-				<img src="../../img/me_more-my-favorites.png"/>
+				<img src="../../public../../public/img/me_more-my-favorites.png"/>
 				<em>收藏</em>
 			</div>
-			<img src="../../img/right.jpg"/>
+			<img src="../../public../../public/img/right.jpg"/>
 		</a>
 		<a href="#/own/card">
 			<div class="left">
-				<img src="../../img/me_my-card-package-icon.png"/>
+				<img src="../../public../../public/img/me_my-card-package-icon.png"/>
 				<em>卡包</em>
 			</div>
-			<img src="../../img/right.jpg"/>
+			<img src="../../public../../public/img/right.jpg"/>
 		</a>
 		<a class="margins" href="#/own/expr">
 			<div class="left">
-				<img src="../../img/me_more-expression.png"/>
+				<img src="../../public../../public/img/me_more-expression.png"/>
 				<em>表情</em>
 			</div>
-			<img src="../../img/right.jpg"/>
+			<img src="../../public../../public/img/right.jpg"/>
 		</a>
 		<a class="margins" href="#/own/sets">
 			<div class="left">
-				<img src="../../img/me_more-setting.png"/>
+				<img src="../../public../../public/img/me_more-setting.png"/>
 				<em>设置</em>
 			</div>
-			<img src="../../img/right.jpg"/>
+			<img src="../../public../../public/img/right.jpg"/>
 		</a>
 	</div>
 </template>

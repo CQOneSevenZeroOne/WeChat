@@ -1,27 +1,27 @@
 <template>
 	<div>
 		<h3>
-			<img src="../../img/return.jpg" @click="toMine"/></a><span v-text="title"></span>
+			<img src="../../public/img/return.jpg" @click="toMine"/></a><span v-text="title"></span>
 		</h3>
 		<a href="##">
 			<p>
 				<span>
-					<img src="../../img/1.jpg"/>
+					<img src="../../public/img/1.jpg"/>
 					<em>搜狗</em>
 				</span>
 				<b>20天前</b>
 			</p>
-			<img src="../../img/drift-bottle/bottle-button-fish.png"/>
+			<img src="../../public/img/drift-bottle/bottle-button-fish.png"/>
 		</a>
 		<a href="##">
 			<p>
 				<span>
-					<img src="../../img/1.jpg"/>
+					<img src="../../public/img/1.jpg"/>
 					<em>搜狗</em>
 				</span>
 				<b>20天前</b>
 			</p>
-			<img src="../../img/drift-bottle/bottle-button-fish.png"/>
+			<img src="../../public/img/drift-bottle/bottle-button-fish.png"/>
 		</a>
 	</div>
 </template>

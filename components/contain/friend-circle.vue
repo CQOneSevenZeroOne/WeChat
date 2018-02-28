@@ -4,7 +4,7 @@
 			<div class="_cover-top">
 				<a href="#/tab/discovery">
 					<div class="top-back">
-						<div class="_ellipsis iconfont icon-return-arrow v-link-active">返回</div>
+						<div class="_ellipsis iconfont  v-link-active"><img src="../../public/img/leftsanjiao.png" style="width:12px;height:19px;line-height: 45px;vertical-align: middle;margin-right: 5px;"/>返回</div>
 					</div>
 				</a>
 				<div class="top-other">
@@ -42,19 +42,19 @@
 												<div class="box_panel">
 													<span class="panel" v-show="isShowSideBar" >
 														<em class="Zan" @click="dianZan" >
-															<img src="../../img/xin.png" alt="" />赞
+															<img src="../../public/img/xin.png" alt="" />赞
 														</em>
 														<em class="pinglun">
-															<img src="../../img/ping.png" alt="" />评论
+															<img src="../../public/img/ping.png" alt="" />评论
 														</em>
 													</span>
 												</div>
 											</transition>
 											<span @click="showSide" class="dianZan">
-												<img src="../../img/comment.png"  />
+												<img src="../../public/img/comment.png"  :style="{'display':isShow?'block':'none'}"/>
 											</span>
 										</p>
-										<p v-show="bool" class="weui-media-box__desc name_info"><img src="../../img/star.png" alt="" />{{item.contact_name}}</p>
+										<p v-show="bool" class="weui-media-box__desc name_info"><img src="../../public/img/star.png" alt="" />{{item.contact_name}}</p>
 									</div>
 								</a>
 							</div>
@@ -83,6 +83,7 @@
 				bool: false,
 				photo:this.$store.state.img,
 				name:this.$store.state.name,
+				isShow:true
 			};
 		},
 		mounted: function() {
@@ -95,7 +96,7 @@
 				this.num++;
 				$.ajax({
 					type: "post",
-					url: "http://localhost:3000/getFriendCircleTrend",
+					url: "http://120.78.142.165:5555/getFriendCircleTrend",
 					async: true,
 					dataType: "json",
 					data: {
@@ -111,12 +112,12 @@
 			},
 			showSide() {
 				this.isShowSideBar = !this.isShowSideBar;
-				//console.log(this.isShowSideBar)
+				this.isShow=!this.isShow;
 			},
 			dianZan() {
 				this.bool = !this.bool;
 				this.isShowSideBar = false;
-				
+				this.isShow=!this.isShow;	
 			}
 		}
 	};
@@ -236,7 +237,7 @@
 		margin-top: -90px;
 		position: relative;
 		height: 370px;
-		background: url(../../img/maomao.jpg) no-repeat center center;
+		background: url(../../public/img/maomao.jpg) no-repeat center center;
 		background-size: cover;
 	}
 	
@@ -327,7 +328,7 @@
 		width: 30px;
 		height: 30px;
 		position: absolute;
-		left: 274px;
+		left: 230px;
 	}
 	
 	.call .dianZan img {

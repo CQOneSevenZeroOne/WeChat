@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<h3>
-			<img src="../../img/return.jpg" @click="toMine"/></a><span v-text="title"></span>
+			<img src="../../public/img/return.jpg" @click="toMine"/></a><span v-text="title"></span>
 		</h3>
 		<p class="margins">
 			<em>下载最新表情</em>
-			<img src="../../img/drift-bottle/bottle-writing.png"/>
+			<img src="../../public/img/drift-bottle/bottle-writing.png"/>
 		</p>
 	</div>
 </template>

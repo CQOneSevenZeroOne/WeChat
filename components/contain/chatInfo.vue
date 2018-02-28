@@ -2,7 +2,7 @@
 	<div>
 		<div class="chatTitle">
 			<p>
-				<a href="#/chatdetail"><img src="../../img/leftsanjiao.png" /></a>返回</p>
+				<a href="#/chatdetail"><img src="../../public/img/leftsanjiao.png" /></a>返回</p>
 			<span>聊天详情</span>
 			<b></b>
 		</div>
@@ -12,7 +12,7 @@
 				<span v-text="chatName"></span>
 			</p>
 			<p class="jiaBox">
-				<img src="../../img/jia.png" />
+				<img src="../../public/img/jia.png" />
 			</p>
 		</div>
 		<section>
@@ -25,17 +25,17 @@
 				</p>
 			</div>
 			<div class="set">
-				<p><em>聊天文件</em><span><img src="../../img/right.jpg"/></span></p>
+				<p><em>聊天文件</em><span><img src="../../public/img/right.jpg"/></span></p>
 			</div>
 			<div class="set">
-				<p><em>设置当前聊天背景</em><span><a href="#"><img src="../../img/right.jpg"/></a></span></p>
-				<p><em>查找聊天内容</em><span><a href="#"><img src="../../img/right.jpg"/></a></span></p>
+				<p><em>设置当前聊天背景</em><span><a href="#"><img src="../../public/img/right.jpg"/></a></span></p>
+				<p><em>查找聊天内容</em><span><a href="#"><img src="../../public/img/right.jpg"/></a></span></p>
 			</div>
 			<div class="set">
 				<p><em>清空聊天记录</em><span></span></p>
 			</div>
 			<div class="set">
-				<p><em>投诉</em><span><a href="#"><img src="../../img/right.jpg"/></a></span></p>
+				<p><em>投诉</em><span><a href="#"><img src="../../public/img/right.jpg"/></a></span></p>
 			</div>
 		</section>
 	</div>
@@ -47,8 +47,8 @@
 			return {
 				isOpen:false,
 				isOpen1:false,
-				openImg:require('../../img/kai.png'),
-				closeImg:require('../../img/kaiguan.jpg'),
+				openImg:require('../../public/img/kai.png'),
+				closeImg:require('../../public/img/kaiguan.jpg'),
 				chatName:'',
 				chatphoto:''
 			}
@@ -94,7 +94,7 @@
 	}
 	
 	.pic {
-		background: url(../../img/2-small.jpg);
+		background: url(../../public/img/2-small.jpg);
 	}
 	
 	.chat-dialogue {

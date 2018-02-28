@@ -2,7 +2,7 @@
 	<div class="change">
 		<h3>
 			<p>
-				<a href="#/own"><img src="../../img/return.jpg" /></a><span v-text="title"></span>
+				<a href="#/own"><img src="../../public/img/return.jpg" /></a><span v-text="title"></span>
 			</p>
 			<button @click="change">保存</button>
 		</h3>
@@ -31,7 +31,7 @@
 	   			var _this = this;
 		    	$.ajax({
 					type:"post",
-					url:"http://localhost:3000/changeName",
+					url:"http://120.78.142.165:5555/changeName",
 					data:{
 						id:Number(_this.$store.state.id),
 						name:_this.name

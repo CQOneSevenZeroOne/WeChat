@@ -2,27 +2,27 @@
 	<div class="change">
 		<h3>
 			<p>
-				<a href="#/tab/mine"><img src="../../img/return.jpg" /></a><span v-text="title"></span>
+				<a href="#/tab/mine"><img src="../../public/img/return.jpg" /></a><span v-text="title"></span>
 			</p>
 			<em>消息通知</em>
 		</h3>
 		<div>
 			<h4 class="bett">
 				<span>
-					<img src="../../img/me_more-my-album.png"/>
+					<img src="../../public/img/me_more-my-album.png"/>
 					<em>卡</em>
 				</span>
 				<b>查看全部</b>
 			</h4>
 			<h4>
 				<span>
-					<img src="../../img/me_more-my-album.png"/>
+					<img src="../../public/img/me_more-my-album.png"/>
 					<em>朋友的优惠券</em>
 				</span>
 			</h4>
 			<h4>
 				<span>
-					<img src="../../img/me_more-my-album.png"/>
+					<img src="../../public/img/me_more-my-album.png"/>
 					<em>我的票券</em>
 				</span>
 			</h4>

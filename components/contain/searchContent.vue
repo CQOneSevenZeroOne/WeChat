@@ -47,7 +47,7 @@
 				var sea = this.inputtxt;
 				$.ajax({
 					type:"post",
-					url:"http://localhost:3000/getSearchList",
+					url:"http://120.78.142.165:5555/getSearchList",
 					data:{
 						sea:sea
 					},

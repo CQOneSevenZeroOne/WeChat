@@ -4,7 +4,7 @@
 			<div class="_cover-top">
 				<a href="#/tab/discovery">
 					<div class="top-back">
-						<div class="_ellipsis iconfont icon-return-arrow v-link-active">返回</div>
+						<div class="_ellipsis iconfont  v-link-active"><img src="../../public/img/leftsanjiao.png" style="width:12px;height:19px;line-height: 45px;vertical-align: middle;margin-right: 5px;"/>返回</div>
 					</div>
 				</a>
 				<div class="top-other">
@@ -129,7 +129,7 @@
 	
 	._cover-content {
 		color: #979797;
-		background-image: url(../../img/drift-bottle/bottle-bkg.jpg);
+		background-image: url(../../public/img/drift-bottle/bottle-bkg.jpg);
 		background-position: center center;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -157,7 +157,7 @@
 		width: 100%;
 		left: 0;
 		color: #ffffff;
-		background-image: url(../../img/drift-bottle/bottle-board.png);
+		background-image: url(../../public/img/drift-bottle/bottle-board.png);
 		background-repeat: no-repeat;
 		background-size: contain;
 		background-position: center bottom;
@@ -177,14 +177,14 @@
 	}
 	
 	.drift-bottle-footer li.throw div {
-		background-image: url(../../img/drift-bottle/bottle-button-throw.png);
+		background-image: url(../../public/img/drift-bottle/bottle-button-throw.png);
 	}
 	
 	.drift-bottle-footer li.pickup div {
-		background-image: url(../../img/drift-bottle/bottle-button-fish.png);
+		background-image: url(../../public/img/drift-bottle/bottle-button-fish.png);
 	}
 	
 	.drift-bottle-footer li.bottle div {
-		background-image: url(../../img/drift-bottle/bottle-button-mine.png);
+		background-image: url(../../public/img/drift-bottle/bottle-button-mine.png);
 	}
 </style>

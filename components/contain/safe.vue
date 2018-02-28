@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h3>
-			<img src="../../img/return.jpg" @click="toMine"/></a><span v-text="title"></span>
+			<img src="../../public/img/return.jpg" @click="toMine"/></a><span v-text="title"></span>
 		</h3>
 		<div class="bett margins">
 			<h4>
@@ -15,7 +15,7 @@
 			<h4>
 				<span>手机号</span>
 				<p>
-					<img src="../../img/locked.png"/>
+					<img src="../../public/img/locked.png"/>
 					<em v-text="num">13368037646</em>
 				</p>
 			</h4>
@@ -34,7 +34,7 @@
 			<h4>
 				<span>账号保护</span>
 				<p>
-					<img src="../../img/locked.png"/>
+					<img src="../../public/img/locked.png"/>
 					<em>已保护</em>
 				</p>
 			</h4>
@@ -74,7 +74,7 @@
 	    	var _this = this;
 	    	$.ajax({
 				type:"post",
-				url:"http://localhost:3000/getMessAll",
+				url:"http://120.78.142.165:5555/getMessAll",
 				data:{
 					id:Number(_this.$store.state.id)
 				},

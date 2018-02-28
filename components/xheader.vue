@@ -3,7 +3,7 @@
 		<div class="header">
 			<a href=""></a>
 			微信
-			<i @click="changeShow"><img src="../img/jia.png"/></i>
+			<i @click="changeShow"><img src="../public/img/jia.png"/></i>
 		</div>
 		
 		<ul class="tips-open" v-show="isShow">

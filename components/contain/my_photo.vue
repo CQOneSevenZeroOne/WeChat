@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h3 class="header">
-			<img src="../../img/return.jpg" @click="toMine"/></a><span v-text="title"></span>
+			<img src="../../public/img/return.jpg" @click="toMine"/></a><span v-text="title"></span>
 		</h3>
 		<div class="bg">
 			<p>
@@ -13,7 +13,7 @@
 			<h3>
 				<span>今天</span>
 				<p>
-					<img src="../../img/camera_03.jpg"/>
+					<img src="../../public/img/camera_03.jpg"/>
 				</p>
 			</h3>
 			<h4 v-for="d in arr">
@@ -29,7 +29,7 @@
 				<span>04<em>4月</em></span>
 				<div>
 					<p>
-						<img src="../../img/2.jpg"/>
+						<img src="../../public/img/2.jpg"/>
 						<i>被拐的儿童拯救事件</i>
 					</p>
 				</div>
@@ -61,7 +61,7 @@
 	    	var arr = [];
 	    	$.ajax({
 				type:"post",
-				url:"http://localhost:3000/getTrend",
+				url:"http://120.78.142.165:5555/getTrend",
 				data:{
 					id:Number(_this.$store.state.id)
 				},

@@ -2,7 +2,7 @@
 <div>
   <div class="_cover-top"  >
         <div class="top-back" >
-            <a href="#/tab/contact" style="color:white;float: left;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" ><img src="../../img/leftsanjiao.png" style="width:12px;height:19px;line-height: 45px;vertical-align: middle;margin-right: 5px;"/>通讯录</div></a>
+            <a href="#/tab/contact" style="color:white;float: left;font-size: 16px;"><div class="_ellipsis iconfont icon-return-arrow v-link-active" ><img src="../../public/img/leftsanjiao.png" style="width:12px;height:19px;line-height: 45px;vertical-align: middle;margin-right: 5px;"/>通讯录</div></a>
         </div>
         <div class="top-title _effect" style="width: 230px;">
             <p>
@@ -11,18 +11,18 @@
         </div>
     </div>
     <div class="search-line">
-        <span class="iconfont icon-search" ><img src="../../img/search.png" style="width: 20px;vertical-align: middle;"/></span>
+        <span class="iconfont icon-search" ><img src="../../public/img/search.png" style="width: 20px;vertical-align: middle;"/></span>
         <input type="text" placeholder="微信号/手机号" @input="searchChat" id="searchpeople" v-model="sear"> 
     </div>
     <p class="_align-center" style="padding-top:8px;text-align: center;">
         <span >我的微信号:</span>
         <span >niyaowoa</span>
-        <img src="../../img/contact_add-friend-my-qr.png" style="width:24px;vertical-align: middle;" class="_align-middle">   
+        <img src="../../public/img/contact_add-friend-my-qr.png" style="width:24px;vertical-align: middle;" class="_align-middle">   
     </p>
     <div class="weui_cells weui_cells_access add-friends-options" :style="{'display':isshow?'block':'none'}" style="margin-top: 10px;">
         <a class="weui_cell" href="javascript:;" >
             <div class="weui_cell_hd" >
-                <img src="../../img/contact_add-friend-reda.png" >
+                <img src="../../public/img/contact_add-friend-reda.png" >
             </div>
             <div class="weui_cell_bd weui_cell_primary" >
                 <p >雷达加朋友</p>
@@ -32,7 +32,7 @@
         </a>
         <a class="weui_cell" href="javascript:;" >
             <div class="weui_cell_hd" >
-                <img src="../../img/contact_add-friend-addgroup.png" >
+                <img src="../../public/img/contact_add-friend-addgroup.png" >
             </div>
             <div class="weui_cell_bd weui_cell_primary" >
                 <p >面对面建群</p>
@@ -42,7 +42,7 @@
         </a>
         <a class="weui_cell" href="javascript:;" >
             <div class="weui_cell_hd" >
-                <img src="../../img/contact_add-friend-scanqr.png" >
+                <img src="../../public/img/contact_add-friend-scanqr.png" >
             </div>
             <div class="weui_cell_bd weui_cell_primary" >
                 <p >扫一扫</p>
@@ -52,7 +52,7 @@
         </a>
         <a class="weui_cell" href="javascript:;" >
             <div class="weui_cell_hd" >
-                <img src="../../img/contact_add-friend-contacts.png" >
+                <img src="../../public/img/contact_add-friend-contacts.png" >
             </div>
             <div class="weui_cell_bd weui_cell_primary" >
                 <p >手机联系人</p>
@@ -62,7 +62,7 @@
         </a>
         <a class="weui_cell" href="javascript:;" >
             <div class="weui_cell_hd" >
-                <img src="../../img/contact_add-friend-offical.png" >
+                <img src="../../public/img/contact_add-friend-offical.png" >
             </div>
             <div class="weui_cell_bd weui_cell_primary" >
                 <p >公众号</p>
@@ -113,7 +113,7 @@
 				var stra= this.sear;
 				$.ajax({
 					type:"post",
-					url:"http://localhost:3000/getstrager",
+					url:"http://120.78.142.165:5555/getstrager",
 					dataType:'json',
 					data:{
 						strager_num:stra
@@ -132,7 +132,7 @@
 				var self=this;
 				$.ajax({
 					type:"post",
-					url:"http://localhost:3000/addstrager",
+					url:"http://120.78.142.165:5555/addstrager",
 					dataType:'json',
 					data:{
 						arr:JSON.stringify(self.searchArr)
@@ -140,7 +140,7 @@
 					success(data){
 						$.ajax({
 							type:"post",
-							url:"http://localhost:3000/deletestrager",
+							url:"http://120.78.142.165:5555/deletestrager",
 							dataType:'json',
 							data:{
 								Arr:JSON.stringify(self.searchArr)

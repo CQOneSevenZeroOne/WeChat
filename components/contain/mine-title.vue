@@ -69,7 +69,7 @@
 	    	var _this = this;
 	    	$.ajax({
 				type:"post",
-				url:"http://localhost:3000/getMessAll",
+				url:"http://120.78.142.165:5555/getMessAll",
 				data:{
 					id:Number(_this.$store.state.id)
 				},
@@ -145,7 +145,7 @@
 }
 .code i{
 	height: 3rem;width: 0.9rem;
-	background: url(../../img/right.jpg) no-repeat center;
+	background: url(../../public/img/right.jpg) no-repeat center;
 	padding-left: 2rem;
 }
 .left{

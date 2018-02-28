@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h3>
-			<a href="##" @click="toMine"><img src="../../img/return.jpg" /></a><span v-text="title"></span>
+			<a href="##" @click="toMine"><img src="../../public/img/return.jpg" /></a><span v-text="title"></span>
 		</h3>
 		<ul>
 			<li class="hight">
@@ -25,7 +25,7 @@
 			<li @click="sexChange">
 				<a>
 					<span>二维码名片</span> 
-					<!--<img src="../../img/chat-info-qr.png"/>-->
+					<!--<img src="../../public/img/chat-info-qr.png"/>-->
 					<canvas id="canvas"></canvas>
 				</a>
 			</li>
@@ -65,7 +65,7 @@
 				bool:false,
 //				config: {
 //		            value: "1123456",
-//		            imagePath: require('../../img/1.jpg'),
+//		            imagePath: require('../../public/img/1.jpg'),
 //		            filter: 'color',
 //		            size:330
 //		        }
@@ -88,7 +88,7 @@
 				var _this = this;
 		    	$.ajax({
 					type:"post",
-					url:"http://localhost:3000/changeSex",
+					url:"http://120.78.142.165:5555/changeSex",
 					data:{
 						id:Number(_this.$store.state.id),
 						sex:_this.sex
